@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { proxyApiToBackend } from "@/lib/api/proxy-to-backend";
 import { updateSession } from "@/lib/supabase/middleware";
 import { createServerClient } from "@supabase/ssr";
 
@@ -31,6 +32,8 @@ const PROTECTED_PREFIXES = [
 
 const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 const API_ONLY = process.env.APP_SERVICE === "api";
+const FRONTEND_API_PROXY =
+  process.env.APP_SERVICE === "frontend" && Boolean(process.env.INTERNAL_API_URL?.trim());
 
 function isApiOnlyBlocked(pathname: string) {
   if (!API_ONLY) return false;
@@ -54,6 +57,10 @@ export async function middleware(request: NextRequest) {
 
   if (isApiOnlyBlocked(pathname)) {
     return NextResponse.json({ error: "API service" }, { status: 404 });
+  }
+
+  if (FRONTEND_API_PROXY && !DEMO_MODE && pathname.startsWith("/api/")) {
+    return proxyApiToBackend(request);
   }
 
   if (DEMO_MODE) {
