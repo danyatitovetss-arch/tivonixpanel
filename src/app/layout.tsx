@@ -21,6 +21,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TIVONIX Partners — CRM для партнёров",
   description: "Панель TIVONIX Partners для работы с клиентами партнёров",
+  icons: {
+    icon: "/images/favikon.png",
+    shortcut: "/images/favikon.png",
+    apple: "/images/favikon.png",
+  },
 };
 
 export default function RootLayout({
