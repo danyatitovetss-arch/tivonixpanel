@@ -30,6 +30,15 @@ const PROTECTED_PREFIXES = [
 ];
 
 const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+const API_ONLY = process.env.APP_SERVICE === "api";
+
+function isApiOnlyBlocked(pathname: string) {
+  if (!API_ONLY) return false;
+  if (pathname.startsWith("/api/") || pathname.startsWith("/_next")) return false;
+  if (pathname === "/login" || pathname === "/favicon.ico") return false;
+  if (/\.(svg|png|jpg|jpeg|gif|webp|ico)$/.test(pathname)) return false;
+  return true;
+}
 
 function isPublic(pathname: string) {
   if (pathname === "/") return true;
@@ -41,11 +50,15 @@ function isProtected(pathname: string) {
 }
 
 export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (isApiOnlyBlocked(pathname)) {
+    return NextResponse.json({ error: "API service" }, { status: 404 });
+  }
+
   if (DEMO_MODE) {
     return NextResponse.next();
   }
-
-  const { pathname } = request.nextUrl;
 
   if (pathname.startsWith("/api/") || pathname.startsWith("/_next")) {
     return updateSession(request);
