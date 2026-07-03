@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Plus, RefreshCw } from "lucide-react";
+import { Download, Plus, RefreshCw } from "lucide-react";
+import { exportUserCredentialsPdf } from "@/lib/export-user-credentials-pdf";
 import { AppModal, ModalActions, ModalField, fieldClass } from "@/components/ui/app-modal";
 import { useApp } from "@/lib/store";
 import { isDemoMode } from "@/lib/demo-mode";
@@ -10,6 +11,13 @@ import { fetchJson } from "@/lib/api/fetch-json";
 import { toUserMessage } from "@/lib/errors";
 import type { UserRole } from "@/lib/types";
 import { getOnboardingStatusLabel, getUserRoleLabel } from "@/lib/statuses";
+
+type CreatedCredentials = {
+  email: string;
+  password: string;
+  name: string;
+  roleLabel: string;
+};
 import {
   OkxTable,
   OkxTableBody,
@@ -43,7 +51,8 @@ export function UsersManagement() {
   const [loading, setLoading] = useState(!demo);
   const [open, setOpen] = useState(false);
   const [credentialsOpen, setCredentialsOpen] = useState(false);
-  const [createdCredentials, setCreatedCredentials] = useState<{ email: string; password: string; name: string } | null>(null);
+  const [createdCredentials, setCreatedCredentials] = useState<CreatedCredentials | null>(null);
+  const [pdfLoading, setPdfLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -69,6 +78,24 @@ export function UsersManagement() {
   useEffect(() => {
     void loadUsers();
   }, [loadUsers]);
+
+  async function downloadCredentialsPdf(credentials: CreatedCredentials) {
+    setPdfLoading(true);
+    try {
+      await exportUserCredentialsPdf({
+        fullName: credentials.name,
+        email: credentials.email,
+        password: credentials.password,
+        roleLabel: credentials.roleLabel,
+        loginUrl: `${window.location.origin}/login`,
+      });
+      toast.success("PDF скачан");
+    } catch (err) {
+      toast.error(toUserMessage(err, "Не удалось сформировать PDF"));
+    } finally {
+      setPdfLoading(false);
+    }
+  }
 
   async function handleAdd() {
     if (!form.name.trim() || !form.email.trim()) {
@@ -108,16 +135,21 @@ export function UsersManagement() {
         }),
       });
 
-      setCreatedCredentials({
+      const createdRole = form.role === "admin" ? "partner" : form.role;
+      const credentials: CreatedCredentials = {
         email: result.data.email,
         password: result.data.temporaryPassword,
         name: result.data.fullName,
-      });
+        roleLabel: getUserRoleLabel(createdRole),
+      };
+
+      setCreatedCredentials(credentials);
       setForm({ name: "", email: "", telegram: "", password: generatePassword(), role: "partner" });
       setOpen(false);
       setCredentialsOpen(true);
       await loadUsers();
       toast.success("Партнёр создан");
+      void downloadCredentialsPdf(credentials);
     } catch (err) {
       toast.error(toUserMessage(err, "Не удалось создать пользователя"));
     } finally {
@@ -282,17 +314,36 @@ export function UsersManagement() {
                 <p className="font-mono font-medium text-[#050505]">{createdCredentials.password}</p>
               </div>
             </div>
-            <ModalActions
-              onCancel={() => setCredentialsOpen(false)}
-              onConfirm={() => {
-                void navigator.clipboard.writeText(
-                  `TIVONIX Partners CRM\nEmail: ${createdCredentials.email}\nПароль: ${createdCredentials.password}\n\nВойдите, заполните анкету и задайте свой пароль.`
-                );
-                toast.success("Скопировано в буфер");
-              }}
-              confirmLabel="Скопировать для отправки"
-              primary
-            />
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <button
+                type="button"
+                disabled={pdfLoading}
+                onClick={() => void downloadCredentialsPdf(createdCredentials)}
+                className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-[#e5e5e5] text-sm font-medium text-[#050505] transition-colors hover:bg-[#fafafa] disabled:opacity-50"
+              >
+                <Download className="size-4" />
+                {pdfLoading ? "Формирование…" : "Скачать PDF"}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  void navigator.clipboard.writeText(
+                    `TIVONIX Partners CRM\nВход: ${window.location.origin}/login\nEmail: ${createdCredentials.email}\nПароль: ${createdCredentials.password}\n\nВойдите, заполните анкету и задайте свой пароль.`
+                  );
+                  toast.success("Скопировано в буфер");
+                }}
+                className="inline-flex h-11 flex-1 items-center justify-center rounded-xl bg-[#050505] text-sm font-medium text-white transition-colors hover:bg-[#262626]"
+              >
+                Скопировать текст
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={() => setCredentialsOpen(false)}
+              className="w-full text-center text-sm text-[#6b7280] hover:text-[#050505]"
+            >
+              Закрыть
+            </button>
           </div>
         )}
       </AppModal>
