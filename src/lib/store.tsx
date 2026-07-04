@@ -41,6 +41,8 @@ import { emptyPartnerProfile } from "./partner-profiles-seed";
 import { isDemoMode } from "./demo-mode";
 import {
   loadBootstrap,
+  loadAuthMe,
+  type AuthSessionUser,
   approveLeadApi,
   rejectLeadApi,
   markDuplicateLeadApi,
@@ -219,13 +221,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [currentUserId, setCurrentUserIdState] = useState<string>(() =>
     demo ? DEMO_USERS.admin : ""
   );
+  const [authSession, setAuthSession] = useState<AuthSessionUser | null>(null);
   const [hydrated, setHydrated] = useState(false);
   const [isBootstrapping, setIsBootstrapping] = useState(() => !demo);
 
   const refreshFromServer = useCallback(async () => {
-    const payload = await loadBootstrap();
+    const [me, payload] = await Promise.all([
+      loadAuthMe(),
+      loadBootstrap(),
+    ]);
+    setAuthSession(me);
     setData(payload.data);
-    setCurrentUserIdState(payload.currentUser.id);
+    setCurrentUserIdState(me.profileId);
   }, []);
 
   useEffect(() => {
@@ -291,9 +298,22 @@ export function AppProvider({ children }: { children: ReactNode }) {
   );
 
   const currentUser = useMemo(() => {
-    if (isBootstrapping) return PLACEHOLDER_USER;
-    return data.users.find((u) => u.id === currentUserId) ?? data.users[0] ?? PLACEHOLDER_USER;
-  }, [data.users, currentUserId, isBootstrapping]);
+    if (demo) {
+      return data.users.find((u) => u.id === currentUserId) ?? data.users[0] ?? PLACEHOLDER_USER;
+    }
+    if (isBootstrapping || !authSession) return PLACEHOLDER_USER;
+
+    const fromData = data.users.find((u) => u.id === authSession.profileId);
+    return {
+      id: authSession.profileId,
+      name: authSession.fullName ?? fromData?.name ?? authSession.email,
+      email: authSession.email,
+      telegram: fromData?.telegram ?? "",
+      role: authSession.role,
+      status: authSession.status,
+      createdAt: fromData?.createdAt ?? "",
+    };
+  }, [data.users, currentUserId, isBootstrapping, authSession, demo]);
 
   const addLead = useCallback(
     async (input: Omit<Lead, "id" | "createdAt" | "updatedAt">) => {

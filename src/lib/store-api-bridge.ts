@@ -1,7 +1,21 @@
 import { fetchJson } from "@/lib/api/fetch-json";
-import type { AppData, Lead } from "@/lib/types";
+import type { AppData, Lead, UserRole, UserStatus } from "@/lib/types";
 import type { ProspectContact } from "@/lib/prospecting-types";
 import { toServiceTypeSlug } from "@/lib/service-types";
+
+export type AuthSessionUser = {
+  authId: string;
+  email: string;
+  profileId: string;
+  fullName: string | null;
+  role: UserRole;
+  status: UserStatus;
+};
+
+export async function loadAuthMe(): Promise<AuthSessionUser> {
+  const { user } = await fetchJson<{ user: AuthSessionUser }>("/api/auth/me");
+  return user;
+}
 
 export async function loadBootstrap(): Promise<{ data: AppData; currentUser: AppData["users"][0] }> {
   return fetchJson("/api/bootstrap");

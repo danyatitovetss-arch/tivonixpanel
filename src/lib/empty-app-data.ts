@@ -7,7 +7,7 @@ export const PLACEHOLDER_USER: User = {
   email: "",
   telegram: "",
   role: "partner",
-  status: "active",
+  status: "inactive",
   createdAt: "",
 };
 

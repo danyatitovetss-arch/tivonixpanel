@@ -17,7 +17,7 @@ export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = searchParams.get("next") ?? "/dashboard";
-  const { setCurrentUserId } = useApp();
+  const { setCurrentUserId, refreshFromServer } = useApp();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -60,6 +60,7 @@ export default function LoginForm() {
     try {
       const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
       if (signInError) throw signInError;
+      await refreshFromServer();
       await resolveRedirect();
     } catch (err) {
       setError(toUserMessage(err, "Не удалось войти. Проверьте email и пароль"));

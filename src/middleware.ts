@@ -115,19 +115,21 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  if (pathname.startsWith("/admin")) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("user_id", user.id)
-      .single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("user_id", user.id)
+    .single();
 
-    if (profile?.role !== "admin") {
-      const forbidden = request.nextUrl.clone();
-      forbidden.pathname = "/dashboard";
-      forbidden.searchParams.set("error", "forbidden");
-      return NextResponse.redirect(forbidden);
-    }
+  if (pathname.startsWith("/admin") && profile?.role !== "admin") {
+    const forbidden = request.nextUrl.clone();
+    forbidden.pathname = "/dashboard";
+    forbidden.searchParams.set("error", "forbidden");
+    return NextResponse.redirect(forbidden);
+  }
+
+  if (profile?.role === "admin") {
+    return response;
   }
 
   if (
