@@ -1,16 +1,16 @@
 "use client";
 
 import { AppLayout } from "@/components/layout/app-layout";
-import { BalanceCard } from "@/components/finance/balance-card";
+import { PartnerCabinetHero } from "@/components/finance/partner-cabinet-hero";
 import { ExportButton } from "@/components/common/export-button";
 import { MY_LEADS_EXPORT_COLUMNS, formatExportDate } from "@/lib/export-columns";
 import { useAddLeadSheet } from "@/components/leads/add-lead-context";
 import { useLeadDetail } from "@/components/leads/lead-detail-context";
-import { OkxPageTitle, OkxTable, OkxTableBody, OkxTr, OkxTd, OkxCellPrimary } from "@/components/ui/okx-table";
+import { OkxTable, OkxTableBody, OkxTr, OkxTd, OkxCellPrimary } from "@/components/ui/okx-table";
 import { EmptyState } from "@/components/ui/empty-state";
 import { StatusBadge } from "@/components/common/status-badge";
 import { useAppData, useCurrentUser } from "@/lib/store";
-import { getPartnerStats, getPartnerBalance } from "@/lib/analytics";
+import { getPartnerStats, getPartnerBalance, getPartnerMonthlyTrends } from "@/lib/analytics";
 import { getLeadStatusLabel, ADMIN_REVIEW_LABELS } from "@/lib/statuses";
 import { formatCurrency } from "@/lib/commission";
 import { CLIENT_COPY } from "@/lib/ui-copy";
@@ -23,6 +23,7 @@ export default function MyPage() {
   const { openLead } = useLeadDetail();
   const stats = getPartnerStats(data, user.id);
   const balance = getPartnerBalance(data, user.id);
+  const trends = getPartnerMonthlyTrends(data, user.id);
   const myLeads = data.leads.filter((l) => l.partnerId === user.id).slice(0, 5);
   const myDeals = data.deals.filter((d) => d.partnerId === user.id);
   const myPayouts = data.payouts.filter((p) => p.partnerId === user.id);
@@ -40,17 +41,14 @@ export default function MyPage() {
     <RoleGuard resource="leads" redirectTo="/dashboard">
       <AppLayout title="Мой кабинет" showAddLead={false} showSearch={false}>
         <div className="space-y-10">
-          <OkxPageTitle
-            title={`Привет, ${user.name}`}
-            description={CLIENT_COPY.descriptionMy}
+          <PartnerCabinetHero
+            name={user.name}
+            balance={balance}
+            totalLeads={stats.totalLeads}
+            closedDeals={stats.closedDeals}
+            commissionAccrued={stats.commissionAccrued}
+            trends={trends}
           />
-
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <BalanceCard label="Баланс к выплате" amount={balance} />
-            <BalanceCard label={CLIENT_COPY.titleMy} amount={stats.totalLeads} />
-            <BalanceCard label="Закрытые сделки" amount={stats.closedDeals} />
-            <BalanceCard label="Начислено комиссии" amount={stats.commissionAccrued} />
-          </div>
 
           <div className="flex flex-wrap gap-3">
             <button

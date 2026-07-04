@@ -32,9 +32,9 @@ export default function PartnersPage() {
           <OkxPageTitle title="Партнёры" description="Статистика и балансы партнёров" />
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <BalanceCard label="Всего партнёров" amount={partners.length} />
-            <BalanceCard label="Активные" amount={partners.filter((p) => p.status === "active").length} />
-            <BalanceCard label="Клиентов за месяц" amount={data.leads.filter((l) => l.createdAt >= "2026-06-01").length} />
+            <BalanceCard label="Всего партнёров" amount={partners.length} format="count" />
+            <BalanceCard label="Активные" amount={partners.filter((p) => p.status === "active").length} format="count" />
+            <BalanceCard label="Клиентов за месяц" amount={data.leads.filter((l) => l.createdAt >= "2026-06-01").length} format="count" />
             <BalanceCard label="К выплате" amount={partners.reduce((s, p) => s + getPartnerBalance(data, p.id), 0)} />
           </div>
 

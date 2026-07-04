@@ -46,8 +46,8 @@ export default function PartnerDetailPage({ params }: { params: Promise<{ id: st
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             <BalanceCard label="Баланс" amount={balance} />
-            <BalanceCard label="Клиентов" amount={stats.totalLeads} />
-            <BalanceCard label="Сделок" amount={stats.closedDeals} />
+            <BalanceCard label="Клиентов" amount={stats.totalLeads} format="count" />
+            <BalanceCard label="Сделок" amount={stats.closedDeals} format="count" />
             <BalanceCard label="Продажи" amount={stats.salesAmount} />
           </div>
 

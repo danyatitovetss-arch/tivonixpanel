@@ -24,8 +24,10 @@ import {
   getTopPartners,
   getTopSources,
   getTopServicesByRevenue,
+  getPartnerMonthlyTrends,
 } from "@/lib/analytics";
 import { isPartner } from "@/lib/access";
+import { formatCurrency } from "@/lib/commission";
 import { formatDate } from "@/lib/utils";
 import { AlertCircle } from "lucide-react";
 
@@ -37,9 +39,9 @@ export default function DashboardPage() {
   const attention = isPartner(user) ? [] : getAttentionItems(data);
   const { openLead } = useLeadDetail();
 
-  const statTrends = [14, 22, 11, 5, 18, -7];
-
   const partnerView = isPartner(user);
+  const adminStatTrends = [14, 22, 11, 5, 18, -7];
+  const partnerTrends = partnerView ? getPartnerMonthlyTrends(data, user.id) : null;
 
   return (
     <AppLayout title="Главная" showSearch={false}>
@@ -92,12 +94,13 @@ export default function DashboardPage() {
         {partnerView ? (
           <>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              <StatCard label="Клиентов" value={stats.totalLeads} />
+              <StatCard label="Клиентов" value={stats.totalLeads} change={partnerTrends?.leads} />
               <StatCard label="В работе" value={stats.inProgress} />
-              <StatCard label="Закрыто сделок" value={stats.closedDeals} />
+              <StatCard label="Закрыто сделок" value={stats.closedDeals} change={partnerTrends?.closedDeals} />
               <StatCard
                 label="К выплате"
-                value={`${stats.commissionToPay.toLocaleString("ru-RU")} $`}
+                value={formatCurrency(stats.commissionToPay)}
+                change={partnerTrends?.balance}
               />
             </div>
 
@@ -142,14 +145,14 @@ export default function DashboardPage() {
           </>
         ) : (
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
-            <StatCard label="Всего клиентов" value={stats.totalLeads} change={statTrends[0]} />
-            <StatCard label="На проверке" value={stats.pendingReview} change={statTrends[1]} />
+            <StatCard label="Всего клиентов" value={stats.totalLeads} change={adminStatTrends[0]} />
+            <StatCard label="На проверке" value={stats.pendingReview} change={adminStatTrends[1]} />
             <StatCard label="Одобрено" value={stats.approved} change={8} />
             <StatCard label="В работе" value={stats.inProgress} change={6} />
-            <StatCard label="Закрыто сделок" value={stats.closedDeals} change={statTrends[3]} />
-            <StatCard label="Сумма продаж" value={`${stats.salesAmount.toLocaleString("ru-RU")} $`} change={statTrends[4]} />
-            <StatCard label="Комиссии начислено" value={`${stats.commissionAccrued.toLocaleString("ru-RU")} $`} change={12} />
-            <StatCard label="К выплате" value={`${stats.commissionToPay.toLocaleString("ru-RU")} $`} change={statTrends[5]} />
+            <StatCard label="Закрыто сделок" value={stats.closedDeals} change={adminStatTrends[3]} />
+            <StatCard label="Сумма продаж" value={formatCurrency(stats.salesAmount)} change={adminStatTrends[4]} />
+            <StatCard label="Комиссии начислено" value={formatCurrency(stats.commissionAccrued)} change={12} />
+            <StatCard label="К выплате" value={formatCurrency(stats.commissionToPay)} change={adminStatTrends[5]} />
           </div>
         )}
 

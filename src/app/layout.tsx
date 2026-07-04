@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { GlobalAnnouncementHost } from "@/components/layout/global-announcement-host";
 import { AddLeadProvider } from "@/components/leads/add-lead-context";
 import { LeadDetailProvider } from "@/components/leads/lead-detail-context";
 import { ProspectDetailProvider } from "@/components/prospecting/prospect-detail-context";
@@ -34,8 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-full flex flex-col">
+    <html
+      lang="ru"
+      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <AppProvider>
           <AddLeadProvider>
             <LeadDetailProvider>
@@ -44,8 +49,9 @@ export default function RootLayout({
               </ProspectDetailProvider>
             </LeadDetailProvider>
           </AddLeadProvider>
+          <GlobalAnnouncementHost />
         </AppProvider>
-        <Toaster position="top-right" />
+        <Toaster position="top-center" />
       </body>
     </html>
   );

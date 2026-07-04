@@ -110,6 +110,7 @@
   --toast-bg: #fffef8;
   --toast-border: #f5e6a8;
   --toast-ring: rgba(234, 179, 8, 0.18);
+  z-index: 9999 !important;
 }
 
 [data-sonner-toast][data-styled="true"] {

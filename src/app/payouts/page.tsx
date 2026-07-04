@@ -77,8 +77,8 @@ export default function PayoutsPage() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             <BalanceCard label="К выплате всего" amount={balances.reduce((s, b) => s + b.balance, 0)} />
             <BalanceCard label="Выплачено за месяц" amount={paidMonth.reduce((s, p) => s + p.amount, 0)} />
-            <BalanceCard label="Ожидают" amount={pending.length} />
-            <BalanceCard label="Партнёров с балансом" amount={balances.length} />
+            <BalanceCard label="Ожидают" amount={pending.length} format="count" />
+            <BalanceCard label="Партнёров с балансом" amount={balances.length} format="count" />
           </div>
 
           <OkxTableScroll>

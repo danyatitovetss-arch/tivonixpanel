@@ -8,12 +8,16 @@ import { Topbar } from "./topbar";
 import { AppPageSkeleton, type AppPageSkeletonVariant } from "./app-page-skeleton";
 import { useApp, useIsBootstrapping } from "@/lib/store";
 import { isDemoMode } from "@/lib/demo-mode";
+import { cn } from "@/lib/utils";
 
 interface AppLayoutProps {
   children: React.ReactNode;
   title: string;
   showAddLead?: boolean;
   showSearch?: boolean;
+  hideTitle?: boolean;
+  compactTopbar?: boolean;
+  mainClassName?: string;
   skeletonVariant?: AppPageSkeletonVariant;
 }
 
@@ -29,6 +33,9 @@ export function AppLayout({
   title,
   showAddLead = true,
   showSearch = true,
+  hideTitle = false,
+  compactTopbar = false,
+  mainClassName,
   skeletonVariant,
 }: AppLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -58,15 +65,26 @@ export function AppLayout({
         </SheetContent>
       </Sheet>
 
-      <div className="flex min-w-0 flex-1 flex-col lg:pl-60 xl:pl-64">
+      <div
+        className="flex min-w-0 flex-1 flex-col lg:pl-60 xl:pl-64"
+        data-academy-layout={compactTopbar ? "" : undefined}
+      >
         <Topbar
           title={title}
+          hideTitle={hideTitle}
+          compactTopbar={compactTopbar}
           onMenuClick={() => setMobileOpen(true)}
           showAddLead={showAddLead && !isBootstrapping}
           showSearch={showSearch && !isBootstrapping}
           isLoading={isBootstrapping}
         />
-        <main className="min-w-0 flex-1 overflow-x-auto px-4 py-6 md:px-6 lg:px-8">
+        <main
+          className={cn(
+            "min-w-0 flex-1 overflow-x-auto px-4 py-6 md:px-6 lg:px-8",
+            compactTopbar && "pt-0",
+            mainClassName
+          )}
+        >
           {isBootstrapping ? <AppPageSkeleton variant={variant} /> : children}
         </main>
       </div>

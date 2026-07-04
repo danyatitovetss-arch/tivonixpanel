@@ -172,7 +172,7 @@ export default function DealsPage() {
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           <BalanceCard label="Сумма всех сделок" amount={deals.reduce((s, d) => s + d.amount, 0)} />
           <BalanceCard label="Оплачено" amount={paid.reduce((s, d) => s + d.amount, 0)} />
-          <BalanceCard label="Ожидает оплату" amount={waiting.length} />
+          <BalanceCard label="Ожидает оплату" amount={waiting.length} format="count" />
           <BalanceCard label="Комиссий к выплате" amount={accrued.reduce((s, d) => s + d.commissionAmount, 0)} />
         </div>
 

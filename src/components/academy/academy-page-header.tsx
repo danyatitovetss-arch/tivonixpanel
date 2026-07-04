@@ -2,25 +2,28 @@ import Image from "next/image";
 
 export function AcademyPageHeader() {
   return (
-    <header className="space-y-5 pb-2">
+    <header className="flex flex-col items-center pb-4 pt-2 text-center">
       <Image
         src="/images/tl-Photoroom.png"
         alt="TIVONIX"
-        width={180}
-        height={48}
+        width={360}
+        height={96}
         priority
-        className="h-8 w-auto object-contain sm:h-9"
+        className="h-16 w-auto object-contain sm:h-[4.5rem]"
       />
-      <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-[#9ca3af]">
+      <div className="mt-5 space-y-3">
+        <p className="text-xs font-medium uppercase tracking-wide text-[#9ca3af] sm:text-sm">
           TIVONIX Partners · Академия
         </p>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[#050505] sm:text-3xl">
+        <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-medium text-[#050505] sm:text-sm">
+          Второе обновление
+        </span>
+        <h1 className="text-2xl font-semibold tracking-tight text-[#050505] sm:text-3xl">
           Как искать клиентов
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#6b7280] sm:text-base">
-          Пошаговая инструкция для партнёров: где находить бизнесы, что им писать, как передавать
-          лиды в CRM и как получать комиссию.
+        <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[#6b7280] sm:text-base">
+          Переработали раздел для вашего удобства: где искать, что писать, как добавить лида в CRM и
+          получить выплату.
         </p>
       </div>
     </header>

@@ -4,6 +4,7 @@ import { Menu, Plus, Search, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAddLeadSheet } from "@/components/leads/add-lead-context";
+import { cn } from "@/lib/utils";
 
 interface TopbarProps {
   title: string;
@@ -11,6 +12,8 @@ interface TopbarProps {
   showAddLead?: boolean;
   showSearch?: boolean;
   isLoading?: boolean;
+  hideTitle?: boolean;
+  compactTopbar?: boolean;
 }
 
 export function Topbar({
@@ -19,11 +22,19 @@ export function Topbar({
   showAddLead = true,
   showSearch = true,
   isLoading = false,
+  hideTitle = false,
+  compactTopbar = false,
 }: TopbarProps) {
   const { open: openAddLead } = useAddLeadSheet();
 
   return (
-    <header className="sticky top-0 z-30 flex h-[var(--app-header-height)] items-center justify-between gap-4 bg-white px-4 md:px-6 lg:px-8">
+    <header
+      data-app-topbar
+      className={cn(
+        "sticky top-0 z-30 flex items-center justify-between gap-4 bg-white px-4 md:px-6 lg:px-8",
+        compactTopbar ? "h-12 lg:hidden" : "h-[var(--app-header-height)]"
+      )}
+    >
       <div className="flex min-w-0 items-center gap-3">
         <button
           type="button"
@@ -33,9 +44,11 @@ export function Topbar({
         >
           <Menu className="size-5" />
         </button>
-        <h1 className="truncate text-lg font-semibold tracking-tight text-[#050505] md:text-xl">
-          {title}
-        </h1>
+        {!hideTitle && title ? (
+          <h1 className="truncate text-lg font-semibold tracking-tight text-[#050505] md:text-xl">
+            {title}
+          </h1>
+        ) : null}
         {isLoading && (
           <Loader2 className="size-5 shrink-0 animate-spin text-[#6b7280]" aria-label="Загрузка данных" />
         )}

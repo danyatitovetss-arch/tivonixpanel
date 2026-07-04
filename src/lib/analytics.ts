@@ -154,6 +154,75 @@ export function getPartnerStats(data: AppData, partnerId: string) {
   };
 }
 
+function monthKey(date: Date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+}
+
+function percentChange(current: number, previous: number): number {
+  if (previous === 0) return current > 0 ? 100 : 0;
+  return Math.round(((current - previous) / previous) * 100);
+}
+
+export interface PartnerMonthlyTrends {
+  balance: number;
+  leads: number;
+  closedDeals: number;
+  commission: number;
+}
+
+export function getPartnerMonthlyTrends(data: AppData, partnerId: string): PartnerMonthlyTrends {
+  const now = new Date();
+  const thisMonth = monthKey(now);
+  const prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  const lastMonth = monthKey(prev);
+
+  const leads = data.leads.filter((l) => l.partnerId === partnerId);
+  const leadsThisMonth = leads.filter((l) => l.createdAt.startsWith(thisMonth)).length;
+  const leadsLastMonth = leads.filter((l) => l.createdAt.startsWith(lastMonth)).length;
+
+  const paidDeals = data.deals.filter(
+    (d) => d.partnerId === partnerId && d.paymentStatus === "paid"
+  );
+  const dealsThisMonth = paidDeals.filter((d) => d.closedAt.startsWith(thisMonth)).length;
+  const dealsLastMonth = paidDeals.filter((d) => d.closedAt.startsWith(lastMonth)).length;
+
+  const accruals = data.balanceTransactions.filter(
+    (t) => t.partnerId === partnerId && t.type === "accrual" && t.status === "completed"
+  );
+  const commissionThisMonth = accruals
+    .filter((t) => t.createdAt.startsWith(thisMonth))
+    .reduce((s, t) => s + t.amount, 0);
+  const commissionLastMonth = accruals
+    .filter((t) => t.createdAt.startsWith(lastMonth))
+    .reduce((s, t) => s + t.amount, 0);
+
+  const payoutsThisMonth = data.balanceTransactions
+    .filter(
+      (t) =>
+        t.partnerId === partnerId &&
+        t.type === "payout" &&
+        t.status === "completed" &&
+        t.createdAt.startsWith(thisMonth)
+    )
+    .reduce((s, t) => s + t.amount, 0);
+  const payoutsLastMonth = data.balanceTransactions
+    .filter(
+      (t) =>
+        t.partnerId === partnerId &&
+        t.type === "payout" &&
+        t.status === "completed" &&
+        t.createdAt.startsWith(lastMonth)
+    )
+    .reduce((s, t) => s + t.amount, 0);
+
+  return {
+    balance: percentChange(commissionThisMonth - payoutsThisMonth, commissionLastMonth - payoutsLastMonth),
+    leads: percentChange(leadsThisMonth, leadsLastMonth),
+    closedDeals: percentChange(dealsThisMonth, dealsLastMonth),
+    commission: percentChange(commissionThisMonth, commissionLastMonth),
+  };
+}
+
 export function getLeadsByDay(data: AppData, days = 14, partnerId?: string) {
   const leads = partnerId
     ? data.leads.filter((l) => l.partnerId === partnerId)
