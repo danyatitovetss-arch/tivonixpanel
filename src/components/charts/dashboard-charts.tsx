@@ -11,14 +11,21 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { formatCurrency } from "@/lib/commission";
 
-const axisStyle = { fill: "#6b7280", fontSize: 12 };
-const gridStyle = { stroke: "#e5e5e5", strokeDasharray: "3 3" };
+const CORAL = "#fc5f2b";
+const CARBON = "#18181b";
+const ZINC = "#71717a";
+const MIST = "#e4e4e7";
+
+const axisStyle = { fill: ZINC, fontSize: 12 };
+const gridStyle = { stroke: MIST, strokeDasharray: "3 3" };
 const tooltipStyle = {
   background: "#fff",
-  border: "1px solid #e5e5e5",
-  borderRadius: 8,
+  border: `1px solid ${MIST}`,
+  borderRadius: 12,
   fontSize: 12,
+  boxShadow: "rgba(0, 0, 0, 0.05) 0px 2px 2px 0px",
 };
 
 interface ChartProps {
@@ -26,31 +33,108 @@ interface ChartProps {
   dataKey: string;
   xKey: string;
   height?: number;
+  emptyLabel?: string;
+  valueFormat?: "number" | "currency";
 }
 
-export function LeadsChart({ data, dataKey, xKey, height = 220 }: ChartProps) {
+function chartHasValues(data: Record<string, string | number>[], dataKey: string) {
+  return data.some((row) => Number(row[dataKey] ?? 0) > 0);
+}
+
+function ChartEmpty({ height, label }: { height: number; label: string }) {
+  return (
+    <div
+      className="flex items-center justify-center px-2 text-center text-sm text-[var(--color-zinc-gray)]"
+      style={{ height }}
+    >
+      {label}
+    </div>
+  );
+}
+
+function formatTooltipValue(value: unknown, format: "number" | "currency") {
+  const n = Number(value ?? 0);
+  if (format === "currency") return formatCurrency(n);
+  return n.toLocaleString("ru-RU");
+}
+
+export function LeadsChart({
+  data,
+  dataKey,
+  xKey,
+  height = 240,
+  emptyLabel = "Пока нет данных по клиентам",
+  valueFormat = "number",
+}: ChartProps) {
+  if (!chartHasValues(data, dataKey)) {
+    return <ChartEmpty height={height} label={emptyLabel} />;
+  }
+
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <LineChart data={data}>
+      <LineChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
         <CartesianGrid {...gridStyle} vertical={false} />
-        <XAxis dataKey={xKey} axisLine={false} tickLine={false} tick={axisStyle} />
-        <YAxis axisLine={false} tickLine={false} tick={axisStyle} width={32} />
-        <Tooltip contentStyle={tooltipStyle} />
-        <Line type="monotone" dataKey={dataKey} stroke="#050505" strokeWidth={2} dot={false} />
+        <XAxis dataKey={xKey} axisLine={false} tickLine={false} tick={axisStyle} dy={6} />
+        <YAxis
+          allowDecimals={false}
+          axisLine={false}
+          tickLine={false}
+          tick={axisStyle}
+          width={36}
+        />
+        <Tooltip
+          contentStyle={tooltipStyle}
+          formatter={(value) => [formatTooltipValue(value, valueFormat), "Клиенты"]}
+        />
+        <Line
+          type="monotone"
+          dataKey={dataKey}
+          stroke={CORAL}
+          strokeWidth={2.5}
+          dot={{ r: 3, fill: CORAL, strokeWidth: 0 }}
+          activeDot={{ r: 5, fill: CORAL }}
+        />
       </LineChart>
     </ResponsiveContainer>
   );
 }
 
-export function SalesChart({ data, dataKey, xKey, height = 220 }: ChartProps) {
+export function SalesChart({
+  data,
+  dataKey,
+  xKey,
+  height = 240,
+  emptyLabel = "Пока нет данных",
+  valueFormat = "number",
+}: ChartProps) {
+  if (!chartHasValues(data, dataKey)) {
+    return <ChartEmpty height={height} label={emptyLabel} />;
+  }
+
+  const isCurrency = valueFormat === "currency" || dataKey === "amount";
+
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={data}>
+      <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
         <CartesianGrid {...gridStyle} vertical={false} />
-        <XAxis dataKey={xKey} axisLine={false} tickLine={false} tick={axisStyle} />
-        <YAxis axisLine={false} tickLine={false} tick={axisStyle} width={48} />
-        <Tooltip contentStyle={tooltipStyle} />
-        <Bar dataKey={dataKey} fill="#050505" radius={[4, 4, 0, 0]} maxBarSize={40} />
+        <XAxis dataKey={xKey} axisLine={false} tickLine={false} tick={axisStyle} dy={6} />
+        <YAxis
+          axisLine={false}
+          tickLine={false}
+          tick={axisStyle}
+          width={isCurrency ? 56 : 36}
+          tickFormatter={(v) =>
+            isCurrency ? `${Math.round(Number(v) / 1000)}k` : String(v)
+          }
+        />
+        <Tooltip
+          contentStyle={tooltipStyle}
+          formatter={(value) => [
+            formatTooltipValue(value, isCurrency ? "currency" : "number"),
+            isCurrency ? "Сумма" : "Количество",
+          ]}
+        />
+        <Bar dataKey={dataKey} fill={CORAL} radius={[8, 8, 0, 0]} maxBarSize={44} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -58,19 +142,35 @@ export function SalesChart({ data, dataKey, xKey, height = 220 }: ChartProps) {
 
 export function ConversionChart({
   data,
-  height = 220,
+  height = 240,
+  emptyLabel = "Воронка появится после первых клиентов",
 }: {
   data: { stage: string; count: number }[];
   height?: number;
+  emptyLabel?: string;
 }) {
+  if (!data.some((row) => row.count > 0)) {
+    return <ChartEmpty height={height} label={emptyLabel} />;
+  }
+
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={data} layout="vertical">
+      <BarChart data={data} layout="vertical" margin={{ top: 4, right: 16, left: 4, bottom: 4 }}>
         <CartesianGrid {...gridStyle} horizontal={false} />
-        <XAxis type="number" axisLine={false} tickLine={false} tick={axisStyle} />
-        <YAxis type="category" dataKey="stage" axisLine={false} tickLine={false} tick={axisStyle} width={72} />
-        <Tooltip contentStyle={tooltipStyle} />
-        <Bar dataKey="count" fill="#6b7280" radius={[0, 4, 4, 0]} maxBarSize={24} />
+        <XAxis type="number" allowDecimals={false} axisLine={false} tickLine={false} tick={axisStyle} />
+        <YAxis
+          type="category"
+          dataKey="stage"
+          axisLine={false}
+          tickLine={false}
+          tick={axisStyle}
+          width={96}
+        />
+        <Tooltip
+          contentStyle={tooltipStyle}
+          formatter={(value) => [Number(value ?? 0).toLocaleString("ru-RU"), "Этап"]}
+        />
+        <Bar dataKey="count" fill={CARBON} radius={[0, 8, 8, 0]} maxBarSize={22} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -78,20 +178,64 @@ export function ConversionChart({
 
 export function TopPartnersChart({
   data,
-  height = 220,
+  height = 240,
+  emptyLabel = "Недостаточно данных для рейтинга",
+  valueLabel = "Сделки",
 }: {
   data: { name: string; deals: number }[];
   height?: number;
+  emptyLabel?: string;
+  valueLabel?: string;
 }) {
+  if (!data.some((row) => row.deals > 0)) {
+    return <ChartEmpty height={height} label={emptyLabel} />;
+  }
+
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={data}>
+      <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
         <CartesianGrid {...gridStyle} vertical={false} />
-        <XAxis dataKey="name" axisLine={false} tickLine={false} tick={axisStyle} />
-        <YAxis axisLine={false} tickLine={false} tick={axisStyle} width={32} />
-        <Tooltip contentStyle={tooltipStyle} />
-        <Bar dataKey="deals" fill="#6b7280" radius={[4, 4, 0, 0]} maxBarSize={48} />
+        <XAxis
+          dataKey="name"
+          axisLine={false}
+          tickLine={false}
+          tick={axisStyle}
+          interval={0}
+          angle={-20}
+          textAnchor="end"
+          height={48}
+        />
+        <YAxis allowDecimals={false} axisLine={false} tickLine={false} tick={axisStyle} width={36} />
+        <Tooltip
+          contentStyle={tooltipStyle}
+          formatter={(value) => [Number(value ?? 0).toLocaleString("ru-RU"), valueLabel]}
+        />
+        <Bar dataKey="deals" fill={CORAL} radius={[8, 8, 0, 0]} maxBarSize={48} />
       </BarChart>
     </ResponsiveContainer>
+  );
+}
+
+export function ChartPanel({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="min-w-0">
+      <div className="mb-3">
+        <h3 className="text-[15px] font-bold tracking-[-0.009em] text-[var(--color-carbon-black)]">
+          {title}
+        </h3>
+        {description ? (
+          <p className="mt-0.5 text-[13px] text-[var(--color-zinc-gray)]">{description}</p>
+        ) : null}
+      </div>
+      {children}
+    </div>
   );
 }

@@ -8,6 +8,11 @@ export const PLACEHOLDER_USER: User = {
   telegram: "",
   role: "partner",
   status: "inactive",
+  partnerType: null,
+  agencyName: null,
+  websiteUrl: null,
+  commissionPercentOverride: null,
+  assignedManagerId: null,
   createdAt: "",
 };
 

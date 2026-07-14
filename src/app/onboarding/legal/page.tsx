@@ -12,7 +12,7 @@ import {
 } from "@/components/legal/legal-document-modal";
 
 const inputClass =
-  "h-11 w-full rounded-xl bg-[#f6f6f6] px-3.5 text-sm outline-none focus:bg-[#efefef]";
+  "h-11 w-full rounded-xl bg-[#f4f4f5] px-3.5 text-sm outline-none focus:bg-[#f4f4f5]";
 
 export default function LegalOnboardingPage() {
   const router = useRouter();
@@ -102,7 +102,7 @@ export default function LegalOnboardingPage() {
 
     const me = await fetch("/api/auth/me");
     const meJson = me.ok ? await me.json() : null;
-    router.push(meJson?.user?.role === "partner" ? "/my" : "/dashboard");
+    router.push("/dashboard");
   }
 
   return (
@@ -116,8 +116,8 @@ export default function LegalOnboardingPage() {
           priority
           className="h-auto w-[180px] object-contain sm:w-[200px]"
         />
-        <h1 className="mt-6 text-2xl font-semibold text-[#050505]">Юридическое оформление</h1>
-        <p className="mt-2 max-w-sm text-sm text-[#6b7280]">
+        <h1 className="mt-6 text-2xl font-semibold text-[#18181b]">Юридическое оформление</h1>
+        <p className="mt-2 max-w-sm text-sm text-[#71717a]">
           Заполните данные, примите документы и задайте свой пароль для входа в CRM.
         </p>
       </div>
@@ -130,13 +130,13 @@ export default function LegalOnboardingPage() {
           ["city", "Город", "text"],
         ].map(([name, label, type]) => (
           <div key={name}>
-            <label className="mb-2 block text-sm text-[#6b7280]">{label}</label>
+            <label className="mb-2 block text-sm text-[#71717a]">{label}</label>
             <input name={name} type={type} required={label.includes("*")} className={inputClass} />
           </div>
         ))}
 
         <div>
-          <label className="mb-2 block text-sm text-[#6b7280]">Дата рождения *</label>
+          <label className="mb-2 block text-sm text-[#71717a]">Дата рождения *</label>
           <div className="relative">
             <DateFilterField
               label="Дата рождения"
@@ -150,14 +150,14 @@ export default function LegalOnboardingPage() {
           </div>
         </div>
 
-        <div className="space-y-3 rounded-2xl bg-[#f6f6f6] p-4 text-sm">
-          <p className="text-xs text-[#6b7280]">
+        <div className="space-y-3 rounded-2xl bg-[#f4f4f5] p-4 text-sm">
+          <p className="text-xs text-[#71717a]">
             Отметьте галочки после ознакомления. Название документа можно открыть и прочитать.
           </p>
           {ONBOARDING_CONSENT_DOCS.map(({ name, label, slug }) => (
             <label key={name} className="flex cursor-pointer items-start gap-2.5">
               <input type="checkbox" name={name} required className="mt-0.5 size-4 shrink-0" />
-              <span className="leading-snug text-[#050505]">
+              <span className="leading-snug text-[#18181b]">
                 <button
                   type="button"
                   onClick={(e) => {
@@ -165,7 +165,7 @@ export default function LegalOnboardingPage() {
                     e.stopPropagation();
                     openDocument(slug, label);
                   }}
-                  className="text-left underline decoration-[#050505]/25 underline-offset-2 hover:decoration-[#050505]"
+                  className="text-left underline decoration-[#18181b]/25 underline-offset-2 hover:decoration-[#18181b]"
                 >
                   {label}
                 </button>
@@ -174,15 +174,15 @@ export default function LegalOnboardingPage() {
           ))}
         </div>
 
-        <div className="space-y-4 rounded-2xl border border-[#e5e5e5] p-4">
+        <div className="space-y-4 rounded-2xl border border-[#e4e4e7] p-4">
           <div>
-            <p className="text-sm font-medium text-[#050505]">Свой пароль</p>
-            <p className="mt-1 text-xs text-[#6b7280]">
+            <p className="text-sm font-medium text-[#18181b]">Свой пароль</p>
+            <p className="mt-1 text-xs text-[#71717a]">
               Временный пароль от админа больше не понадобится — придумайте личный.
             </p>
           </div>
           <div>
-            <label htmlFor="password" className="mb-2 block text-sm text-[#6b7280]">
+            <label htmlFor="password" className="mb-2 block text-sm text-[#71717a]">
               Новый пароль *
             </label>
             <input
@@ -198,7 +198,7 @@ export default function LegalOnboardingPage() {
             />
           </div>
           <div>
-            <label htmlFor="confirmPassword" className="mb-2 block text-sm text-[#6b7280]">
+            <label htmlFor="confirmPassword" className="mb-2 block text-sm text-[#71717a]">
               Повторите пароль *
             </label>
             <input
@@ -220,7 +220,7 @@ export default function LegalOnboardingPage() {
         <button
           type="submit"
           disabled={loading}
-          className="h-11 w-full rounded-full bg-[#050505] text-sm font-medium text-white disabled:opacity-50"
+          className="h-11 w-full rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white disabled:opacity-50"
         >
           {loading ? "Сохранение…" : "Завершить и войти"}
         </button>

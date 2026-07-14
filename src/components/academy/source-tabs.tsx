@@ -14,7 +14,7 @@ export function SourceTabs({ sources }: SourceTabsProps) {
   const current = sources.find((s) => s.id === active) ?? sources[0];
 
   return (
-    <div className="rounded-2xl bg-[#f6f6f6] p-4 md:p-6">
+    <div className="rounded-2xl bg-[#f4f4f5] p-4 md:p-6">
       <div className="flex flex-wrap gap-2">
         {sources.map((source) => (
           <button
@@ -24,8 +24,8 @@ export function SourceTabs({ sources }: SourceTabsProps) {
             className={cn(
               "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors",
               active === source.id
-                ? "bg-[#050505] text-white"
-                : "bg-white/60 text-[#6b7280] hover:bg-white hover:text-[#050505]"
+                ? "bg-[var(--color-sunrise-coral)] text-white"
+                : "bg-white/60 text-[#71717a] hover:bg-white hover:text-[#18181b]"
             )}
           >
             {source.label}
@@ -35,11 +35,11 @@ export function SourceTabs({ sources }: SourceTabsProps) {
 
       {current && (
         <div className="mt-5 rounded-xl bg-white p-5">
-          <p className="text-sm leading-relaxed text-[#6b7280]">{current.intro}</p>
+          <p className="text-sm leading-relaxed text-[#71717a]">{current.intro}</p>
           <ol className="mt-4 space-y-2">
             {current.steps.map((step, i) => (
-              <li key={step} className="flex gap-3 text-sm text-[#050505]">
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#f6f6f6] text-xs font-medium text-[#6b7280]">
+              <li key={step} className="flex gap-3 text-sm text-[#18181b]">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#f4f4f5] text-xs font-medium text-[#71717a]">
                   {i + 1}
                 </span>
                 <span className="pt-0.5">{step}</span>
@@ -53,7 +53,7 @@ export function SourceTabs({ sources }: SourceTabsProps) {
                 {current.examples.map((ex) => (
                   <span
                     key={ex}
-                    className="rounded-lg bg-[#f6f6f6] px-3 py-1.5 text-xs text-[#050505]"
+                    className="rounded-lg bg-[#f4f4f5] px-3 py-1.5 text-xs text-[#18181b]"
                   >
                     {ex}
                   </span>
@@ -62,7 +62,7 @@ export function SourceTabs({ sources }: SourceTabsProps) {
             </div>
           )}
           {current.note && (
-            <p className="mt-4 text-sm text-[#6b7280]">{current.note}</p>
+            <p className="mt-4 text-sm text-[#71717a]">{current.note}</p>
           )}
         </div>
       )}

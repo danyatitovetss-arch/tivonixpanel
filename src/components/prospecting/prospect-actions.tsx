@@ -39,8 +39,8 @@ function ActionBtn({
       onClick={onClick}
       className={
         primary
-          ? "rounded-full bg-[#050505] px-4 py-2 text-sm font-medium text-white"
-          : "rounded-full bg-[#f6f6f6] px-4 py-2 text-sm font-medium text-[#050505]"
+          ? "rounded-full bg-[var(--color-sunrise-coral)] px-4 py-2 text-sm font-medium text-white"
+          : "rounded-full bg-[#f4f4f5] px-4 py-2 text-sm font-medium text-[#18181b]"
       }
     >
       {children}

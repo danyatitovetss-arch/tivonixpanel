@@ -84,7 +84,7 @@ export default function ReportsPage() {
                 key={r.id}
                 type="button"
                 onClick={() => setReport(r.id)}
-                className={`rounded-full px-4 py-2 text-sm ${report === r.id ? "bg-[#050505] text-white" : "bg-[#f6f6f6] text-[#6b7280]"}`}
+                className={`rounded-full px-4 py-2 text-sm ${report === r.id ? "bg-[var(--color-sunrise-coral)] text-white" : "bg-[#f4f4f5] text-[#71717a]"}`}
               >
                 {r.label}
               </button>
@@ -108,7 +108,7 @@ export default function ReportsPage() {
             columns={[...REPORT_EXPORT_COLUMNS[report]]}
           />
 
-          <div className="rounded-2xl bg-[#f6f6f6] p-4 text-sm text-[#6b7280]">
+          <div className="rounded-2xl bg-[#f4f4f5] p-4 text-sm text-[#71717a]">
             Выбран отчёт: {REPORTS.find((r) => r.id === report)?.label}. Записей: {getExportData().length}
           </div>
         </div>

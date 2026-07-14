@@ -31,7 +31,7 @@ function PlatformDifficultyLink({ item }: { item: PlatformDifficultyItem }) {
 
   if (!item.url) {
     return (
-      <span className="flex items-center gap-3 text-base text-[#6b7280] md:text-[17px]">{content}</span>
+      <span className="flex items-center gap-3 text-base text-[#71717a] md:text-[17px]">{content}</span>
     );
   }
 
@@ -40,7 +40,7 @@ function PlatformDifficultyLink({ item }: { item: PlatformDifficultyItem }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 rounded-xl bg-white px-3 py-2.5 text-base text-[#050505] transition-colors hover:bg-white/80 md:text-[17px]"
+      className="flex items-center gap-3 rounded-xl bg-white px-3 py-2.5 text-base text-[#18181b] transition-colors hover:bg-white/80 md:text-[17px]"
     >
       {content}
     </a>
@@ -64,7 +64,7 @@ export function PlatformDifficultyBlock({
             className={cn("absolute bottom-0 left-0 top-0 w-1 rounded-full", lineColor[tier.id])}
             aria-hidden
           />
-          <h3 className="text-base font-semibold text-[#050505] md:text-lg">{tier.level}</h3>
+          <h3 className="text-base font-semibold text-[#18181b] md:text-lg">{tier.level}</h3>
           <ul className="mt-3 space-y-2">
             {tier.platforms.map((platform) => (
               <li key={platform.label}>

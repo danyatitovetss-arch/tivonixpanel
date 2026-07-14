@@ -22,6 +22,20 @@ export async function GET() {
     return NextResponse.json({ error: "Войдите в аккаунт" }, { status: 401 });
   }
 
+  if (
+    current.role !== "admin" &&
+    (current.status === "pending" ||
+      current.status === "rejected" ||
+      current.status === "suspended" ||
+      current.status === "blocked" ||
+      current.status === "inactive")
+  ) {
+    return NextResponse.json(
+      { error: "Аккаунт ожидает проверки или ограничен", status: current.status },
+      { status: 403 }
+    );
+  }
+
   const supabase = await createClient();
 
   const [
@@ -126,6 +140,11 @@ export async function GET() {
       telegram: "",
       role: current.role,
       status: current.status,
+      partnerType: current.partnerType,
+      agencyName: current.agencyName,
+      websiteUrl: current.websiteUrl,
+      commissionPercentOverride: current.commissionPercentOverride,
+      assignedManagerId: current.assignedManagerId,
       createdAt: new Date().toISOString().slice(0, 10),
     } satisfies AppData["users"][0]);
 

@@ -28,6 +28,14 @@ export function mapProfile(row: Record<string, unknown>): User {
     telegram: String(row.telegram ?? ""),
     role: row.role as User["role"],
     status: row.status as User["status"],
+    partnerType: (row.partner_type as User["partnerType"]) ?? null,
+    agencyName: row.agency_name ? String(row.agency_name) : null,
+    websiteUrl: row.website_url ? String(row.website_url) : null,
+    commissionPercentOverride:
+      row.commission_percent_override != null
+        ? Number(row.commission_percent_override)
+        : null,
+    assignedManagerId: row.assigned_manager_id ? String(row.assigned_manager_id) : null,
     createdAt: isoDate(row.created_at as string),
   };
 }

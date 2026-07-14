@@ -56,14 +56,14 @@ export function LegalDocumentModal({
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent
         showCloseButton
-        className="flex max-h-[min(90vh,720px)] max-w-[min(100%-2rem,42rem)] flex-col gap-0 overflow-hidden rounded-2xl border border-[#e5e5e5] p-0"
+        className="flex max-h-[min(90vh,720px)] max-w-[min(100%-2rem,42rem)] flex-col gap-0 overflow-hidden rounded-2xl border border-[#e4e4e7] p-0"
       >
-        <DialogHeader className="shrink-0 border-b border-[#e5e5e5] px-6 py-5 text-left">
-          <DialogTitle className="text-lg font-semibold text-[#050505]">
+        <DialogHeader className="shrink-0 border-b border-[#e4e4e7] px-6 py-5 text-left">
+          <DialogTitle className="text-lg font-semibold text-[#18181b]">
             {doc?.title ?? title}
           </DialogTitle>
           {doc && (
-            <DialogDescription className="text-sm text-[#6b7280]">
+            <DialogDescription className="text-sm text-[#71717a]">
               Версия {doc.version}
               {doc.published_at
                 ? ` · ${new Date(doc.published_at).toLocaleDateString("ru-RU")}`
@@ -74,23 +74,23 @@ export function LegalDocumentModal({
 
         <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
           {loading ? (
-            <p className="text-sm text-[#6b7280]">Загрузка документа…</p>
+            <p className="text-sm text-[#71717a]">Загрузка документа…</p>
           ) : doc?.content ? (
-            <article className="whitespace-pre-wrap text-sm leading-relaxed text-[#050505]">
+            <article className="whitespace-pre-wrap text-sm leading-relaxed text-[#18181b]">
               {doc.content}
             </article>
           ) : (
-            <p className="text-sm text-[#6b7280]">
+            <p className="text-sm text-[#71717a]">
               Текст документа пока недоступен. Обратитесь к администратору или попробуйте позже.
             </p>
           )}
         </div>
 
-        <div className="shrink-0 border-t border-[#e5e5e5] px-6 py-4">
+        <div className="shrink-0 border-t border-[#e4e4e7] px-6 py-4">
           <button
             type="button"
             onClick={onClose}
-            className="h-11 w-full rounded-xl bg-[#050505] text-sm font-medium text-white hover:bg-[#050505]/90"
+            className="h-11 w-full rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white hover:opacity-90"
           >
             Закрыть
           </button>

@@ -16,18 +16,25 @@ export function LeadDataTable({
   rows: LeadDataRow[];
   className?: string;
 }) {
-  const visible = rows.filter((r) => !r.hidden && r.value !== null && r.value !== undefined && r.value !== "");
+  const visible = rows.filter(
+    (r) => !r.hidden && r.value !== null && r.value !== undefined && r.value !== ""
+  );
 
   return (
-    <div className={cn("overflow-hidden rounded-2xl bg-[#f6f6f6]", className)}>
-      <table className="w-full text-sm">
+    <div className={cn("border-y border-[var(--color-mist-gray)]", className)}>
+      <table className="w-full text-[15px]">
         <tbody>
           {visible.map((row) => (
-            <tr key={row.label} className="border-b border-[#ebebeb] last:border-b-0">
-              <td className="w-[38%] px-4 py-3.5 align-top text-[#6b7280] sm:w-[180px]">
+            <tr
+              key={row.label}
+              className="border-b border-[var(--color-mist-gray)] last:border-b-0"
+            >
+              <td className="w-[38%] py-3.5 pr-4 align-top tracking-[-0.005em] text-[var(--color-zinc-gray)] sm:w-[160px]">
                 {row.label}
               </td>
-              <td className="px-4 py-3.5 align-top font-medium text-[#050505]">{row.value}</td>
+              <td className="py-3.5 align-top font-medium tracking-[-0.005em] text-[var(--color-carbon-black)]">
+                {row.value}
+              </td>
             </tr>
           ))}
         </tbody>

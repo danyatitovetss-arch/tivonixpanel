@@ -14,14 +14,14 @@ interface CategoryCardProps {
 function ListColumn({ title, items, muted }: { title: string; items: string[]; muted?: boolean }) {
   return (
     <div>
-      <h4 className="text-sm font-semibold text-[#050505]">{title}</h4>
+      <h4 className="text-sm font-semibold text-[#18181b]">{title}</h4>
       <ul className="mt-3 space-y-2">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-2.5 text-sm">
             <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-white">
-              <Check className="size-3 text-[#6b7280]" strokeWidth={2.5} />
+              <Check className="size-3 text-[#71717a]" strokeWidth={2.5} />
             </span>
-            <span className={muted ? "text-[#6b7280]" : "text-[#050505]"}>{item}</span>
+            <span className={muted ? "text-[#71717a]" : "text-[#18181b]"}>{item}</span>
           </li>
         ))}
       </ul>
@@ -33,15 +33,15 @@ export function CategoryCard({ category, defaultOpen = false }: CategoryCardProp
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="overflow-hidden rounded-2xl bg-[#f6f6f6]">
+    <div className="overflow-hidden rounded-2xl bg-[#f4f4f5]">
       <button
         type="button"
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
       >
-        <span className="text-sm font-semibold text-[#050505]">{category.name}</span>
+        <span className="text-sm font-semibold text-[#18181b]">{category.name}</span>
         <ChevronDown
-          className={cn("size-4 shrink-0 text-[#6b7280] transition-transform", open && "rotate-180")}
+          className={cn("size-4 shrink-0 text-[#71717a] transition-transform", open && "rotate-180")}
         />
       </button>
 
@@ -53,12 +53,12 @@ export function CategoryCard({ category, defaultOpen = false }: CategoryCardProp
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-[#050505]">Где искать</h4>
+            <h4 className="text-sm font-semibold text-[#18181b]">Где искать</h4>
             <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {category.whereToSearch.map((w) => (
                 <span
                   key={w}
-                  className="rounded-lg bg-white px-2.5 py-2 text-center text-xs text-[#050505] sm:text-left"
+                  className="rounded-lg bg-white px-2.5 py-2 text-center text-xs text-[#18181b] sm:text-left"
                 >
                   {w}
                 </span>
@@ -67,8 +67,8 @@ export function CategoryCard({ category, defaultOpen = false }: CategoryCardProp
           </div>
 
           <div className="rounded-xl bg-white p-4">
-            <h4 className="text-sm font-semibold text-[#050505]">Стартовый шаблон</h4>
-            <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">{category.starterTemplate}</p>
+            <h4 className="text-sm font-semibold text-[#18181b]">Стартовый шаблон</h4>
+            <p className="mt-2 text-sm leading-relaxed text-[#71717a]">{category.starterTemplate}</p>
             <div className="mt-3">
               <CopyButton text={category.starterTemplate} label="Скопировать" className="w-full sm:w-auto" />
             </div>

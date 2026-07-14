@@ -1,19 +1,52 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import { AuthShell } from "@/components/auth/auth-shell";
+import {
+  authCardClass,
+  authGhostLinkClass,
+  authHeadingClass,
+  authSubheadClass,
+} from "@/components/auth/auth-styles";
+
+function BlockedInner() {
+  const searchParams = useSearchParams();
+  const reason = searchParams.get("reason");
+  const isAge = reason === "under_16";
+
+  return (
+    <AuthShell>
+      <div className="mx-auto w-full max-w-[480px]">
+        <div className={authCardClass}>
+          <h1 className={authHeadingClass}>Доступ ограничен</h1>
+          <p className={authSubheadClass}>
+            {isAge
+              ? "Партнёрская программа TIVONIX доступна с 16 лет. Если вы считаете, что это ошибка — напишите в поддержку."
+              : "Ваш аккаунт заблокирован или приостановлен. Если это ошибка — напишите в поддержку."}
+          </p>
+          <p className="mt-6">
+            <Link href="/login" className={authGhostLinkClass}>
+              Вернуться ко входу
+            </Link>
+          </p>
+        </div>
+      </div>
+    </AuthShell>
+  );
+}
 
 export default function BlockedPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#f6f6f6] px-6 text-center">
-      <h1 className="text-2xl font-semibold text-[#050505]">Доступ ограничен</h1>
-      <p className="mt-3 max-w-md text-sm text-[#6b7280]">
-        Партнёрская программа TIVONIX доступна с 16 лет. Если вы считаете, что это ошибка — напишите в поддержку.
-      </p>
-      <Link href="/login" className="mt-6 text-sm text-[#050505] underline">
-        Вернуться ко входу
-      </Link>
-    </div>
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center text-sm text-[#71717a]">
+          Загрузка…
+        </div>
+      }
+    >
+      <BlockedInner />
+    </Suspense>
   );
 }

@@ -10,12 +10,12 @@ import {
 } from "@/components/ui/select";
 
 const fieldShell =
-  "flex h-11 items-center gap-1.5 rounded-xl bg-[#f6f6f6] px-3.5 transition-colors focus-within:bg-[#efefef]";
+  "flex h-11 items-center gap-1.5 rounded-xl bg-[#f4f4f5] px-3.5 transition-colors focus-within:bg-[#f4f4f5]";
 
 const prefixText = "shrink-0 text-sm font-medium text-[#9ca3af] select-none";
 
 const inputClass =
-  "min-w-0 flex-1 bg-transparent text-sm text-[#050505] outline-none placeholder:text-[#9ca3af]";
+  "min-w-0 flex-1 bg-transparent text-sm text-[#18181b] outline-none placeholder:text-[#9ca3af]";
 
 interface PrefixInputProps {
   prefix: string;
@@ -120,9 +120,9 @@ export function FormField({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={htmlFor} className="mb-2 block text-sm text-[#6b7280]">
+      <label htmlFor={htmlFor} className="mb-2 block text-sm text-[#71717a]">
         {label}
-        {required && <span className="text-[#050505]"> *</span>}
+        {required && <span className="text-[#18181b]"> *</span>}
       </label>
       {children}
     </div>
@@ -130,19 +130,19 @@ export function FormField({
 }
 
 export const plainInputClass =
-  "h-11 w-full rounded-xl bg-[#f6f6f6] px-3.5 text-sm text-[#050505] outline-none transition-colors placeholder:text-[#9ca3af] focus:bg-[#efefef]";
+  "h-11 w-full rounded-xl bg-[#f4f4f5] px-3.5 text-sm text-[#18181b] outline-none transition-colors placeholder:text-[#9ca3af] focus:bg-[#f4f4f5]";
 
 export const plainTextareaClass =
-  "w-full rounded-xl bg-[#f6f6f6] px-3.5 py-3 text-sm text-[#050505] outline-none transition-colors placeholder:text-[#9ca3af] focus:bg-[#efefef]";
+  "w-full rounded-xl bg-[#f4f4f5] px-3.5 py-3 text-sm text-[#18181b] outline-none transition-colors placeholder:text-[#9ca3af] focus:bg-[#f4f4f5]";
 
 const formSelectTriggerClass =
-  "h-11 w-full justify-between gap-2 rounded-xl border-0 bg-[#f6f6f6] px-3.5 shadow-none ring-0 transition-colors hover:bg-[#efefef] focus-visible:border-0 focus-visible:bg-[#efefef] focus-visible:ring-0 data-placeholder:text-[#9ca3af] [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:text-left [&_svg]:ml-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-[#9ca3af]";
+  "h-11 w-full justify-between gap-2 rounded-xl border-0 bg-[#f4f4f5] px-3.5 shadow-none ring-0 transition-colors hover:bg-[#f4f4f5] focus-visible:border-0 focus-visible:bg-[#f4f4f5] focus-visible:ring-0 data-placeholder:text-[#9ca3af] [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:text-left [&_svg]:ml-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-[#9ca3af]";
 
 const formSelectContentClass =
   "rounded-xl border-0 bg-white p-1.5 shadow-[0_8px_30px_rgba(5,5,5,0.08)] ring-0";
 
 const formSelectItemClass =
-  "rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f6f6f6] data-highlighted:text-[#050505]";
+  "rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f4f4f5] data-highlighted:text-[#18181b]";
 
 interface FormSelectProps {
   id?: string;

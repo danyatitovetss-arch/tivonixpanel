@@ -18,7 +18,7 @@ function SectionBlock({
 }) {
   return (
     <section className={cn("pt-5 first:pt-0", className)}>
-      <h4 className="text-base font-semibold text-[#050505] md:text-lg">{title}</h4>
+      <h4 className="text-base font-semibold text-[#18181b] md:text-lg">{title}</h4>
       <div className="mt-3">{children}</div>
     </section>
   );
@@ -47,20 +47,20 @@ function NicheCard({
         aria-expanded={isOpen}
         className="flex w-full items-start gap-3 text-left"
       >
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#050505] text-sm font-semibold text-white md:size-10 md:text-base">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-sunrise-coral)] text-sm font-semibold text-white md:size-10 md:text-base">
           {niche.rank}
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
-            <h3 className="text-base font-semibold text-[#050505] md:text-lg">{niche.name}</h3>
+            <h3 className="text-base font-semibold text-[#18181b] md:text-lg">{niche.name}</h3>
             <ChevronDown
               className={cn(
-                "mt-0.5 size-5 shrink-0 text-[#6b7280] transition-transform",
+                "mt-0.5 size-5 shrink-0 text-[#71717a] transition-transform",
                 isOpen && "rotate-180"
               )}
             />
           </div>
-          <p className="mt-1 text-base leading-relaxed text-[#6b7280]">{niche.summary}</p>
+          <p className="mt-1 text-base leading-relaxed text-[#71717a]">{niche.summary}</p>
         </div>
       </button>
 
@@ -71,8 +71,8 @@ function NicheCard({
               <FlatBlock>
                 <ul className="space-y-2">
                   {niche.whereToSearch.map((place) => (
-                    <li key={place} className="flex gap-2 text-base text-[#050505]">
-                      <span className="text-[#6b7280]">·</span>
+                    <li key={place} className="flex gap-2 text-base text-[#18181b]">
+                      <span className="text-[#71717a]">·</span>
                       {place}
                     </li>
                   ))}
@@ -84,8 +84,8 @@ function NicheCard({
               <FlatBlock>
                 <ul className="space-y-2">
                   {niche.searchQueries.map((query) => (
-                    <li key={query} className="flex gap-2 text-base text-[#050505]">
-                      <span className="text-[#6b7280]">·</span>
+                    <li key={query} className="flex gap-2 text-base text-[#18181b]">
+                      <span className="text-[#71717a]">·</span>
                       {query}
                     </li>
                   ))}
@@ -106,8 +106,8 @@ function NicheCard({
             <FlatBlock>
               <ul className="space-y-2">
                 {niche.clientSigns.map((sign) => (
-                  <li key={sign} className="flex gap-2 text-base text-[#050505]">
-                    <span className="shrink-0 text-[#050505]">✓</span>
+                  <li key={sign} className="flex gap-2 text-base text-[#18181b]">
+                    <span className="shrink-0 text-[#18181b]">✓</span>
                     {sign}
                   </li>
                 ))}
@@ -121,8 +121,8 @@ function NicheCard({
                 <ul className="space-y-3">
                   {niche.offers.map((offer) => (
                     <li key={offer.name}>
-                      <p className="text-base font-medium text-[#050505]">{offer.name}</p>
-                      <p className="mt-0.5 text-base leading-relaxed text-[#6b7280]">
+                      <p className="text-base font-medium text-[#18181b]">{offer.name}</p>
+                      <p className="mt-0.5 text-base leading-relaxed text-[#71717a]">
                         {offer.benefit}
                       </p>
                     </li>
@@ -135,8 +135,8 @@ function NicheCard({
               <FlatBlock>
                 <ul className="space-y-2">
                   {niche.pains.map((pain) => (
-                    <li key={pain} className="flex gap-2 text-base text-[#050505]">
-                      <span className="text-[#6b7280]">·</span>
+                    <li key={pain} className="flex gap-2 text-base text-[#18181b]">
+                      <span className="text-[#71717a]">·</span>
                       {pain}
                     </li>
                   ))}
@@ -147,13 +147,13 @@ function NicheCard({
 
           <SectionBlock title="Реалистичный результат">
             <FlatBlock>
-              <p className="text-base leading-relaxed text-[#050505]">{niche.expectedResult}</p>
+              <p className="text-base leading-relaxed text-[#18181b]">{niche.expectedResult}</p>
             </FlatBlock>
           </SectionBlock>
 
           <SectionBlock title="Первое сообщение" className="pt-5">
             <FlatBlock>
-              <p className="whitespace-pre-line text-base leading-relaxed text-[#050505]">
+              <p className="whitespace-pre-line text-base leading-relaxed text-[#18181b]">
                 {niche.firstMessage}
               </p>
               <div className="mt-4">

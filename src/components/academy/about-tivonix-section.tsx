@@ -42,7 +42,7 @@ const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string }>>
 };
 
 function Subheading({ children }: { children: React.ReactNode }) {
-  return <h3 className="text-base font-semibold text-[#050505] md:text-lg">{children}</h3>;
+  return <h3 className="text-base font-semibold text-[#18181b] md:text-lg">{children}</h3>;
 }
 
 export function AboutTivonixHeader() {
@@ -58,11 +58,11 @@ export function AboutTivonixHeader() {
       />
       <h2
         id="about-tivonix-title"
-        className="mt-6 text-xl font-bold tracking-tight text-[#050505] sm:text-2xl md:mt-8 md:text-3xl"
+        className="mt-6 text-xl font-bold tracking-tight text-[#18181b] sm:text-2xl md:mt-8 md:text-3xl"
       >
         {ABOUT_TIVONIX_INTRO.title}
       </h2>
-      <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-[#6b7280] md:mt-4 md:text-lg md:leading-relaxed">
+      <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-[#71717a] md:mt-4 md:text-lg md:leading-relaxed">
         {ABOUT_TIVONIX_INTRO.subtitle}
       </p>
     </div>
@@ -87,7 +87,7 @@ function PhraseCard({
   return (
     <div
       className={cn(
-        "rounded-2xl bg-[#f6f6f6] p-5 ring-2 ring-offset-[3px] ring-offset-white md:p-6",
+        "rounded-2xl bg-[#f4f4f5] p-5 ring-2 ring-offset-[3px] ring-offset-white md:p-6",
         isYes ? "ring-emerald-500" : "ring-red-500"
       )}
     >
@@ -101,7 +101,7 @@ function PhraseCard({
       </h4>
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
-          <li key={item} className="flex gap-2.5 text-base leading-snug text-[#050505] md:text-[17px]">
+          <li key={item} className="flex gap-2.5 text-base leading-snug text-[#18181b] md:text-[17px]">
             <span
               className={cn(
                 "mt-0.5 shrink-0 text-sm font-bold",
@@ -132,30 +132,30 @@ function ServiceCard({ service }: { service: TivonixServiceCard }) {
         className="flex w-full items-start gap-3 p-5 text-left md:p-6"
       >
         <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white">
-          <Icon className="size-5 text-[#050505]" />
+          <Icon className="size-5 text-[#18181b]" />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
-            <h4 className="text-base font-semibold text-[#050505] md:text-lg">{service.title}</h4>
+            <h4 className="text-base font-semibold text-[#18181b] md:text-lg">{service.title}</h4>
             <ChevronDown
               className={cn(
-                "mt-0.5 size-5 shrink-0 text-[#6b7280] transition-transform",
+                "mt-0.5 size-5 shrink-0 text-[#71717a] transition-transform",
                 isOpen && "rotate-180"
               )}
             />
           </div>
-          <p className="mt-1.5 text-base leading-relaxed text-[#6b7280]">{service.description}</p>
+          <p className="mt-1.5 text-base leading-relaxed text-[#71717a]">{service.description}</p>
         </div>
       </button>
 
       {isOpen && (
         <div className="border-t border-[#ebebeb] px-5 pb-5 pt-4 md:px-6 md:pb-6">
           <FlatBlock>
-            <p className="text-sm font-medium text-[#050505] md:text-base">Что можно предложить:</p>
+            <p className="text-sm font-medium text-[#18181b] md:text-base">Что можно предложить:</p>
             <ul className="mt-3 space-y-2">
               {service.offers.map((offer) => (
-                <li key={offer} className="flex gap-2 text-base text-[#050505]">
-                  <span className="text-[#6b7280]">·</span>
+                <li key={offer} className="flex gap-2 text-base text-[#18181b]">
+                  <span className="text-[#71717a]">·</span>
                   {offer}
                 </li>
               ))}
@@ -178,10 +178,10 @@ function PitchCard({ title, text }: { title: string; text: string }) {
         aria-expanded={isOpen}
         className="flex w-full items-center justify-between gap-3 p-5 text-left md:p-6"
       >
-        <span className="text-base font-semibold text-[#050505] md:text-lg">{title}</span>
+        <span className="text-base font-semibold text-[#18181b] md:text-lg">{title}</span>
         <ChevronDown
           className={cn(
-            "size-5 shrink-0 text-[#6b7280] transition-transform",
+            "size-5 shrink-0 text-[#71717a] transition-transform",
             isOpen && "rotate-180"
           )}
         />
@@ -189,7 +189,7 @@ function PitchCard({ title, text }: { title: string; text: string }) {
       {isOpen && (
         <div className="space-y-4 border-t border-[#ebebeb] px-5 pb-5 pt-4 md:px-6 md:pb-6">
           <FlatBlock>
-            <p className="whitespace-pre-line text-base leading-relaxed text-[#050505]">{text}</p>
+            <p className="whitespace-pre-line text-base leading-relaxed text-[#18181b]">{text}</p>
           </FlatBlock>
           <CopyButton text={text} label="Скопировать" className="w-full sm:w-auto" />
         </div>
@@ -205,7 +205,7 @@ export function AboutTivonixSection() {
         <blockquote className="relative rounded-xl bg-white px-5 py-6 md:px-8 md:py-9">
           <span
             aria-hidden
-            className="pointer-events-none absolute left-5 top-4 select-none font-serif text-5xl leading-none text-[#050505]/10 md:left-7 md:top-5 md:text-6xl"
+            className="pointer-events-none absolute left-5 top-4 select-none font-serif text-5xl leading-none text-[#18181b]/10 md:left-7 md:top-5 md:text-6xl"
           >
             “
           </span>
@@ -214,7 +214,7 @@ export function AboutTivonixSection() {
               <p
                 key={paragraph}
                 className={cn(
-                  "leading-relaxed text-[#050505]",
+                  "leading-relaxed text-[#18181b]",
                   index === 0
                     ? "text-lg font-medium md:text-2xl md:leading-snug"
                     : "text-base text-[#334155] md:text-xl md:leading-relaxed"
@@ -240,12 +240,12 @@ export function AboutTivonixSection() {
         <Subheading>Когда клиенту нужен TIVONIX</Subheading>
         <AcademyCardBody>
           <FlatBlock>
-            <p className="mb-3 text-sm font-medium text-[#050505] md:text-base">
+            <p className="mb-3 text-sm font-medium text-[#18181b] md:text-base">
               Клиенту можно предлагать TIVONIX, если:
             </p>
             <ul className="grid gap-2 sm:grid-cols-2">
               {TIVONIX_WHEN_NEEDED.map((item) => (
-                <li key={item} className="flex gap-2 text-base text-[#050505]">
+                <li key={item} className="flex gap-2 text-base text-[#18181b]">
                   <span className="shrink-0 text-emerald-600">✓</span>
                   {item}
                 </li>
@@ -274,14 +274,14 @@ export function AboutTivonixSection() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-between gap-3 rounded-xl bg-white px-4 text-base font-medium text-[#050505] transition-colors hover:bg-white/80"
+                className="inline-flex h-12 items-center justify-between gap-3 rounded-xl bg-white px-4 text-base font-medium text-[#18181b] transition-colors hover:bg-white/80"
               >
                 <span>{link.label}</span>
-                <ExternalLink className="size-4 shrink-0 text-[#6b7280]" />
+                <ExternalLink className="size-4 shrink-0 text-[#71717a]" />
               </a>
             ))}
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-[#6b7280] md:text-base">
+          <p className="mt-4 text-sm leading-relaxed text-[#71717a] md:text-base">
             {TIVONIX_LINKS_HINT}
           </p>
         </AcademyCardBody>
@@ -291,14 +291,14 @@ export function AboutTivonixSection() {
         <Subheading>Как партнёру объяснить TIVONIX за 10 секунд</Subheading>
         <AcademyCardBody>
           <FlatBlock>
-            <p className="text-base leading-relaxed text-[#050505] md:text-[17px]">
+            <p className="text-base leading-relaxed text-[#18181b] md:text-[17px]">
               {TIVONIX_ELEVATOR_PITCH.text}
             </p>
-            <p className="mt-4 text-base font-medium text-[#050505]">{TIVONIX_ELEVATOR_PITCH.note}</p>
+            <p className="mt-4 text-base font-medium text-[#18181b]">{TIVONIX_ELEVATOR_PITCH.note}</p>
             <ul className="mt-3 space-y-2">
               {TIVONIX_ELEVATOR_PITCH.benefits.map((benefit) => (
-                <li key={benefit} className="flex gap-2 text-base text-[#050505]">
-                  <span className="text-[#6b7280]">·</span>
+                <li key={benefit} className="flex gap-2 text-base text-[#18181b]">
+                  <span className="text-[#71717a]">·</span>
                   {benefit}
                 </li>
               ))}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { GlobalAnnouncementHost } from "@/components/layout/global-announcement-host";
 import { AddLeadProvider } from "@/components/leads/add-lead-context";
@@ -9,14 +9,18 @@ import { AccountSheetProvider } from "@/components/layout/account-sheet-context"
 import { AppProvider } from "@/lib/store";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const interTight = Inter_Tight({
   subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
+  variable: "--font-auth-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400"],
+  variable: "--font-auth-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -37,10 +41,10 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+      className={`${interTight.variable} ${jetbrainsMono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
         <AppProvider>
           <AddLeadProvider>
             <LeadDetailProvider>

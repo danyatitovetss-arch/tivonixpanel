@@ -28,7 +28,7 @@ export function ProspectRowActions({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="inline-flex size-9 items-center justify-center rounded-xl bg-[#f6f6f6] text-[#050505] transition-colors hover:bg-[#ebebeb] data-popup-open:bg-[#ebebeb]"
+        className="inline-flex size-9 items-center justify-center rounded-xl bg-[#f4f4f5] text-[#18181b] transition-colors hover:bg-[#ebebeb] data-popup-open:bg-[#ebebeb]"
         aria-label="Действия"
       >
         <MoreHorizontal className="size-4" />
@@ -40,20 +40,20 @@ export function ProspectRowActions({
       >
         <DropdownMenuItem
           onClick={onOpen}
-          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-[#050505] focus:bg-[#f6f6f6]"
+          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-[#18181b] focus:bg-[#f4f4f5]"
         >
           Открыть
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={onMarkMessaged}
-          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-[#050505] focus:bg-[#f6f6f6]"
+          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-[#18181b] focus:bg-[#f4f4f5]"
         >
           Отметить «Написали»
         </DropdownMenuItem>
         {prospect.status !== "converted_to_lead" && (
           <DropdownMenuItem
             onClick={onConvert}
-            className="cursor-pointer rounded-lg px-3 py-2 text-sm text-[#050505] focus:bg-[#f6f6f6]"
+            className="cursor-pointer rounded-lg px-3 py-2 text-sm text-[#18181b] focus:bg-[#f4f4f5]"
           >
             Добавить в лиды
           </DropdownMenuItem>
@@ -62,7 +62,7 @@ export function ProspectRowActions({
         <DropdownMenuItem
           variant="destructive"
           onClick={onDelete}
-          className="cursor-pointer rounded-lg px-3 py-2 text-sm focus:bg-[#f6f6f6]"
+          className="cursor-pointer rounded-lg px-3 py-2 text-sm focus:bg-[#f4f4f5]"
         >
           Удалить
         </DropdownMenuItem>

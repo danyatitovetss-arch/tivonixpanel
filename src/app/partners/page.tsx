@@ -46,14 +46,14 @@ export default function PartnersPage() {
                 <Link
                   key={p.id}
                   href={`/partners/${p.id}`}
-                  className="flex items-center gap-3 rounded-2xl bg-[#f6f6f6] p-4 transition-colors hover:bg-[#efefef]"
+                  className="flex items-center gap-3 rounded-2xl bg-[#f4f4f5] p-4 transition-colors hover:bg-[#f4f4f5]"
                 >
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-[#050505]">{p.name}</p>
-                    <p className="mt-0.5 text-xs text-[#6b7280]">
+                    <p className="font-semibold text-[#18181b]">{p.name}</p>
+                    <p className="mt-0.5 text-xs text-[#71717a]">
                       {stats.totalLeads} клиентов · {stats.closedDeals} сделок
                     </p>
-                    <p className="mt-1 text-sm font-medium text-[#050505]">
+                    <p className="mt-1 text-sm font-medium text-[#18181b]">
                       Баланс {formatCurrency(balance)}
                     </p>
                   </div>
@@ -85,7 +85,7 @@ export default function PartnersPage() {
                           <OkxCellPrimary title={p.name} subtitle={p.telegram} />
                         </Link>
                       </OkxTd>
-                      <OkxTd className="text-[#6b7280]">{getUserRoleLabel(p.role)}</OkxTd>
+                      <OkxTd className="text-[#71717a]">{getUserRoleLabel(p.role)}</OkxTd>
                       <OkxTd>{stats.totalLeads}</OkxTd>
                       <OkxTd>{stats.pendingReview}</OkxTd>
                       <OkxTd>{stats.approved}</OkxTd>

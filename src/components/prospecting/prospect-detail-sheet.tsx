@@ -30,11 +30,11 @@ export function ProspectDetailSheet({ prospectId, open, onOpenChange }: Prospect
         <header className="z-20 shrink-0 border-b border-[#ebebeb] px-6 py-5">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <h2 className="truncate text-lg font-semibold text-[#050505]">
+              <h2 className="truncate text-lg font-semibold text-[#18181b]">
                 {prospect?.businessName ?? "Контакт"}
               </h2>
               {prospect && (
-                <p className="mt-1 text-sm text-[#6b7280]">
+                <p className="mt-1 text-sm text-[#71717a]">
                   {[prospect.niche, prospect.city, prospect.source].filter(Boolean).join(" · ")}
                 </p>
               )}
@@ -42,7 +42,7 @@ export function ProspectDetailSheet({ prospectId, open, onOpenChange }: Prospect
             <button
               type="button"
               onClick={() => onOpenChange(false)}
-              className="shrink-0 rounded-xl p-2 text-[#6b7280] transition-colors hover:bg-[#f6f6f6] hover:text-[#050505]"
+              className="shrink-0 rounded-xl p-2 text-[#71717a] transition-colors hover:bg-[#f4f4f5] hover:text-[#18181b]"
               aria-label="Закрыть"
             >
               <X className="size-5" />

@@ -17,19 +17,19 @@ export function CommissionPreview({
   const calc = calculateCommission(amount, partnerClosedDealsCount, settings);
 
   return (
-    <div className="rounded-2xl bg-[#f6f6f6] p-4 space-y-2 text-sm">
-      <p className="font-medium text-[#050505]">Расчёт комиссии</p>
-      <div className="flex justify-between text-[#6b7280]">
+    <div className="rounded-2xl bg-[#f4f4f5] p-4 space-y-2 text-sm">
+      <p className="font-medium text-[#18181b]">Расчёт комиссии</p>
+      <div className="flex justify-between text-[#71717a]">
         <span>Базовый процент</span>
         <span>{calc.basePercent}%</span>
       </div>
       {calc.hasBonus && (
-        <div className="flex justify-between text-[#6b7280]">
+        <div className="flex justify-between text-[#71717a]">
           <span>Бонус ({settings.bonusAfterClosedDeals}+ сделок)</span>
           <span>+{calc.bonusPercent}%</span>
         </div>
       )}
-      <div className="flex justify-between font-medium text-[#050505]">
+      <div className="flex justify-between font-medium text-[#18181b]">
         <span>Итого</span>
         <span>
           {calc.percent}% = {formatCurrency(calc.amount)}

@@ -242,23 +242,21 @@ export function getLeadsByDay(data: AppData, days = 14, partnerId?: string) {
   return result;
 }
 
-export function getDealsByMonth(data: AppData) {
+export function getDealsByMonth(data: AppData, partnerId?: string, months = 6) {
   const map = new Map<string, number>();
   data.deals
-    .filter((d) => d.paymentStatus === "paid")
+    .filter((d) => d.paymentStatus === "paid" && (!partnerId || d.partnerId === partnerId))
     .forEach((d) => {
       const key = d.closedAt.slice(0, 7);
       map.set(key, (map.get(key) ?? 0) + 1);
     });
-  return Array.from(map.entries())
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, count]) => ({
-      month: formatMonth(month),
-      count,
-    }));
+  return fillLastMonths(map, months).map(({ month, value }) => ({
+    month: formatMonth(month),
+    count: value,
+  }));
 }
 
-export function getSalesByMonth(data: AppData, partnerId?: string) {
+export function getSalesByMonth(data: AppData, partnerId?: string, months = 6) {
   const map = new Map<string, number>();
   data.deals
     .filter((d) => d.paymentStatus === "paid" && (!partnerId || d.partnerId === partnerId))
@@ -266,15 +264,13 @@ export function getSalesByMonth(data: AppData, partnerId?: string) {
       const key = d.closedAt.slice(0, 7);
       map.set(key, (map.get(key) ?? 0) + d.amount);
     });
-  return Array.from(map.entries())
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, amount]) => ({
-      month: formatMonth(month),
-      amount,
-    }));
+  return fillLastMonths(map, months).map(({ month, value }) => ({
+    month: formatMonth(month),
+    amount: value,
+  }));
 }
 
-export function getCommissionsByMonth(data: AppData, partnerId?: string) {
+export function getCommissionsByMonth(data: AppData, partnerId?: string, months = 6) {
   const map = new Map<string, number>();
   data.balanceTransactions
     .filter(
@@ -287,12 +283,10 @@ export function getCommissionsByMonth(data: AppData, partnerId?: string) {
       const key = t.createdAt.slice(0, 7);
       map.set(key, (map.get(key) ?? 0) + t.amount);
     });
-  return Array.from(map.entries())
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, amount]) => ({
-      month: formatMonth(month),
-      amount,
-    }));
+  return fillLastMonths(map, months).map(({ month, value }) => ({
+    month: formatMonth(month),
+    amount: value,
+  }));
 }
 
 export function getConversionFunnel(data: AppData, partnerId?: string) {
@@ -383,6 +377,17 @@ function formatMonth(ym: string): string {
   const [y, m] = ym.split("-");
   const date = new Date(Number(y), Number(m) - 1, 1);
   return date.toLocaleDateString("ru-RU", { month: "short", year: "2-digit" });
+}
+
+function fillLastMonths(map: Map<string, number>, months: number) {
+  const now = new Date();
+  const result: { month: string; value: number }[] = [];
+  for (let i = months - 1; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const key = monthKey(d);
+    result.push({ month: key, value: map.get(key) ?? 0 });
+  }
+  return result;
 }
 
 export function findDuplicateLead(

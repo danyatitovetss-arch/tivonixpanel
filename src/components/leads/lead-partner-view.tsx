@@ -14,7 +14,7 @@ interface LeadPartnerViewProps {
 
 export function LeadPartnerView({ lead, deal }: LeadPartnerViewProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <LeadStatusHero lead={lead} />
 
       <LeadDataTable

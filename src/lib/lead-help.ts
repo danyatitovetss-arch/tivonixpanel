@@ -89,7 +89,7 @@ export const PARTNER_STATUS_HELP: Record<LeadStatus, PartnerStatusHelp> = {
 };
 
 const TONE_STYLES = {
-  neutral: "bg-[#f6f6f6] border-[#e5e5e5]",
+  neutral: "bg-[#f4f4f5] border-[#e4e4e7]",
   success: "bg-[#f0fdf4] border-[#bbf7d0]",
   warning: "bg-[#fffbeb] border-[#fde68a]",
   danger: "bg-[#fef2f2] border-[#fecaca]",

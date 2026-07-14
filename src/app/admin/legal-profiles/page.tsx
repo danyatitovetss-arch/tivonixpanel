@@ -43,9 +43,9 @@ export default function AdminLegalProfilesPage() {
   return (
     <RoleGuard resource="admin" redirectTo="/dashboard">
       <AppLayout title="Юр. профили">
-        <div className="overflow-x-auto rounded-xl border border-[#e5e5e5]">
+        <div className="overflow-x-auto rounded-xl border border-[#e4e4e7]">
           <table className="min-w-full text-sm">
-            <thead className="bg-[#f6f6f6] text-left text-[#6b7280]">
+            <thead className="bg-[#f4f4f5] text-left text-[#71717a]">
               <tr>
                 <th className="px-4 py-3">Пользователь</th>
                 <th className="px-4 py-3">Email</th>
@@ -59,13 +59,13 @@ export default function AdminLegalProfilesPage() {
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-[#6b7280]">
+                  <td colSpan={7} className="px-4 py-8 text-[#71717a]">
                     Загрузка…
                   </td>
                 </tr>
               ) : (
                 rows.map((row) => (
-                  <tr key={row.user_id} className="border-t border-[#e5e5e5]">
+                  <tr key={row.user_id} className="border-t border-[#e4e4e7]">
                     <td className="px-4 py-3">{row.full_name}</td>
                     <td className="px-4 py-3">{row.email}</td>
                     <td className="px-4 py-3">{row.age ?? "—"}</td>

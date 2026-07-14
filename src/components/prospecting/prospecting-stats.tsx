@@ -22,9 +22,9 @@ export function ProspectingStats({ prospects }: ProspectingStatsProps) {
   return (
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
       {STAT_ITEMS.map((item) => (
-        <div key={item.key} className="rounded-2xl bg-[#f6f6f6] px-4 py-3">
-          <p className="text-2xl font-semibold text-[#050505]">{counts[item.key]}</p>
-          <p className="mt-0.5 text-xs text-[#6b7280]">{item.label}</p>
+        <div key={item.key} className="rounded-2xl bg-[#f4f4f5] px-4 py-3">
+          <p className="text-2xl font-semibold text-[#18181b]">{counts[item.key]}</p>
+          <p className="mt-0.5 text-xs text-[#71717a]">{item.label}</p>
         </div>
       ))}
     </div>

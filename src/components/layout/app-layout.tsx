@@ -60,7 +60,11 @@ export function AppLayout({
       </div>
 
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent side="left" showCloseButton={false} className="w-64 border-none bg-[#050505] p-0">
+        <SheetContent
+          side="left"
+          showCloseButton={false}
+          className="w-64 border-none bg-[var(--color-carbon-black)] p-0"
+        >
           <Sidebar onNavigate={() => setMobileOpen(false)} />
         </SheetContent>
       </Sheet>

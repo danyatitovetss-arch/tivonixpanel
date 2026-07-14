@@ -36,7 +36,7 @@ export function OkxTh({ className, ...props }: React.ComponentProps<"th">) {
   return (
     <th
       className={cn(
-        "px-3 pb-4 text-left text-sm font-normal text-[#6b7280]",
+        "px-3 pb-4 text-left text-sm font-normal text-[#71717a]",
         className
       )}
       {...props}
@@ -52,9 +52,9 @@ export function OkxTr({
   return (
     <tr
       className={cn(
-        "group/row",
+        "group/row [&>td]:border-b [&>td]:border-[var(--color-mist-gray)] last:[&>td]:border-b-0",
         interactive &&
-          "[&>td]:border-b [&>td]:border-[#e5e5e5] [&>td]:transition-colors hover:[&>td]:bg-[#fafafa] hover:[&>td:first-child]:rounded-l-2xl hover:[&>td:last-child]:rounded-r-2xl last:[&>td]:border-b-0",
+          "[&>td]:transition-colors hover:[&>td]:bg-[var(--color-fog-gray)] hover:[&>td:first-child]:rounded-l-2xl hover:[&>td:last-child]:rounded-r-2xl",
         className
       )}
       {...props}
@@ -66,7 +66,7 @@ export function OkxTd({ className, ...props }: React.ComponentProps<"td">) {
   return (
     <td
       className={cn(
-        "px-3 py-5 align-middle text-[#050505]",
+        "px-3 py-5 align-middle text-[#18181b]",
         className
       )}
       {...props}
@@ -97,13 +97,13 @@ export function OkxCellPrimary({
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#f6f6f6] text-xs font-semibold text-[#050505]">
+      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#f4f4f5] text-xs font-semibold text-[#18181b]">
         {letters}
       </div>
       <div className="min-w-0">
-        <p className="truncate font-semibold text-[#050505]">{title}</p>
+        <p className="truncate font-semibold text-[#18181b]">{title}</p>
         {subtitle && (
-          <p className="truncate text-sm text-[#6b7280]">{subtitle}</p>
+          <p className="truncate text-sm text-[#71717a]">{subtitle}</p>
         )}
       </div>
     </div>
@@ -125,9 +125,9 @@ export function OkxTableAction({
       className={cn(
         "rounded-full px-5 py-1.5 text-sm font-medium transition-colors",
         variant === "primary" &&
-          "bg-[#050505] text-white hover:bg-[#050505]/90",
+          "bg-[var(--color-sunrise-coral)] text-white hover:opacity-90",
         variant === "secondary" &&
-          "bg-[#f6f6f6] text-[#6b7280] hover:bg-[#ebebeb]",
+          "bg-[var(--color-fog-gray)] text-[var(--color-zinc-gray)] hover:bg-[var(--color-mist-gray)]",
         className
       )}
       {...props}
@@ -149,7 +149,7 @@ export function OkxTabs({
   className?: string;
 }) {
   return (
-    <div className={cn("border-b border-[#e5e5e5]", className)}>
+    <div className={cn("border-b border-[#e4e4e7]", className)}>
       <div className="flex gap-6 overflow-x-auto">
         {tabs.map((tab) => {
           const isActive = active === tab.id;
@@ -161,16 +161,16 @@ export function OkxTabs({
               className={cn(
                 "relative shrink-0 pb-3 text-sm transition-colors",
                 isActive
-                  ? "font-semibold text-[#050505]"
-                  : "font-normal text-[#6b7280] hover:text-[#050505]"
+                  ? "font-semibold text-[#18181b]"
+                  : "font-normal text-[#71717a] hover:text-[#18181b]"
               )}
             >
               {tab.label}
               {tab.count !== undefined && (
-                <span className="ml-1 font-normal text-[#6b7280]">{tab.count}</span>
+                <span className="ml-1 font-normal text-[#71717a]">{tab.count}</span>
               )}
               {isActive && (
-                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#050505]" />
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--color-sunrise-coral)]" />
               )}
             </button>
           );
@@ -191,11 +191,11 @@ export function OkxPageTitle({
 }) {
   return (
     <div className={cn("space-y-3", className)}>
-      <h1 className="text-3xl font-bold tracking-tight text-[#050505] md:text-4xl">
+      <h1 className="text-[30px] font-normal leading-[1.2] tracking-[-0.013em] text-[var(--color-carbon-black)] md:text-[37px]">
         {title}
       </h1>
       {description && (
-        <p className="max-w-2xl text-sm leading-relaxed text-[#6b7280] md:text-base">
+        <p className="max-w-2xl text-[15px] leading-[1.5] tracking-[-0.005em] text-[var(--color-zinc-gray)] md:text-[17px] md:leading-[1.4]">
           {description}
         </p>
       )}
@@ -217,7 +217,7 @@ export function OkxSearch({
   return (
     <div className={cn("relative", className)}>
       <svg
-        className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[#6b7280]"
+        className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[#71717a]"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -235,7 +235,7 @@ export function OkxSearch({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full rounded-full border-0 bg-[#f6f6f6] pl-11 pr-4 text-sm text-[#050505] placeholder:text-[#6b7280] outline-none focus:ring-2 focus:ring-[#050505]/10"
+        className="h-12 w-full rounded-full border-0 bg-[#f4f4f5] pl-11 pr-4 text-sm text-[#18181b] placeholder:text-[#71717a] outline-none focus:ring-2 focus:ring-[#18181b]/10"
       />
     </div>
   );
@@ -267,11 +267,11 @@ export function OkxPagination({
   return (
     <div
       className={cn(
-        "flex flex-col gap-3 rounded-2xl bg-[#f6f6f6] px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:px-5",
+        "flex flex-col gap-3 rounded-2xl bg-[#f4f4f5] px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:px-5",
         className
       )}
     >
-      <p className="text-sm text-[#6b7280]">
+      <p className="text-sm text-[#71717a]">
         Показано {start}–{end} из {totalItems}
       </p>
 
@@ -281,7 +281,7 @@ export function OkxPagination({
             type="button"
             onClick={() => onPageChange(page - 1)}
             disabled={page <= 1}
-            className={cn(PAGE_BUTTON, "bg-white/50 text-[#6b7280] hover:bg-white hover:text-[#050505]")}
+            className={cn(PAGE_BUTTON, "bg-white/50 text-[#71717a] hover:bg-white hover:text-[#18181b]")}
             aria-label="Предыдущая страница"
           >
             ←
@@ -290,7 +290,7 @@ export function OkxPagination({
           <span
             className={cn(
               PAGE_BUTTON,
-              "sm:hidden bg-[#050505] text-white"
+              "sm:hidden bg-[var(--color-sunrise-coral)] text-white"
             )}
             aria-current="page"
           >
@@ -307,8 +307,8 @@ export function OkxPagination({
                   PAGE_BUTTON,
                   "shrink-0",
                   p === page
-                    ? "bg-[#050505] text-white"
-                    : "bg-white/50 text-[#6b7280] hover:bg-white hover:text-[#050505]"
+                    ? "bg-[var(--color-sunrise-coral)] text-white"
+                    : "bg-white/50 text-[#71717a] hover:bg-white hover:text-[#18181b]"
                 )}
                 aria-label={`Страница ${p}`}
                 aria-current={p === page ? "page" : undefined}
@@ -322,7 +322,7 @@ export function OkxPagination({
             type="button"
             onClick={() => onPageChange(page + 1)}
             disabled={page >= totalPages}
-            className={cn(PAGE_BUTTON, "bg-white/50 text-[#6b7280] hover:bg-white hover:text-[#050505]")}
+            className={cn(PAGE_BUTTON, "bg-white/50 text-[#71717a] hover:bg-white hover:text-[#18181b]")}
             aria-label="Следующая страница"
           >
             →

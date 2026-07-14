@@ -12,7 +12,7 @@ export function ProspectStatusBadge({
   return (
     <span
       className={cn(
-        "inline-flex rounded-lg bg-[#f6f6f6] px-2.5 py-1 text-xs font-medium text-[#050505]",
+        "inline-flex rounded-lg bg-[#f4f4f5] px-2.5 py-1 text-xs font-medium text-[#18181b]",
         className
       )}
     >

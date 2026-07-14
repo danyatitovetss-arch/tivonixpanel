@@ -19,9 +19,9 @@ export function DuplicateWarning({ lead, matchedField, data, hideDetails }: Dupl
   const { openLead } = useLeadDetail();
 
   return (
-    <div className="rounded-2xl bg-[#f6f6f6] p-5">
-      <h3 className="font-semibold text-[#050505]">Похоже, такой клиент уже есть в базе</h3>
-      <p className="mt-1 text-sm text-[#6b7280]">
+    <div className="rounded-2xl bg-[#f4f4f5] p-5">
+      <h3 className="font-semibold text-[#18181b]">Похоже, такой клиент уже есть в базе</h3>
+      <p className="mt-1 text-sm text-[#71717a]">
         Совпадение по: {matchedField}. Чтобы партнёры не писали одному клиенту несколько раз, проверь существующую карточку.
       </p>
       <div className="mt-4 rounded-xl bg-white p-4">
@@ -29,7 +29,7 @@ export function DuplicateWarning({ lead, matchedField, data, hideDetails }: Dupl
         <div className="mt-2 flex flex-wrap gap-2">
           <StatusBadge status={lead.status} label={getLeadStatusLabel(lead.status)} />
           {!hideDetails && data && (
-            <span className="text-xs text-[#6b7280]">
+            <span className="text-xs text-[#71717a]">
               {getUserName(data, lead.partnerId)} · {formatDate(lead.createdAt)}
             </span>
           )}
@@ -37,7 +37,7 @@ export function DuplicateWarning({ lead, matchedField, data, hideDetails }: Dupl
         <button
           type="button"
           onClick={() => openLead(lead.id)}
-          className="mt-3 inline-block rounded-full bg-[#f6f6f6] px-4 py-1.5 text-sm font-medium transition-colors hover:bg-[#efefef]"
+          className="mt-3 inline-block rounded-full bg-[#f4f4f5] px-4 py-1.5 text-sm font-medium transition-colors hover:bg-[#f4f4f5]"
         >
           Открыть существующего клиента
         </button>

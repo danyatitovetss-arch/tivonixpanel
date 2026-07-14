@@ -311,6 +311,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
       telegram: fromData?.telegram ?? "",
       role: authSession.role,
       status: authSession.status,
+      partnerType: authSession.partnerType ?? fromData?.partnerType ?? null,
+      agencyName: authSession.agencyName ?? fromData?.agencyName ?? null,
+      websiteUrl: authSession.websiteUrl ?? fromData?.websiteUrl ?? null,
+      commissionPercentOverride:
+        authSession.commissionPercentOverride ?? fromData?.commissionPercentOverride ?? null,
+      assignedManagerId: authSession.assignedManagerId ?? fromData?.assignedManagerId ?? null,
       createdAt: fromData?.createdAt ?? "",
     };
   }, [data.users, currentUserId, isBootstrapping, authSession, demo]);

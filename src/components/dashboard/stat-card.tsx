@@ -19,18 +19,18 @@ export function StatCard({
   return (
     <div
       className={cn(
-        "min-w-[140px] flex-1 rounded-2xl bg-[#f6f6f6] px-5 py-4",
+        "min-w-[140px] flex-1 rounded-[15px] bg-[var(--color-fog-gray)] px-5 py-4",
         className
       )}
     >
-      <p className="text-2xl font-bold tracking-tight text-[#050505] md:text-3xl">
+      <p className="text-[26px] font-normal leading-[1.1] tracking-[-0.015em] text-[var(--color-carbon-black)] md:text-[30px] md:leading-[1.2]">
         {value}
       </p>
-      <p className="mt-1 text-sm text-[#6b7280]">{label}</p>
+      <p className="mt-1 text-[13px] tracking-[-0.005em] text-[var(--color-zinc-gray)]">{label}</p>
       {change !== undefined && (
         <div className="mt-2 flex items-center gap-1.5">
           <TrendValue change={change} className="text-xs" />
-          <span className="text-xs text-[#6b7280]">{changeLabel}</span>
+          <span className="text-xs text-[#71717a]">{changeLabel}</span>
         </div>
       )}
     </div>

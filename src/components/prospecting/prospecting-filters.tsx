@@ -53,12 +53,12 @@ export function ProspectingFilters({
           value={filters.search}
           onChange={(e) => onChange({ search: e.target.value })}
           placeholder="Поиск: название, сайт, Instagram, телефон…"
-          className="h-11 flex-1 rounded-xl border-0 bg-[#f6f6f6] px-4 text-sm text-[#050505] outline-none transition-colors placeholder:text-[#9ca3af] focus:bg-[#efefef]"
+          className="h-11 flex-1 rounded-xl border-0 bg-[#f4f4f5] px-4 text-sm text-[#18181b] outline-none transition-colors placeholder:text-[#9ca3af] focus:bg-[#f4f4f5]"
         />
         <button
           type="button"
           onClick={onToggle}
-          className="h-11 shrink-0 rounded-xl bg-[#f6f6f6] px-4 text-sm font-medium text-[#050505] lg:hidden"
+          className="h-11 shrink-0 rounded-xl bg-[#f4f4f5] px-4 text-sm font-medium text-[#18181b] lg:hidden"
         >
           {open ? "Скрыть фильтры" : "Фильтры"}
         </button>
@@ -105,7 +105,7 @@ export function ProspectingFilters({
         ].map(({ key, label }) => (
           <label
             key={key}
-            className="flex cursor-pointer items-center gap-2 rounded-full bg-[#f6f6f6] px-3 py-2 text-xs font-medium text-[#050505]"
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-[#f4f4f5] px-3 py-2 text-xs font-medium text-[#18181b]"
           >
             <input
               type="checkbox"

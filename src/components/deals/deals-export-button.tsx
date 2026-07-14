@@ -51,7 +51,7 @@ export function DealsExportButton({
       disabled={loading || rows.length === 0}
       onClick={() => void handleDownload()}
       className={cn(
-        "inline-flex h-10 items-center gap-2 rounded-full bg-[#f6f6f6] px-5 text-sm font-medium text-[#050505] transition-colors hover:bg-[#ebebeb] disabled:opacity-50",
+        "inline-flex h-10 items-center gap-2 rounded-full bg-[#f4f4f5] px-5 text-sm font-medium text-[#18181b] transition-colors hover:bg-[#ebebeb] disabled:opacity-50",
         className
       )}
     >

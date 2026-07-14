@@ -40,10 +40,10 @@ export function DailyPlanPractical({ levels, checklistItems }: DailyPlanPractica
       <div className="grid gap-4 md:grid-cols-3">
         {levels.map((level) => (
           <AcademyCardBody key={level.title}>
-            <h3 className="font-semibold text-[#050505]">{level.title}</h3>
+            <h3 className="font-semibold text-[#18181b]">{level.title}</h3>
             <ul className="mt-3 space-y-2">
               {level.items.map((item) => (
-                <li key={item} className="text-sm text-[#6b7280]">
+                <li key={item} className="text-sm text-[#71717a]">
                   · {item}
                 </li>
               ))}
@@ -53,12 +53,12 @@ export function DailyPlanPractical({ levels, checklistItems }: DailyPlanPractica
       </div>
 
       <AcademyCardBody>
-        <h3 className="font-semibold text-[#050505]">Чеклист на сегодня</h3>
-        <p className="mt-1 text-sm text-[#6b7280]">Отмечай пункты — прогресс сохраняется в браузере.</p>
+        <h3 className="font-semibold text-[#18181b]">Чеклист на сегодня</h3>
+        <p className="mt-1 text-sm text-[#71717a]">Отмечай пункты — прогресс сохраняется в браузере.</p>
         <ul className="mt-4 space-y-3">
           {checklistItems.map((item, index) => (
             <li key={item}>
-              <label className="flex cursor-pointer items-center gap-3 text-sm text-[#050505]">
+              <label className="flex cursor-pointer items-center gap-3 text-sm text-[#18181b]">
                 <Checkbox checked={!!checked[index]} onCheckedChange={() => toggle(index)} />
                 {item}
               </label>

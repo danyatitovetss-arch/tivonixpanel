@@ -42,30 +42,30 @@ export default function LegalDocumentPage() {
       <button
         type="button"
         onClick={() => router.back()}
-        className="text-sm text-[#6b7280] underline"
+        className="text-sm text-[#71717a] underline"
       >
         ← Назад
       </button>
 
-      <h1 className="mt-6 text-2xl font-semibold text-[#050505]">{title}</h1>
+      <h1 className="mt-6 text-2xl font-semibold text-[#18181b]">{title}</h1>
 
       {doc ? (
         <>
-          <p className="mt-2 text-sm text-[#6b7280]">
+          <p className="mt-2 text-sm text-[#71717a]">
             Версия {doc.version} · {doc.status} ·{" "}
             {doc.published_at ? new Date(doc.published_at).toLocaleDateString("ru-RU") : "—"}
           </p>
           <p className="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
             Черновик документа. Перед публичным использованием текст должен быть проверен юристом.
           </p>
-          <article className="prose prose-sm mt-8 max-w-none whitespace-pre-wrap text-[#050505]">
+          <article className="prose prose-sm mt-8 max-w-none whitespace-pre-wrap text-[#18181b]">
             {doc.content}
           </article>
         </>
       ) : loading ? (
-        <p className="mt-8 text-sm text-[#6b7280]">Загрузка…</p>
+        <p className="mt-8 text-sm text-[#71717a]">Загрузка…</p>
       ) : (
-        <p className="mt-8 text-sm text-[#6b7280]">
+        <p className="mt-8 text-sm text-[#71717a]">
           Активная версия документа пока не опубликована.{" "}
           <Link href="/onboarding/legal" className="underline">
             Вернуться к onboarding

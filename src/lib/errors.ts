@@ -51,6 +51,8 @@ const PARTIAL_PATTERNS: Array<[RegExp, string]> = [
   [/network|failed to fetch|fetch failed/i, "Проблема с интернетом. Проверьте соединение"],
   [/duplicate key|already exists/i, "Такая запись уже существует"],
   [/row-level security|permission denied/i, "Нет доступа к этой операции"],
+  [/email address .* is invalid/i, "Некорректный email"],
+  [/invalid email/i, "Некорректный email"],
   [/rate limit/i, "Слишком много попыток. Подождите и попробуйте снова"],
   [/not found/i, "Запись не найдена"],
   [/unauthorized/i, "Войдите в аккаунт"],

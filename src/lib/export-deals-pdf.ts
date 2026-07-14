@@ -5,7 +5,7 @@ type PdfMakeInstance = {
 
 /** Цвета панели TIVONIX */
 const BRAND = {
-  black: "#050505",
+  black: "#18181b",
   grayBg: "#F6F6F6",
   grayLine: "#EBEBEB",
   grayText: "#6B7280",

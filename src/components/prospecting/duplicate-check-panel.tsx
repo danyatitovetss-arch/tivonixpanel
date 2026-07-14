@@ -18,7 +18,7 @@ export function DuplicateCheckPanel({ match, onMarkDuplicate }: DuplicateCheckPa
 
   if (!match) {
     return (
-      <div className="rounded-2xl bg-[#f6f6f6] p-4 text-sm text-[#6b7280]">
+      <div className="rounded-2xl bg-[#f4f4f5] p-4 text-sm text-[#71717a]">
         Дубль не найден. Можно писать или добавлять в CRM.
       </div>
     );
@@ -35,8 +35,8 @@ export function DuplicateCheckPanel({ match, onMarkDuplicate }: DuplicateCheckPa
   }
 
   return (
-    <div className="rounded-2xl border border-[#ebebeb] bg-[#f6f6f6] p-4">
-      <p className="text-sm font-semibold text-[#050505]">Похоже, этот бизнес уже есть в CRM</p>
+    <div className="rounded-2xl border border-[#ebebeb] bg-[#f4f4f5] p-4">
+      <p className="text-sm font-semibold text-[#18181b]">Похоже, этот бизнес уже есть в CRM</p>
       <dl className="mt-3 space-y-1 text-sm">
         <div className="flex gap-2"><dt className="text-[#9ca3af]">Где:</dt><dd>{match.type === "lead" ? "Лиды" : "Поиск клиентов"}</dd></div>
         <div className="flex gap-2"><dt className="text-[#9ca3af]">Название:</dt><dd>{match.businessName}</dd></div>
@@ -48,7 +48,7 @@ export function DuplicateCheckPanel({ match, onMarkDuplicate }: DuplicateCheckPa
         <button
           type="button"
           onClick={handleOpen}
-          className="rounded-full bg-[#050505] px-4 py-2 text-sm font-medium text-white"
+          className="rounded-full bg-[var(--color-sunrise-coral)] px-4 py-2 text-sm font-medium text-white"
         >
           Открыть
         </button>

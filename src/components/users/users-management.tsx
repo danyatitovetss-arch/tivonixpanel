@@ -114,6 +114,11 @@ export function UsersManagement() {
         telegram: form.telegram.trim() || "@user",
         role: form.role,
         status: "active",
+        partnerType: form.role === "partner" ? "referral" : null,
+        agencyName: null,
+        websiteUrl: null,
+        commissionPercentOverride: null,
+        assignedManagerId: null,
       });
       toast.success(`Пользователь ${form.name} добавлен (demo)`);
       setOpen(false);
@@ -175,8 +180,8 @@ export function UsersManagement() {
     <section className="space-y-4">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-[#050505]">Пользователи</h2>
-          <p className="text-sm text-[#6b7280]">
+          <h2 className="text-lg font-semibold text-[#18181b]">Пользователи</h2>
+          <p className="text-sm text-[#71717a]">
             {demo ? "Demo-режим: данные локальные" : "Создавайте партнёров через модальное окно"}
           </p>
         </div>
@@ -199,13 +204,13 @@ export function UsersManagement() {
         <OkxTableBody>
           {loading ? (
             <OkxTr interactive={false}>
-              <OkxTd colSpan={4} className="text-[#6b7280]">
+              <OkxTd colSpan={4} className="text-[#71717a]">
                 Загрузка…
               </OkxTd>
             </OkxTr>
           ) : rows.length === 0 ? (
             <OkxTr interactive={false}>
-              <OkxTd colSpan={4} className="text-[#6b7280]">
+              <OkxTd colSpan={4} className="text-[#71717a]">
                 Пользователей пока нет — нажмите «Добавить партнёра»
               </OkxTd>
             </OkxTr>
@@ -215,12 +220,12 @@ export function UsersManagement() {
                 <OkxTd>
                   <OkxCellPrimary title={u.fullName ?? "—"} subtitle={u.email ?? "—"} />
                 </OkxTd>
-                <OkxTd className="text-[#6b7280]">{getUserRoleLabel(u.role)}</OkxTd>
-                <OkxTd className="text-[#6b7280]">
+                <OkxTd className="text-[#71717a]">{getUserRoleLabel(u.role)}</OkxTd>
+                <OkxTd className="text-[#71717a]">
                   {getOnboardingStatusLabel(u.onboardingStatus)}
                   {u.crmAccess ? " · CRM" : ""}
                 </OkxTd>
-                <OkxTd className="text-[#6b7280]">{u.status === "active" ? "Активен" : "Неактивен"}</OkxTd>
+                <OkxTd className="text-[#71717a]">{u.status === "active" ? "Активен" : "Неактивен"}</OkxTd>
               </OkxTr>
             ))
           )}
@@ -269,7 +274,7 @@ export function UsersManagement() {
               />
               <button
                 type="button"
-                className="shrink-0 rounded-xl border border-[#e5e5e5] px-3 text-xs font-medium text-[#6b7280] hover:bg-[#fafafa]"
+                className="shrink-0 rounded-xl border border-[#e4e4e7] px-3 text-xs font-medium text-[#71717a] hover:bg-[#fafafa]"
                 onClick={() => setForm({ ...form, password: generatePassword() })}
               >
                 Сгенерировать
@@ -304,14 +309,14 @@ export function UsersManagement() {
       >
         {createdCredentials && (
           <div className="space-y-4">
-            <div className="space-y-3 rounded-xl bg-[#f6f6f6] p-4 text-sm">
+            <div className="space-y-3 rounded-xl bg-[#f4f4f5] p-4 text-sm">
               <div>
-                <p className="text-[#6b7280]">Email</p>
-                <p className="font-medium text-[#050505]">{createdCredentials.email}</p>
+                <p className="text-[#71717a]">Email</p>
+                <p className="font-medium text-[#18181b]">{createdCredentials.email}</p>
               </div>
               <div>
-                <p className="text-[#6b7280]">Временный пароль</p>
-                <p className="font-mono font-medium text-[#050505]">{createdCredentials.password}</p>
+                <p className="text-[#71717a]">Временный пароль</p>
+                <p className="font-mono font-medium text-[#18181b]">{createdCredentials.password}</p>
               </div>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row">
@@ -319,7 +324,7 @@ export function UsersManagement() {
                 type="button"
                 disabled={pdfLoading}
                 onClick={() => void downloadCredentialsPdf(createdCredentials)}
-                className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-[#e5e5e5] text-sm font-medium text-[#050505] transition-colors hover:bg-[#fafafa] disabled:opacity-50"
+                className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-[#e4e4e7] text-sm font-medium text-[#18181b] transition-colors hover:bg-[#fafafa] disabled:opacity-50"
               >
                 <Download className="size-4" />
                 {pdfLoading ? "Формирование…" : "Скачать PDF"}
@@ -332,7 +337,7 @@ export function UsersManagement() {
                   );
                   toast.success("Скопировано в буфер");
                 }}
-                className="inline-flex h-11 flex-1 items-center justify-center rounded-xl bg-[#050505] text-sm font-medium text-white transition-colors hover:bg-[#262626]"
+                className="inline-flex h-11 flex-1 items-center justify-center rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white transition-colors hover:opacity-90"
               >
                 Скопировать текст
               </button>
@@ -340,7 +345,7 @@ export function UsersManagement() {
             <button
               type="button"
               onClick={() => setCredentialsOpen(false)}
-              className="w-full text-center text-sm text-[#6b7280] hover:text-[#050505]"
+              className="w-full text-center text-sm text-[#71717a] hover:text-[#18181b]"
             >
               Закрыть
             </button>

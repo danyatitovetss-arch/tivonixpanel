@@ -47,7 +47,7 @@ export function TemplateLibrary({ templates }: TemplateLibraryProps) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Поиск: цена, direct, telegram, лендинг…"
-        className="h-11 w-full rounded-xl bg-[#f6f6f6] px-4 text-sm text-[#050505] placeholder:text-[#9ca3af] outline-none focus:ring-2 focus:ring-[#050505]/10"
+        className="h-11 w-full rounded-xl bg-[#f4f4f5] px-4 text-sm text-[#18181b] placeholder:text-[#9ca3af] outline-none focus:ring-2 focus:ring-[#18181b]/10"
       />
 
       <div className="flex flex-wrap gap-2">
@@ -59,8 +59,8 @@ export function TemplateLibrary({ templates }: TemplateLibraryProps) {
             className={cn(
               "rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
               category === cat
-                ? "bg-[#050505] text-white"
-                : "bg-[#f6f6f6] text-[#6b7280] hover:bg-[#ebebeb] hover:text-[#050505]"
+                ? "bg-[var(--color-sunrise-coral)] text-white"
+                : "bg-[#f4f4f5] text-[#71717a] hover:bg-[#ebebeb] hover:text-[#18181b]"
             )}
           >
             {cat === "all" ? "Все" : TEMPLATE_CATEGORY_LABELS[cat]}
@@ -69,7 +69,7 @@ export function TemplateLibrary({ templates }: TemplateLibraryProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="rounded-2xl bg-[#f6f6f6] px-6 py-12 text-center text-sm text-[#6b7280]">
+        <p className="rounded-2xl bg-[#f4f4f5] px-6 py-12 text-center text-sm text-[#71717a]">
           Шаблоны не найдены. Попробуйте другой запрос или фильтр.
         </p>
       ) : (

@@ -21,29 +21,33 @@ export function AccountSheet({ open, onOpenChange }: AccountSheetProps) {
         side="right"
         showCloseButton={false}
         className={cn(
-          "flex h-dvh max-h-dvh flex-col gap-0 overflow-hidden bg-white p-0 shadow-none",
+          "flex h-dvh max-h-dvh flex-col gap-0 overflow-hidden bg-[var(--color-paper-white)] p-0",
           "!w-[min(96vw,560px)] !max-w-[560px] min-w-[320px] sm:min-w-[420px]",
           "data-ending-style:translate-x-full data-starting-style:translate-x-full"
         )}
       >
-        <header className="z-20 shrink-0 border-b border-[#ebebeb] px-6 py-5">
+        <header className="z-20 shrink-0 border-b border-[var(--color-mist-gray)] px-6 py-5">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <h2 className="truncate text-lg font-semibold text-[#050505]">{user.name}</h2>
-              <p className="mt-1 text-sm text-[#6b7280]">{getUserRoleLabel(user.role)}</p>
+              <h2 className="truncate text-[22px] font-normal tracking-[-0.015em] text-[var(--color-carbon-black)]">
+                {user.name}
+              </h2>
+              <p className="mt-1 text-[14px] text-[var(--color-zinc-gray)]">
+                {getUserRoleLabel(user.role)}
+              </p>
             </div>
             <button
               type="button"
               onClick={() => onOpenChange(false)}
-              className="shrink-0 rounded-xl p-2 text-[#6b7280] transition-colors hover:bg-[#f6f6f6] hover:text-[#050505]"
+              className="flex size-9 shrink-0 items-center justify-center rounded-full text-[var(--color-zinc-gray)] transition-colors hover:bg-[var(--color-fog-gray)] hover:text-[var(--color-carbon-black)]"
               aria-label="Закрыть"
             >
-              <X className="size-5" />
+              <X className="size-4" />
             </button>
           </div>
         </header>
 
-        <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-6 py-5">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-6 py-6">
           <AccountSheetContent />
         </div>
       </SheetContent>

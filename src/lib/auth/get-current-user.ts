@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import type { UserRole, UserStatus } from "@/lib/types";
+import type { PartnerType, UserRole, UserStatus } from "@/lib/types";
 
 export interface CurrentAuthUser {
   authId: string;
@@ -8,11 +8,21 @@ export interface CurrentAuthUser {
   fullName: string | null;
   role: UserRole;
   status: UserStatus;
+  partnerType: PartnerType | null;
+  agencyName: string | null;
+  websiteUrl: string | null;
+  commissionPercentOverride: number | null;
+  assignedManagerId: string | null;
+  rejectionReason: string | null;
   crmAccess: boolean;
   onboardingComplete: boolean;
   blockedUnder16: boolean;
   requiresReaccept: boolean;
   mustChangePassword: boolean;
+}
+
+export function isRestrictedPartnerStatus(status: UserStatus): boolean {
+  return status === "pending" || status === "rejected" || status === "suspended";
 }
 
 export async function getCurrentUser(): Promise<CurrentAuthUser | null> {
@@ -25,7 +35,9 @@ export async function getCurrentUser(): Promise<CurrentAuthUser | null> {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("id, full_name, email, role, status")
+    .select(
+      "id, full_name, email, role, status, partner_type, agency_name, website_url, commission_percent_override, assigned_manager_id, rejection_reason"
+    )
     .eq("user_id", user.id)
     .single();
 
@@ -49,6 +61,15 @@ export async function getCurrentUser(): Promise<CurrentAuthUser | null> {
     fullName: profile.full_name,
     role: profile.role as UserRole,
     status: profile.status as UserStatus,
+    partnerType: (profile.partner_type as PartnerType | null) ?? null,
+    agencyName: profile.agency_name ?? null,
+    websiteUrl: profile.website_url ?? null,
+    commissionPercentOverride:
+      profile.commission_percent_override != null
+        ? Number(profile.commission_percent_override)
+        : null,
+    assignedManagerId: profile.assigned_manager_id ?? null,
+    rejectionReason: profile.rejection_reason ?? null,
     crmAccess: legal?.crm_access ?? false,
     onboardingComplete: onboardingComplete ?? false,
     blockedUnder16: blockedUnder16 ?? false,

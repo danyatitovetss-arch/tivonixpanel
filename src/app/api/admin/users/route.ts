@@ -94,6 +94,7 @@ export async function POST(request: Request) {
       telegram: telegram?.trim() || null,
       role,
       status: "active",
+      partner_type: role === "partner" ? "referral" : null,
     })
     .eq("user_id", userId);
 

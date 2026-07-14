@@ -82,8 +82,8 @@ export function ProspectForm({ open, onClose, onSave, initial }: ProspectFormPro
         className="flex w-full max-w-lg flex-col gap-0 overflow-hidden p-0 sm:max-w-xl [&>button]:hidden"
       >
         <div className="shrink-0 border-b border-[#ebebeb] px-6 py-4">
-          <h2 className="text-lg font-semibold text-[#050505]">Добавить контакт</h2>
-          <p className="mt-1 text-sm text-[#6b7280]">
+          <h2 className="text-lg font-semibold text-[#18181b]">Добавить контакт</h2>
+          <p className="mt-1 text-sm text-[#71717a]">
             Сначала достаточно названия и одного контакта. Остальное можно заполнить позже.
           </p>
         </div>
@@ -185,10 +185,10 @@ export function ProspectForm({ open, onClose, onSave, initial }: ProspectFormPro
         </div>
 
         <div className="shrink-0 flex flex-col gap-2 border-t border-[#ebebeb] bg-white p-4 sm:flex-row">
-          <button type="button" onClick={() => onSave(form, "save")} className="h-11 flex-1 rounded-full bg-[#050505] text-sm font-medium text-white">
+          <button type="button" onClick={() => onSave(form, "save")} className="h-11 flex-1 rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white">
             Сохранить
           </button>
-          <button type="button" onClick={() => onSave(form, "message")} className="h-11 flex-1 rounded-full bg-[#f6f6f6] text-sm font-medium text-[#050505]">
+          <button type="button" onClick={() => onSave(form, "message")} className="h-11 flex-1 rounded-full bg-[#f4f4f5] text-sm font-medium text-[#18181b]">
             Сохранить и написать
           </button>
         </div>

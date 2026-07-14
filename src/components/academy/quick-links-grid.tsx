@@ -20,7 +20,7 @@ export function QuickLinksGrid({ links }: { links: { label: string; url: string 
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#f6f6f6] px-4 text-sm font-medium text-[#050505] hover:bg-[#ebebeb]"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#f4f4f5] px-4 text-sm font-medium text-[#18181b] hover:bg-[#ebebeb]"
           >
             {icon && (
               // eslint-disable-next-line @next/next/no-img-element

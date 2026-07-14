@@ -51,9 +51,9 @@ export function BulkLeadActions({
 
   return (
     <>
-      <div className="flex flex-col gap-2 rounded-2xl bg-[#f6f6f6] p-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <span className="text-sm text-[#6b7280]">Выбрано: {count}</span>
-        <button type="button" onClick={() => setModal("approve")} className="rounded-full bg-[#050505] px-4 py-2 text-sm text-white">
+      <div className="flex flex-col gap-2 rounded-2xl bg-[#f4f4f5] p-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <span className="text-sm text-[#71717a]">Выбрано: {count}</span>
+        <button type="button" onClick={() => setModal("approve")} className="rounded-full bg-[var(--color-sunrise-coral)] px-4 py-2 text-sm text-white">
           Одобрить
         </button>
         <button type="button" onClick={() => setModal("reject")} className="rounded-full bg-white px-4 py-2 text-sm">
@@ -73,7 +73,7 @@ export function BulkLeadActions({
           sheetName="Выбранные"
           className="h-auto rounded-full py-2"
         />
-        <button type="button" onClick={onClear} className="text-sm text-[#6b7280] underline sm:ml-auto">
+        <button type="button" onClick={onClear} className="text-sm text-[#71717a] underline sm:ml-auto">
           Сбросить
         </button>
       </div>
@@ -86,7 +86,7 @@ export function BulkLeadActions({
           </DialogHeader>
           <div className="flex gap-2">
             <button type="button" onClick={close} className="flex-1 rounded-xl border py-2 text-sm">Отмена</button>
-            <button type="button" onClick={() => { onApprove(); toast.success("Одобрено"); close(); }} className="flex-1 rounded-xl bg-[#050505] py-2 text-sm text-white">Одобрить</button>
+            <button type="button" onClick={() => { onApprove(); toast.success("Одобрено"); close(); }} className="flex-1 rounded-full bg-[var(--color-sunrise-coral)] py-2 text-sm text-white">Одобрить</button>
           </div>
         </DialogContent>
       </Dialog>
@@ -105,7 +105,7 @@ export function BulkLeadActions({
               onReject(comment);
               toast.success("Отклонено");
               close();
-            }} className="flex-1 rounded-xl bg-[#050505] py-2 text-sm text-white">Отклонить</button>
+            }} className="flex-1 rounded-full bg-[var(--color-sunrise-coral)] py-2 text-sm text-white">Отклонить</button>
           </div>
         </DialogContent>
       </Dialog>
@@ -124,7 +124,7 @@ export function BulkLeadActions({
               onDuplicate(comment);
               toast.success("Отмечено как дубль");
               close();
-            }} className="flex-1 rounded-xl bg-[#050505] py-2 text-sm text-white">Подтвердить</button>
+            }} className="flex-1 rounded-full bg-[var(--color-sunrise-coral)] py-2 text-sm text-white">Подтвердить</button>
           </div>
         </DialogContent>
       </Dialog>
@@ -138,7 +138,7 @@ export function BulkLeadActions({
           <select
             value={managerId}
             onChange={(e) => setManagerId(e.target.value)}
-            className="mt-1 h-11 w-full rounded-xl border border-[#e5e5e5] px-3 text-sm"
+            className="mt-1 h-11 w-full rounded-xl border border-[#e4e4e7] px-3 text-sm"
           >
             <option value="">Выберите менеджера</option>
             {managers.map((m) => (
@@ -152,7 +152,7 @@ export function BulkLeadActions({
               onAssignManager(managerId);
               toast.success("Менеджер назначен");
               close();
-            }} className="flex-1 rounded-xl bg-[#050505] py-2 text-sm text-white">Назначить</button>
+            }} className="flex-1 rounded-full bg-[var(--color-sunrise-coral)] py-2 text-sm text-white">Назначить</button>
           </div>
         </DialogContent>
       </Dialog>

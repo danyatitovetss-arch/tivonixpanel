@@ -20,20 +20,20 @@ export function ConvertToLeadDialog({ open, prospect, onClose, onConfirm }: Conv
         <DialogHeader>
           <DialogTitle>Добавить в лиды</DialogTitle>
         </DialogHeader>
-        <p className="text-sm text-[#6b7280]">
+        <p className="text-sm text-[#71717a]">
           Добавляй в лиды только перспективные контакты или тех, кто ответил. Статус лида: «Ожидает проверки».
         </p>
-        <ul className="mt-3 space-y-1 text-sm text-[#050505]">
+        <ul className="mt-3 space-y-1 text-sm text-[#18181b]">
           <li>· {prospect.businessName}</li>
           <li>· {prospect.niche || "—"} · {prospect.city || "—"}</li>
           <li>· Услуга: {inferServiceType(prospect)}</li>
           <li>· Источник: {prospect.source}</li>
         </ul>
         <div className="mt-4 flex gap-2">
-          <button type="button" onClick={onConfirm} className="flex-1 rounded-full bg-[#050505] py-2.5 text-sm font-medium text-white">
+          <button type="button" onClick={onConfirm} className="flex-1 rounded-full bg-[var(--color-sunrise-coral)] py-2.5 text-sm font-medium text-white">
             Подтвердить
           </button>
-          <button type="button" onClick={onClose} className="flex-1 rounded-full bg-[#f6f6f6] py-2.5 text-sm font-medium">
+          <button type="button" onClick={onClose} className="flex-1 rounded-full bg-[#f4f4f5] py-2.5 text-sm font-medium">
             Отмена
           </button>
         </div>

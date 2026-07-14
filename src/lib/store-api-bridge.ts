@@ -1,5 +1,5 @@
 import { fetchJson } from "@/lib/api/fetch-json";
-import type { AppData, Lead, UserRole, UserStatus } from "@/lib/types";
+import type { AppData, Lead, PartnerType, UserRole, UserStatus } from "@/lib/types";
 import type { ProspectContact } from "@/lib/prospecting-types";
 import { toServiceTypeSlug } from "@/lib/service-types";
 
@@ -10,6 +10,12 @@ export type AuthSessionUser = {
   fullName: string | null;
   role: UserRole;
   status: UserStatus;
+  partnerType?: PartnerType | null;
+  agencyName?: string | null;
+  websiteUrl?: string | null;
+  commissionPercentOverride?: number | null;
+  assignedManagerId?: string | null;
+  rejectionReason?: string | null;
 };
 
 export async function loadAuthMe(): Promise<AuthSessionUser> {

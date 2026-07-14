@@ -92,8 +92,8 @@ export function AcademyNav({
                   className={cn(
                     "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors md:text-base",
                     isActive
-                      ? "bg-[#050505] text-white"
-                      : "bg-[#f6f6f6] text-[#6b7280] hover:bg-[#ebebeb] hover:text-[#050505]"
+                      ? "bg-[var(--color-sunrise-coral)] text-white"
+                      : "bg-[#f4f4f5] text-[#71717a] hover:bg-[#ebebeb] hover:text-[#18181b]"
                   )}
                 >
                   {section.label}

@@ -35,26 +35,21 @@ export function LeadStatusHero({ lead, className }: { lead: Lead; className?: st
   const { title, subtitle, hint, spinning } = getHeroConfig(lead);
 
   return (
-    <div
-      className={cn(
-        "flex items-center gap-5 rounded-2xl bg-[#f6f6f6] px-6 py-8 md:gap-6 md:px-8 md:py-10",
-        className
-      )}
-    >
+    <div className={cn("flex items-start gap-5 py-1 md:gap-6", className)}>
       {spinning && (
-        <div className="relative flex size-16 shrink-0 items-center justify-center md:size-20">
+        <div className="relative flex size-14 shrink-0 items-center justify-center md:size-16">
           <svg
             className="size-full animate-spin"
             viewBox="0 0 80 80"
             fill="none"
             aria-hidden
           >
-            <circle cx="40" cy="40" r="34" stroke="#e5e5e5" strokeWidth="3" />
+            <circle cx="40" cy="40" r="34" stroke="var(--color-mist-gray)" strokeWidth="3" />
             <circle
               cx="40"
               cy="40"
               r="34"
-              stroke="#050505"
+              stroke="var(--color-sunrise-coral)"
               strokeWidth="3"
               strokeLinecap="round"
               strokeDasharray="60 154"
@@ -64,15 +59,19 @@ export function LeadStatusHero({ lead, className }: { lead: Lead; className?: st
       )}
 
       <div className="min-w-0">
-        <p className="text-2xl font-bold tracking-tight text-[#050505] md:text-4xl">
+        <p className="text-[28px] font-normal leading-[1.15] tracking-[-0.02em] text-[var(--color-carbon-black)] md:text-[34px]">
           {title}
         </p>
-        {subtitle && (
-          <p className="mt-2 text-sm text-[#6b7280] md:text-base">{subtitle}</p>
-        )}
-        {hint && (
-          <p className="mt-1 text-sm text-[#9ca3af]">{hint}</p>
-        )}
+        {subtitle ? (
+          <p className="mt-2 text-[15px] tracking-[-0.005em] text-[var(--color-zinc-gray)]">
+            {subtitle}
+          </p>
+        ) : null}
+        {hint ? (
+          <p className="mt-1.5 max-w-xl text-[14px] leading-relaxed text-[var(--color-ash-gray)]">
+            {hint}
+          </p>
+        ) : null}
       </div>
     </div>
   );

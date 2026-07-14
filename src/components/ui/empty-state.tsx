@@ -15,10 +15,10 @@ export function EmptyState({ title, description, className }: EmptyStateProps) {
         className
       )}
     >
-      <Inbox className="mb-4 size-10 text-[#6b7280]" strokeWidth={1.5} />
-      <p className="text-base font-medium text-[#050505]">{title}</p>
+      <Inbox className="mb-4 size-10 text-[#71717a]" strokeWidth={1.5} />
+      <p className="text-base font-medium text-[#18181b]">{title}</p>
       {description && (
-        <p className="mt-1 max-w-sm text-sm text-[#6b7280]">{description}</p>
+        <p className="mt-1 max-w-sm text-sm text-[#71717a]">{description}</p>
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getCurrentUser } from "./get-current-user";
+import { getCurrentUser, isRestrictedPartnerStatus } from "./get-current-user";
 import type { UserRole } from "@/lib/types";
 
 export async function requireApiUser() {
@@ -7,8 +7,14 @@ export async function requireApiUser() {
   if (!user) {
     return { user: null, response: NextResponse.json({ error: "Войдите в аккаунт" }, { status: 401 }) };
   }
-  if (user.status === "blocked" || user.blockedUnder16) {
+  if (user.status === "blocked" || user.status === "inactive" || user.blockedUnder16) {
     return { user: null, response: NextResponse.json({ error: "Доступ заблокирован" }, { status: 403 }) };
+  }
+  if (isRestrictedPartnerStatus(user.status)) {
+    return {
+      user: null,
+      response: NextResponse.json({ error: "Заявка ещё на проверке" }, { status: 403 }),
+    };
   }
   return { user, response: null };
 }

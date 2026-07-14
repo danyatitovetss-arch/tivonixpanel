@@ -21,7 +21,7 @@ function SourceSection({
 }) {
   return (
     <div className={cn(!first && "border-t border-[#ebebeb] pt-5")}>
-      <h4 className="text-sm font-semibold text-[#050505]">{title}</h4>
+      <h4 className="text-sm font-semibold text-[#18181b]">{title}</h4>
       <div className="mt-3">{children}</div>
     </div>
   );
@@ -31,9 +31,9 @@ function BulletGrid({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-2 sm:grid-cols-2">
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-2.5 text-sm text-[#050505]">
+        <li key={item} className="flex items-start gap-2.5 text-sm text-[#18181b]">
           <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-white">
-            <Check className="size-3 text-[#6b7280]" strokeWidth={2.5} />
+            <Check className="size-3 text-[#71717a]" strokeWidth={2.5} />
           </span>
           {item}
         </li>
@@ -46,7 +46,7 @@ function TagList({ items }: { items: string[] }) {
   return (
     <div className="flex flex-wrap gap-2">
       {items.map((item) => (
-        <span key={item} className="rounded-lg bg-white px-2.5 py-1 text-xs text-[#050505]">
+        <span key={item} className="rounded-lg bg-white px-2.5 py-1 text-xs text-[#18181b]">
           {item}
         </span>
       ))}
@@ -56,11 +56,11 @@ function TagList({ items }: { items: string[] }) {
 
 function SourceContent({ source }: { source: SearchSource }) {
   return (
-    <article className="rounded-2xl bg-[#f6f6f6] p-5 md:p-6">
+    <article className="rounded-2xl bg-[#f4f4f5] p-5 md:p-6">
       {source.title && (
-        <h3 className="text-base font-semibold text-[#050505]">{source.title}</h3>
+        <h3 className="text-base font-semibold text-[#18181b]">{source.title}</h3>
       )}
-      <p className={cn("text-sm leading-relaxed text-[#6b7280]", source.title && "mt-2")}>
+      <p className={cn("text-sm leading-relaxed text-[#71717a]", source.title && "mt-2")}>
         {source.intro}
       </p>
 
@@ -68,7 +68,7 @@ function SourceContent({ source }: { source: SearchSource }) {
         <SourceSection title="Инструкция" first>
           <ol className="space-y-2.5">
             {source.steps.map((step, i) => (
-              <li key={step} className="flex items-start gap-3 text-sm text-[#050505]">
+              <li key={step} className="flex items-start gap-3 text-sm text-[#18181b]">
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white text-xs font-semibold">
                   {i + 1}
                 </span>
@@ -112,7 +112,7 @@ function SourceContent({ source }: { source: SearchSource }) {
           <SourceSection title="Что можно писать">
             <div className="space-y-2">
               {source.canWrite.map((item) => (
-                <p key={item} className="rounded-xl bg-white p-4 text-sm leading-relaxed text-[#6b7280]">
+                <p key={item} className="rounded-xl bg-white p-4 text-sm leading-relaxed text-[#71717a]">
                   {item}
                 </p>
               ))}
@@ -124,9 +124,9 @@ function SourceContent({ source }: { source: SearchSource }) {
           <SourceSection title="Что нельзя">
             <ul className="space-y-2">
               {source.cannotDo.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-[#050505]">
+                <li key={item} className="flex items-start gap-2.5 text-sm text-[#18181b]">
                   <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-white">
-                    <X className="size-3 text-[#6b7280]" strokeWidth={2.5} />
+                    <X className="size-3 text-[#71717a]" strokeWidth={2.5} />
                   </span>
                   {item}
                 </li>
@@ -138,7 +138,7 @@ function SourceContent({ source }: { source: SearchSource }) {
         {source.template && (
           <SourceSection title="Шаблон">
             <div className="rounded-xl bg-white p-4">
-              <p className="text-sm leading-relaxed text-[#6b7280]">{source.template}</p>
+              <p className="text-sm leading-relaxed text-[#71717a]">{source.template}</p>
               <div className="mt-3">
                 <CopyButton text={source.template} label="Скопировать" className="w-full sm:w-auto" />
               </div>
@@ -147,11 +147,11 @@ function SourceContent({ source }: { source: SearchSource }) {
         )}
 
         {source.note && (
-          <p className="border-t border-[#ebebeb] pt-5 text-sm text-[#6b7280]">{source.note}</p>
+          <p className="border-t border-[#ebebeb] pt-5 text-sm text-[#71717a]">{source.note}</p>
         )}
 
         {source.strategy && (
-          <p className="rounded-xl bg-white p-4 text-sm leading-relaxed text-[#6b7280]">
+          <p className="rounded-xl bg-white p-4 text-sm leading-relaxed text-[#71717a]">
             {source.strategy}
           </p>
         )}
@@ -170,7 +170,7 @@ export function SearchSourcesTabs({ sources }: SearchSourcesTabsProps) {
     <div className="lg:grid lg:grid-cols-[minmax(180px,220px)_1fr] lg:items-start lg:gap-4">
       <nav
         aria-label="Источники поиска"
-        className="grid grid-cols-2 gap-1.5 rounded-2xl bg-[#f6f6f6] p-2 sm:grid-cols-4 lg:sticky lg:top-[var(--academy-scroll-offset)] lg:grid-cols-1 lg:self-start"
+        className="grid grid-cols-2 gap-1.5 rounded-2xl bg-[#f4f4f5] p-2 sm:grid-cols-4 lg:sticky lg:top-[var(--academy-scroll-offset)] lg:grid-cols-1 lg:self-start"
       >
         {sources.map((source) => (
           <button
@@ -180,8 +180,8 @@ export function SearchSourcesTabs({ sources }: SearchSourcesTabsProps) {
             className={cn(
               "rounded-xl px-3 py-2.5 text-left text-xs font-medium leading-snug transition-colors sm:text-sm lg:py-2.5",
               active === source.id
-                ? "bg-[#050505] text-white"
-                : "text-[#6b7280] hover:bg-white hover:text-[#050505]"
+                ? "bg-[var(--color-sunrise-coral)] text-white"
+                : "text-[#71717a] hover:bg-white hover:text-[#18181b]"
             )}
           >
             {source.label}

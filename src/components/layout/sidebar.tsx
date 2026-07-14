@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -17,15 +16,15 @@ import {
   ListChecks,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useCurrentUser } from "@/lib/store";
+import { useCurrentUser, useIsBootstrapping } from "@/lib/store";
 import { canAccessResource } from "@/lib/access";
 import { getUserRoleLabel } from "@/lib/statuses";
 import { isDemoMode } from "@/lib/demo-mode";
 import { logoutApi } from "@/lib/store-api-bridge";
 import { RoleSwitcher } from "./role-switcher";
 import { useAccountSheet } from "./account-sheet-context";
-import { useIsBootstrapping } from "@/lib/store";
 import { Skeleton } from "@/components/ui/skeleton";
+import { BrandLogo } from "@/components/brand-logo";
 import type { AccessResource } from "@/lib/types";
 
 const navItems: {
@@ -46,12 +45,21 @@ const navItems: {
   { href: "/reports", label: "Отчёты", icon: FileBarChart, resource: "reports" },
   { href: "/settings", label: "Настройки", icon: Settings, resource: "settings" },
   { href: "/admin/legal-profiles", label: "Юр. профили", icon: Users, resource: "admin" },
+  { href: "/admin/partner-applications", label: "Заявки партнёров", icon: Handshake, resource: "admin" },
   { href: "/admin/audit-logs", label: "Журнал действий", icon: FileBarChart, resource: "admin" },
 ];
 
 interface SidebarProps {
   onNavigate?: () => void;
   className?: string;
+}
+
+async function handleLogout(onNavigate?: () => void) {
+  onNavigate?.();
+  if (!isDemoMode()) {
+    await logoutApi();
+  }
+  window.location.href = "/login";
 }
 
 export function Sidebar({ onNavigate, className }: SidebarProps) {
@@ -70,29 +78,23 @@ export function Sidebar({ onNavigate, className }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "flex h-full w-64 flex-col bg-[#050505] text-white lg:w-60 xl:w-64",
+        "flex h-full w-64 flex-col bg-[var(--color-carbon-black)] text-white lg:w-60 xl:w-64",
         className
       )}
     >
-      <div className="px-6 py-7">
-        <Link href={user.role === "partner" ? "/my" : "/dashboard"} onClick={onNavigate} className="block">
-          <Image
-            src="/images/white-Photoroom.png"
-            alt="TIVONIX Partners CRM"
-            width={320}
-            height={120}
-            priority
-            className="h-9 w-auto object-contain"
-          />
-        </Link>
+      <div className="px-3 pt-6 pb-5">
+        <BrandLogo href="/dashboard" onClick={onNavigate} priority className="px-3" />
       </div>
 
-      <nav className="flex-1 space-y-0.5 px-3">
+      <nav className="flex-1 space-y-1 overflow-y-auto px-3 pb-4">
         {visibleItems.map((item) => {
           const isActive =
             pathname === item.href ||
             (item.href === "/leads" && pathname.startsWith("/leads/") && pathname !== "/leads/new") ||
             (item.href === "/partners" && pathname.startsWith("/partners/")) ||
+            (item.href === "/admin/legal-profiles" && pathname.startsWith("/admin/legal-profiles")) ||
+            (item.href === "/admin/partner-applications" &&
+              pathname.startsWith("/admin/partner-applications")) ||
             (item.href === "/academy" && pathname.startsWith("/academy")) ||
             (item.href === "/prospecting" && pathname.startsWith("/prospecting"));
           const Icon = item.icon;
@@ -103,13 +105,13 @@ export function Sidebar({ onNavigate, className }: SidebarProps) {
               href={item.href}
               onClick={onNavigate}
               className={cn(
-                "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors",
+                "flex items-center gap-3 rounded-[9999px] px-3 py-2.5 text-[13px] tracking-[-0.005em] transition-colors",
                 isActive
-                  ? "bg-white/10 text-white"
-                  : "text-white/60 hover:bg-white/5 hover:text-white"
+                  ? "bg-white/12 font-medium text-white"
+                  : "text-white/55 hover:bg-white/[0.06] hover:text-white"
               )}
             >
-              <Icon className="size-4 shrink-0" strokeWidth={1.5} />
+              <Icon className="size-4 shrink-0 opacity-90" strokeWidth={1.75} />
               <span className="truncate">{item.label}</span>
             </Link>
           );
@@ -118,62 +120,47 @@ export function Sidebar({ onNavigate, className }: SidebarProps) {
 
       <RoleSwitcher />
 
-      <div className="px-3 pb-4">
-        <div className="rounded-xl bg-white/5 px-3 py-3">
-          {isBootstrapping ? (
-            <div className="space-y-3">
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-28 bg-white/10" />
-                <Skeleton className="h-3 w-16 bg-white/10" />
-              </div>
-              <Skeleton className="h-4 w-14 bg-white/10" />
-            </div>
-          ) : (
-            <>
-          <div className="flex items-start gap-2">
+      <div className="mt-auto border-t border-white/10 px-3 py-3">
+        {isBootstrapping ? (
+          <div className="space-y-3 px-3 py-2">
+            <Skeleton className="h-4 w-28 bg-white/10" />
+            <Skeleton className="h-3 w-16 bg-white/10" />
+            <Skeleton className="h-9 w-full rounded-full bg-white/10" />
+          </div>
+        ) : (
+          <div className="space-y-1">
             <button
               type="button"
               onClick={() => {
                 onNavigate?.();
                 openAccount();
               }}
-              className="min-w-0 flex-1 text-left transition-opacity hover:opacity-90"
+              className="flex w-full items-center gap-3 rounded-[9999px] px-3 py-2.5 text-left transition-colors hover:bg-white/[0.06]"
             >
-              <p className="truncate text-sm font-medium text-white">{user.name}</p>
-              <p className="mt-0.5 text-xs text-white/50">{getUserRoleLabel(user.role)}</p>
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold tracking-tight text-white">
+                {user.name.trim().charAt(0).toUpperCase() || "U"}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[13px] font-bold tracking-[-0.005em] text-white">
+                  {user.name}
+                </span>
+                <span className="mt-0.5 block text-[11px] tracking-[-0.005em] text-white/45">
+                  {getUserRoleLabel(user.role)}
+                </span>
+              </span>
+              <Settings className="size-4 shrink-0 text-white/45" strokeWidth={1.75} />
             </button>
 
             <button
               type="button"
-              onClick={() => {
-                onNavigate?.();
-                openAccount();
-              }}
-              title="Настройки"
-              aria-label="Настройки"
-              className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white/80 transition-colors hover:bg-white/15 hover:text-white"
+              onClick={() => void handleLogout(onNavigate)}
+              className="flex w-full items-center gap-3 rounded-[9999px] px-3 py-2.5 text-[13px] tracking-[-0.005em] text-white/55 transition-colors hover:bg-white/[0.06] hover:text-white"
             >
-              <Settings className="size-4" strokeWidth={1.75} />
+              <LogOut className="size-4 shrink-0" strokeWidth={1.75} />
+              <span>Выйти</span>
             </button>
           </div>
-
-          <button
-            type="button"
-            onClick={async () => {
-              onNavigate?.();
-              if (!isDemoMode()) {
-                await logoutApi();
-              }
-              window.location.href = "/login";
-            }}
-            className="mt-3 inline-flex items-center gap-2 text-sm text-[#ef4444] transition-colors hover:text-[#f87171]"
-          >
-            <LogOut className="size-4" strokeWidth={1.5} />
-            Выйти
-          </button>
-            </>
-          )}
-        </div>
+        )}
       </div>
     </aside>
   );

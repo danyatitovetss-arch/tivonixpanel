@@ -1,12 +1,13 @@
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "./get-current-user";
+import { getCurrentUser, isRestrictedPartnerStatus } from "./get-current-user";
 import type { UserRole } from "@/lib/types";
 
 export async function requireUser() {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
-  if (user.status === "blocked") redirect("/blocked");
+  if (user.status === "blocked" || user.status === "inactive") redirect("/blocked");
   if (user.blockedUnder16) redirect("/blocked");
+  if (isRestrictedPartnerStatus(user.status)) redirect("/pending");
   return user;
 }
 

@@ -20,15 +20,15 @@ import { cn } from "@/lib/utils";
 const WEEKDAYS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
 const pickerSelectTrigger =
-  "h-10 w-full justify-between gap-2 rounded-xl border-0 bg-[#f6f6f6] px-3 shadow-none ring-0 transition-colors hover:bg-[#efefef] focus-visible:border-0 focus-visible:bg-[#efefef] focus-visible:ring-0 [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:text-left [&_svg]:ml-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-[#9ca3af]";
+  "h-10 w-full justify-between gap-2 rounded-xl border-0 bg-[#f4f4f5] px-3 shadow-none ring-0 transition-colors hover:bg-[#f4f4f5] focus-visible:border-0 focus-visible:bg-[#f4f4f5] focus-visible:ring-0 [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:text-left [&_svg]:ml-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-[#9ca3af]";
 
 const pickerSelectContent =
   "z-[200] max-h-56 rounded-xl border-0 bg-white p-1.5 shadow-[0_8px_30px_rgba(5,5,5,0.08)] ring-0";
 
-const pickerSelectItem = "rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f6f6f6]";
+const pickerSelectItem = "rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f4f4f5]";
 
 const navButtonClass =
-  "flex size-9 shrink-0 items-center justify-center rounded-lg text-[#6b7280] transition-colors hover:bg-[#f6f6f6] hover:text-[#050505]";
+  "flex size-9 shrink-0 items-center justify-center rounded-lg text-[#71717a] transition-colors hover:bg-[#f4f4f5] hover:text-[#18181b]";
 
 function parseIso(iso: string) {
   const [y, m, d] = iso.split("-").map(Number);
@@ -170,7 +170,7 @@ export function DatePickerModal({
         className="max-w-[340px] rounded-2xl border-0 bg-white p-5 shadow-[0_16px_48px_rgba(5,5,5,0.12)] ring-0"
       >
         <DialogHeader>
-          <DialogTitle className="text-base font-semibold text-[#050505]">{title}</DialogTitle>
+          <DialogTitle className="text-base font-semibold text-[#18181b]">{title}</DialogTitle>
         </DialogHeader>
 
         <div className="mt-2">
@@ -238,7 +238,7 @@ export function DatePickerModal({
               >
                 <ChevronLeft className="size-4" strokeWidth={1.5} />
               </button>
-              <span className="flex-1 text-center text-sm font-medium capitalize text-[#050505]">
+              <span className="flex-1 text-center text-sm font-medium capitalize text-[#18181b]">
                 {monthLabel}
               </span>
               <button
@@ -276,12 +276,12 @@ export function DatePickerModal({
                   className={cn(
                     "flex h-9 items-center justify-center rounded-lg text-sm transition-colors",
                     disabled && "cursor-not-allowed text-[#d1d5db]",
-                    !disabled && selected && "bg-[#050505] font-medium text-white",
+                    !disabled && selected && "bg-[var(--color-sunrise-coral)] font-medium text-white",
                     !disabled &&
                       !selected &&
                       isToday &&
-                      "bg-[#f6f6f6] font-medium text-[#050505]",
-                    !disabled && !selected && !isToday && "text-[#050505] hover:bg-[#f6f6f6]"
+                      "bg-[#f4f4f5] font-medium text-[#18181b]",
+                    !disabled && !selected && !isToday && "text-[#18181b] hover:bg-[#f4f4f5]"
                   )}
                 >
                   {day}
@@ -298,7 +298,7 @@ export function DatePickerModal({
                   onChange("");
                   onOpenChange(false);
                 }}
-                className="h-10 flex-1 rounded-xl bg-[#f6f6f6] text-sm font-medium text-[#050505] hover:bg-[#efefef]"
+                className="h-10 flex-1 rounded-xl bg-[#f4f4f5] text-sm font-medium text-[#18181b] hover:bg-[#f4f4f5]"
               >
                 Сбросить
               </button>
@@ -310,7 +310,7 @@ export function DatePickerModal({
                   onChange(todayIso);
                   onOpenChange(false);
                 }}
-                className="h-10 flex-1 rounded-xl bg-[#050505] text-sm font-medium text-white hover:bg-[#050505]/90"
+                className="h-10 flex-1 rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white hover:opacity-90"
               >
                 Сегодня
               </button>
@@ -352,11 +352,11 @@ export function DateFilterField({
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "flex h-11 w-full items-center justify-between rounded-xl bg-[#f6f6f6] px-3.5 text-sm transition-colors hover:bg-[#efefef]",
+          "flex h-11 w-full items-center justify-between rounded-xl bg-[#f4f4f5] px-3.5 text-sm transition-colors hover:bg-[#f4f4f5]",
           className
         )}
       >
-        <span className={value ? "text-[#050505]" : "text-[#9ca3af]"}>
+        <span className={value ? "text-[#18181b]" : "text-[#9ca3af]"}>
           {value ? formatDisplay(value) : (placeholder ?? label)}
         </span>
       </button>

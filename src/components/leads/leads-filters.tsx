@@ -31,7 +31,7 @@ interface LeadsFiltersProps {
 function FilterField({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="space-y-2">
-      <p className="text-sm text-[#6b7280]">{label}</p>
+      <p className="text-sm text-[#71717a]">{label}</p>
       {children}
     </div>
   );
@@ -170,12 +170,12 @@ export function LeadsFilters({
         <button
           type="button"
           onClick={() => onMobileOpenChange(true)}
-          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#f6f6f6] text-sm font-medium text-[#050505] transition-colors hover:bg-[#efefef]"
+          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#f4f4f5] text-sm font-medium text-[#18181b] transition-colors hover:bg-[#f4f4f5]"
         >
           <SlidersHorizontal className="size-4" />
           Фильтры
           {active > 0 && (
-            <span className="rounded-full bg-[#050505] px-2 py-0.5 text-xs text-white">{active}</span>
+            <span className="rounded-full bg-[var(--color-sunrise-coral)] px-2 py-0.5 text-xs text-white">{active}</span>
           )}
         </button>
 
@@ -186,11 +186,11 @@ export function LeadsFilters({
             className="flex max-h-[90dvh] flex-col gap-0 rounded-t-2xl border-0 bg-white p-0 shadow-none !max-w-none w-full"
           >
             <div className="flex items-center justify-between px-5 py-4">
-              <h3 className="text-lg font-semibold text-[#050505]">Фильтры</h3>
+              <h3 className="text-lg font-semibold text-[#18181b]">Фильтры</h3>
               <button
                 type="button"
                 onClick={() => onMobileOpenChange(false)}
-                className="rounded-xl p-2 text-[#6b7280] hover:bg-[#f6f6f6]"
+                className="rounded-xl p-2 text-[#71717a] hover:bg-[#f4f4f5]"
                 aria-label="Закрыть"
               >
                 <X className="size-5" />
@@ -209,18 +209,18 @@ export function LeadsFilters({
               </div>
             </div>
 
-            <div className="flex gap-3 border-t border-[#f6f6f6] px-5 py-4">
+            <div className="flex gap-3 border-t border-[#f4f4f5] px-5 py-4">
               <button
                 type="button"
                 onClick={reset}
-                className="h-11 flex-1 rounded-xl bg-[#f6f6f6] text-sm font-medium text-[#050505]"
+                className="h-11 flex-1 rounded-xl bg-[#f4f4f5] text-sm font-medium text-[#18181b]"
               >
                 Сбросить
               </button>
               <button
                 type="button"
                 onClick={() => onMobileOpenChange(false)}
-                className="h-11 flex-1 rounded-xl bg-[#050505] text-sm font-medium text-white"
+                className="h-11 flex-1 rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white"
               >
                 Применить
               </button>

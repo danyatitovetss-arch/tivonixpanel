@@ -19,7 +19,7 @@ export function ProspectNotes({ notes, onChange }: ProspectNotesProps) {
         onChange={(e) => onChange(e.target.value)}
         rows={4}
         placeholder="Заметки по контакту…"
-        className="w-full rounded-xl bg-[#f6f6f6] p-4 text-sm outline-none focus:ring-2 focus:ring-[#050505]/10"
+        className="w-full rounded-xl bg-[#f4f4f5] p-4 text-sm outline-none focus:ring-2 focus:ring-[#18181b]/10"
       />
       <div className="flex flex-wrap gap-2">
         {QUICK_NOTES.map((note) => (
@@ -27,7 +27,7 @@ export function ProspectNotes({ notes, onChange }: ProspectNotesProps) {
             key={note}
             type="button"
             onClick={() => append(note)}
-            className="rounded-full bg-[#f6f6f6] px-3 py-1.5 text-xs font-medium text-[#050505] hover:bg-[#ebebeb]"
+            className="rounded-full bg-[#f4f4f5] px-3 py-1.5 text-xs font-medium text-[#18181b] hover:bg-[#ebebeb]"
           >
             {note}
           </button>

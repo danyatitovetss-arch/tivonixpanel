@@ -31,7 +31,7 @@ export function Topbar({
     <header
       data-app-topbar
       className={cn(
-        "sticky top-0 z-30 flex items-center justify-between gap-4 bg-white px-4 md:px-6 lg:px-8",
+        "sticky top-0 z-30 flex items-center justify-between gap-4 border-b border-[var(--color-mist-gray)] bg-[var(--color-paper-white)] px-4 md:px-6 lg:px-8",
         compactTopbar ? "h-12 lg:hidden" : "h-[var(--app-header-height)]"
       )}
     >
@@ -39,37 +39,36 @@ export function Topbar({
         <button
           type="button"
           onClick={onMenuClick}
-          className="shrink-0 rounded-lg p-2 text-[#050505] hover:bg-[#f6f6f6] lg:hidden"
+          className="shrink-0 rounded-[7.5px] p-2 text-[var(--color-carbon-black)] hover:bg-[var(--color-fog-gray)] lg:hidden"
           aria-label="Открыть меню"
         >
           <Menu className="size-5" />
         </button>
         {!hideTitle && title ? (
-          <h1 className="truncate text-lg font-semibold tracking-tight text-[#050505] md:text-xl">
+          <h1 className="truncate text-[19px] font-normal leading-[1.4] tracking-[-0.009em] text-[var(--color-carbon-black)] md:text-[22px] md:leading-[1.25] md:tracking-[-0.012em]">
             {title}
           </h1>
         ) : null}
         {isLoading && (
-          <Loader2 className="size-5 shrink-0 animate-spin text-[#6b7280]" aria-label="Загрузка данных" />
+          <Loader2
+            className="size-5 shrink-0 animate-spin text-[var(--color-zinc-gray)]"
+            aria-label="Загрузка данных"
+          />
         )}
       </div>
 
       <div className="flex shrink-0 items-center gap-2 sm:gap-3">
         {showSearch && (
           <div className="relative hidden md:block">
-            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#6b7280]" />
+            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[var(--color-zinc-gray)]" />
             <Input
               placeholder="Быстрый поиск…"
-              className="h-9 w-48 rounded-xl border-[#e5e5e5] bg-[#fafafa] pl-9 text-sm lg:w-64"
+              className="h-9 w-48 rounded-[9999px] border-[var(--color-mist-gray)] bg-[var(--color-fog-gray)] pl-9 text-[13px] tracking-[-0.005em] lg:w-64"
             />
           </div>
         )}
         {showAddLead && (
-          <Button
-            type="button"
-            onClick={openAddLead}
-            className="h-9 rounded-xl bg-[#050505] px-4 text-sm hover:bg-[#050505]/90"
-          >
+          <Button type="button" onClick={openAddLead} size="sm" className="h-9 px-4">
             <Plus className="size-4" />
             <span className="hidden sm:inline">Добавить клиента</span>
           </Button>

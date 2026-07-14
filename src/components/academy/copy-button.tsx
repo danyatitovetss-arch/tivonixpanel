@@ -36,7 +36,7 @@ export function CopyButton({
       type="button"
       onClick={handleCopy}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#f6f6f6] px-4 text-sm font-medium text-[#050505] transition-colors hover:bg-[#ebebeb]",
+        "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#f4f4f5] px-4 text-sm font-medium text-[#18181b] transition-colors hover:bg-[#ebebeb]",
         className
       )}
     >

@@ -134,7 +134,7 @@ export default function LeadsPage() {
             <button
               type="button"
               onClick={openAddLead}
-              className="inline-flex h-10 items-center gap-2 rounded-full bg-[#050505] px-5 text-sm font-medium text-white"
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-[var(--color-sunrise-coral)] px-5 text-sm font-medium text-white"
             >
               <Plus className="size-4" /> {CLIENT_COPY.add}
             </button>
@@ -301,7 +301,7 @@ function LeadRow({
       <OkxTd className="max-w-0">
         <OkxCellPrimary title={lead.businessName} />
       </OkxTd>
-      <OkxTd className="hidden truncate text-[#6b7280] lg:table-cell" title={lead.serviceType}>
+      <OkxTd className="hidden truncate text-[#71717a] lg:table-cell" title={lead.serviceType}>
         {lead.serviceType}
       </OkxTd>
       <OkxTd className="whitespace-nowrap">{formatCurrency(lead.estimatedBudget)}</OkxTd>
@@ -341,12 +341,12 @@ function LeadMobileCard({
       tabIndex={0}
       onClick={onOpen}
       onKeyDown={(e) => e.key === "Enter" && onOpen()}
-      className="cursor-pointer rounded-2xl bg-[#f6f6f6] p-4 transition-colors hover:bg-[#efefef]"
+      className="cursor-pointer rounded-2xl bg-[#f4f4f5] p-4 transition-colors hover:bg-[#f4f4f5]"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="font-semibold text-[#050505]">{lead.businessName}</p>
-          <p className="mt-0.5 truncate text-xs text-[#6b7280]">
+          <p className="font-semibold text-[#18181b]">{lead.businessName}</p>
+          <p className="mt-0.5 truncate text-xs text-[#71717a]">
             {[lead.serviceType, formatCurrency(lead.estimatedBudget)].filter(Boolean).join(" · ")}
           </p>
         </div>

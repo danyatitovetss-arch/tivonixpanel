@@ -60,8 +60,31 @@ export const USER_ROLE_LABELS: Record<UserRole, string> = {
   manager: "Менеджер",
 };
 
+export const USER_STATUS_LABELS: Record<string, string> = {
+  pending: "На проверке",
+  active: "Активен",
+  rejected: "Отклонён",
+  suspended: "Приостановлен",
+  inactive: "Неактивен",
+  blocked: "Заблокирован",
+};
+
+export const PARTNER_TYPE_LABELS: Record<string, string> = {
+  referral: "Referral",
+  white_label: "White-label",
+};
+
 export function getUserRoleLabel(role: UserRole): string {
   return USER_ROLE_LABELS[role];
+}
+
+export function getUserStatusLabel(status: string): string {
+  return USER_STATUS_LABELS[status] ?? status;
+}
+
+export function getPartnerTypeLabel(type: string | null | undefined): string {
+  if (!type) return "—";
+  return PARTNER_TYPE_LABELS[type] ?? type;
 }
 
 export const ONBOARDING_STATUS_LABELS: Record<string, string> = {

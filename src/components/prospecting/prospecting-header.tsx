@@ -51,7 +51,7 @@ export function ProspectingHeader({
         <button
           type="button"
           onClick={() => setInfoOpen(true)}
-          className="mt-1.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-[#f6f6f6] text-[#6b7280] transition-colors hover:bg-[#efefef] hover:text-[#050505]"
+          className="mt-1.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-[#f4f4f5] text-[#71717a] transition-colors hover:bg-[#f4f4f5] hover:text-[#18181b]"
           aria-label="Как работает раздел поиска клиентов"
         >
           <Info className="size-4" strokeWidth={2.25} />
@@ -61,21 +61,21 @@ export function ProspectingHeader({
       <Dialog open={infoOpen} onOpenChange={setInfoOpen}>
         <DialogContent className="max-w-md rounded-2xl border-0 p-0 shadow-[0_8px_30px_rgba(5,5,5,0.12)] sm:max-w-md">
           <DialogHeader className="border-b border-[#ebebeb] px-6 py-5">
-            <DialogTitle className="text-lg font-semibold text-[#050505]">
+            <DialogTitle className="text-lg font-semibold text-[#18181b]">
               Как работает «Поиск клиентов»
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-5 px-6 py-5">
             {INFO_BLOCKS.map((block) => (
               <div key={block.title}>
-                <h3 className="text-sm font-semibold text-[#050505]">{block.title}</h3>
+                <h3 className="text-sm font-semibold text-[#18181b]">{block.title}</h3>
                 {"text" in block && (
-                  <p className="mt-1.5 text-sm leading-relaxed text-[#6b7280]">{block.text}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[#71717a]">{block.text}</p>
                 )}
                 {"items" in block && (
                   <ul className="mt-2 space-y-1.5">
                     {block.items.map((item) => (
-                      <li key={item} className="flex gap-2 text-sm leading-relaxed text-[#6b7280]">
+                      <li key={item} className="flex gap-2 text-sm leading-relaxed text-[#71717a]">
                         <span className="mt-2 size-1 shrink-0 rounded-full bg-[#9ca3af]" />
                         {item}
                       </li>
@@ -89,7 +89,7 @@ export function ProspectingHeader({
             <button
               type="button"
               onClick={() => setInfoOpen(false)}
-              className="h-10 w-full rounded-full bg-[#050505] text-sm font-medium text-white"
+              className="h-10 w-full rounded-full bg-[var(--color-sunrise-coral)] text-sm font-medium text-white"
             >
               Понятно
             </button>
@@ -101,7 +101,7 @@ export function ProspectingHeader({
         <button
           type="button"
           onClick={onAdd}
-          className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#050505] px-4 text-sm font-medium text-white"
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[var(--color-sunrise-coral)] px-4 text-sm font-medium text-white"
         >
           <Plus className="size-4" />
           Добавить контакт
@@ -109,7 +109,7 @@ export function ProspectingHeader({
         <button
           type="button"
           onClick={onExport}
-          className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#f6f6f6] px-4 text-sm font-medium text-[#050505]"
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#f4f4f5] px-4 text-sm font-medium text-[#18181b]"
         >
           <Download className="size-4" />
           Скачать

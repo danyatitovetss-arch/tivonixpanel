@@ -1,5 +1,12 @@
 export type UserRole = "admin" | "partner" | "manager";
-export type UserStatus = "active" | "inactive" | "blocked";
+export type UserStatus =
+  | "pending"
+  | "active"
+  | "rejected"
+  | "suspended"
+  | "inactive"
+  | "blocked";
+export type PartnerType = "referral" | "white_label";
 
 export type LeadStatus =
   | "pending_review"
@@ -49,6 +56,11 @@ export interface User {
   telegram: string;
   role: UserRole;
   status: UserStatus;
+  partnerType: PartnerType | null;
+  agencyName: string | null;
+  websiteUrl: string | null;
+  commissionPercentOverride: number | null;
+  assignedManagerId: string | null;
   createdAt: string;
 }
 

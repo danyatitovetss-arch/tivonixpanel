@@ -6,7 +6,11 @@ import { createServerClient } from "@supabase/ssr";
 const PUBLIC_PATHS = [
   "/login",
   "/register",
+  "/forgot-password",
+  "/pending",
   "/blocked",
+  "/auth/callback",
+  "/auth/reset-password",
   "/legal/privacy",
   "/legal/terms",
   "/legal/personal-data-consent",
@@ -14,6 +18,8 @@ const PUBLIC_PATHS = [
   "/legal/commission-rules",
   "/legal/cookies",
 ];
+
+const AUTH_ENTRY_PATHS = ["/login", "/register", "/forgot-password"];
 
 const PROTECTED_PREFIXES = [
   "/dashboard",
@@ -52,6 +58,14 @@ function isProtected(pathname: string) {
   return PROTECTED_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 }
 
+function isAuthEntry(pathname: string) {
+  return AUTH_ENTRY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+}
+
+function homeForRole() {
+  return "/dashboard";
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -71,11 +85,27 @@ export async function middleware(request: NextRequest) {
     return updateSession(request);
   }
 
-  if (isPublic(pathname)) {
+  // Legal docs & reset/callback: session refresh only (no auth gate)
+  if (
+    pathname.startsWith("/legal/") ||
+    pathname.startsWith("/auth/callback") ||
+    pathname.startsWith("/auth/reset-password")
+  ) {
     return updateSession(request);
   }
 
-  if (!isProtected(pathname)) {
+  const needsProfileGate =
+    pathname === "/" ||
+    isProtected(pathname) ||
+    isAuthEntry(pathname) ||
+    pathname.startsWith("/pending") ||
+    pathname.startsWith("/blocked");
+
+  if (!needsProfileGate && isPublic(pathname)) {
+    return updateSession(request);
+  }
+
+  if (!needsProfileGate && !isProtected(pathname)) {
     return updateSession(request);
   }
 
@@ -109,6 +139,14 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (!user) {
+    if (pathname === "/") {
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = "/login";
+      return NextResponse.redirect(loginUrl);
+    }
+    if (isAuthEntry(pathname) || pathname.startsWith("/pending") || pathname.startsWith("/blocked")) {
+      return response;
+    }
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
     loginUrl.searchParams.set("next", pathname);
@@ -117,25 +155,91 @@ export async function middleware(request: NextRequest) {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("role")
+    .select("role, status")
     .eq("user_id", user.id)
     .single();
 
-  if (pathname.startsWith("/admin") && profile?.role !== "admin") {
+  const role = profile?.role as string | undefined;
+  const status = profile?.status as string | undefined;
+
+  // Profile not ready yet (race after signup) — keep user out of CRM
+  if (!profile || !status) {
+    if (pathname.startsWith("/pending") || pathname.startsWith("/blocked") || isAuthEntry(pathname)) {
+      return response;
+    }
+    const pending = request.nextUrl.clone();
+    pending.pathname = "/pending";
+    return NextResponse.redirect(pending);
+  }
+
+  if (pathname === "/" || isAuthEntry(pathname)) {
+    if (role === "admin") {
+      const dest = request.nextUrl.clone();
+      dest.pathname = "/dashboard";
+      return NextResponse.redirect(dest);
+    }
+    if (status === "pending" || status === "rejected" || status === "suspended") {
+      const dest = request.nextUrl.clone();
+      dest.pathname = "/pending";
+      return NextResponse.redirect(dest);
+    }
+    if (status === "blocked" || status === "inactive") {
+      const dest = request.nextUrl.clone();
+      dest.pathname = "/blocked";
+      return NextResponse.redirect(dest);
+    }
+    const dest = request.nextUrl.clone();
+    dest.pathname = homeForRole();
+    return NextResponse.redirect(dest);
+  }
+
+  if (pathname.startsWith("/pending")) {
+    if (role === "admin") {
+      const dest = request.nextUrl.clone();
+      dest.pathname = "/dashboard";
+      return NextResponse.redirect(dest);
+    }
+    if (status === "blocked" || status === "inactive") {
+      const dest = request.nextUrl.clone();
+      dest.pathname = "/blocked";
+      return NextResponse.redirect(dest);
+    }
+    if (status === "active") {
+      const dest = request.nextUrl.clone();
+      dest.pathname = homeForRole();
+      return NextResponse.redirect(dest);
+    }
+    return response;
+  }
+
+  if (pathname.startsWith("/blocked")) {
+    return response;
+  }
+
+  if (pathname.startsWith("/admin") && role !== "admin") {
     const forbidden = request.nextUrl.clone();
     forbidden.pathname = "/dashboard";
     forbidden.searchParams.set("error", "forbidden");
     return NextResponse.redirect(forbidden);
   }
 
-  if (profile?.role === "admin") {
+  if (role === "admin") {
     return response;
   }
 
-  if (
-    isProtected(pathname) &&
-    !pathname.startsWith("/blocked")
-  ) {
+  if (status === "pending" || status === "rejected" || status === "suspended") {
+    const pending = request.nextUrl.clone();
+    pending.pathname = "/pending";
+    return NextResponse.redirect(pending);
+  }
+
+  if (status === "blocked" || status === "inactive") {
+    const blocked = request.nextUrl.clone();
+    blocked.pathname = "/blocked";
+    return NextResponse.redirect(blocked);
+  }
+
+  if (isProtected(pathname)) {
     const { data: legal } = await supabase
       .from("user_legal_profiles")
       .select("crm_access, onboarding_status")
@@ -145,6 +249,7 @@ export async function middleware(request: NextRequest) {
     if (legal?.onboarding_status === "blocked_under_16") {
       const blocked = request.nextUrl.clone();
       blocked.pathname = "/blocked";
+      blocked.searchParams.set("reason", "under_16");
       return NextResponse.redirect(blocked);
     }
 

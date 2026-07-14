@@ -10,19 +10,19 @@ import {
 export function CommissionGuide() {
   return (
     <div className="space-y-5">
-      <p className="text-sm leading-relaxed text-[#6b7280] md:text-base">{COMMISSION_INTRO}</p>
+      <p className="text-sm leading-relaxed text-[#71717a] md:text-base">{COMMISSION_INTRO}</p>
 
       <div className="grid gap-3 sm:grid-cols-3">
         {COMMISSION_TIERS.map((tier) => (
-          <div key={tier.label} className="rounded-2xl bg-[#f6f6f6] p-5">
-            <p className="text-2xl font-semibold tracking-tight text-[#050505]">{tier.percent}</p>
-            <p className="mt-1 text-sm font-medium text-[#050505]">{tier.label}</p>
-            {tier.note && <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">{tier.note}</p>}
+          <div key={tier.label} className="rounded-2xl bg-[#f4f4f5] p-5">
+            <p className="text-2xl font-semibold tracking-tight text-[#18181b]">{tier.percent}</p>
+            <p className="mt-1 text-sm font-medium text-[#18181b]">{tier.label}</p>
+            {tier.note && <p className="mt-2 text-sm leading-relaxed text-[#71717a]">{tier.note}</p>}
           </div>
         ))}
       </div>
 
-      <div className="rounded-2xl bg-[#050505] p-5 text-white sm:p-6">
+      <div className="rounded-2xl bg-[#18181b] p-5 text-white sm:p-6">
         <h3 className="text-sm font-semibold">Примеры</h3>
         <ul className="mt-4 space-y-3">
           {COMMISSION_EXAMPLES.map((ex) => (
@@ -34,7 +34,7 @@ export function CommissionGuide() {
         </ul>
       </div>
 
-      <p className="text-sm leading-relaxed text-[#6b7280] md:text-base">{COMMISSION_INCOME_NOTE}</p>
+      <p className="text-sm leading-relaxed text-[#71717a] md:text-base">{COMMISSION_INCOME_NOTE}</p>
     </div>
   );
 }

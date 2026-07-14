@@ -48,7 +48,7 @@ function SelectFieldText({
       data-slot="select-value"
       className={cn(
         "min-w-0 flex-1 truncate text-left text-sm",
-        muted ? "text-[#9ca3af]" : "text-[#050505]",
+        muted ? "text-[#9ca3af]" : "text-[#18181b]",
         className
       )}
     >

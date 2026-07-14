@@ -54,14 +54,14 @@ export function LeadDetailContent({ leadId }: LeadDetailContentProps) {
 
   if (!lead) {
     return (
-      <p className="py-12 text-center text-sm text-[#6b7280]">{CLIENT_COPY.notFoundOne}</p>
+      <p className="py-12 text-center text-sm text-[#71717a]">{CLIENT_COPY.notFoundOne}</p>
     );
   }
 
   const visible = filterLeadsForUser([lead], user);
   if (visible.length === 0) {
     return (
-      <p className="py-12 text-center text-sm text-[#6b7280]">{CLIENT_COPY.noAccess}</p>
+      <p className="py-12 text-center text-sm text-[#71717a]">{CLIENT_COPY.noAccess}</p>
     );
   }
 
@@ -70,7 +70,7 @@ export function LeadDetailContent({ leadId }: LeadDetailContentProps) {
   const closedCount = getPartnerClosedDealsCount(data, lead.partnerId);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       {partnerView ? (
         <LeadPartnerView lead={lead} deal={deal} />
       ) : (
@@ -171,8 +171,10 @@ export function LeadDetailContent({ leadId }: LeadDetailContentProps) {
         </>
       )}
 
-      <section className="rounded-2xl bg-[#f6f6f6] p-5">
-        <h2 className="mb-4 text-sm font-semibold text-[#050505]">История действий</h2>
+      <section>
+        <h2 className="mb-4 text-[19px] font-normal tracking-[-0.012em] text-[var(--color-carbon-black)]">
+          История действий
+        </h2>
         <ActivityTimeline activities={activities} users={data.users} />
       </section>
     </div>

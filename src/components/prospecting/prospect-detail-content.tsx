@@ -51,7 +51,7 @@ export function ProspectDetailContent({ prospectId, onClose }: ProspectDetailCon
   }, [prospect, checkProspectDuplicate]);
 
   if (!prospect) {
-    return <p className="text-sm text-[#6b7280]">Контакт не найден</p>;
+    return <p className="text-sm text-[#71717a]">Контакт не найден</p>;
   }
 
   function saveNotes(notes: string) {
@@ -78,7 +78,7 @@ export function ProspectDetailContent({ prospectId, onClose }: ProspectDetailCon
     <div className="space-y-6">
       <div className="flex flex-wrap gap-2">
         <ProspectStatusBadge status={prospect.status} />
-        <span className="rounded-lg bg-[#f6f6f6] px-2.5 py-1 text-xs">
+        <span className="rounded-lg bg-[#f4f4f5] px-2.5 py-1 text-xs">
           {PROSPECT_PRIORITY_LABELS[prospect.priority]}
         </span>
       </div>
@@ -106,8 +106,8 @@ export function ProspectDetailContent({ prospectId, onClose }: ProspectDetailCon
       {duplicateMatch && <DuplicateCheckPanel match={duplicateMatch} />}
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <section className="rounded-2xl bg-[#f6f6f6] p-4">
-          <h3 className="text-sm font-semibold text-[#050505]">Контакты</h3>
+        <section className="rounded-2xl bg-[#f4f4f5] p-4">
+          <h3 className="text-sm font-semibold text-[#18181b]">Контакты</h3>
           <dl className="mt-3 space-y-2 text-sm">
             {[
               ["Сайт", prospect.website],
@@ -127,8 +127,8 @@ export function ProspectDetailContent({ prospectId, onClose }: ProspectDetailCon
           </dl>
         </section>
 
-        <section className="rounded-2xl bg-[#f6f6f6] p-4">
-          <h3 className="text-sm font-semibold text-[#050505]">Проверка бизнеса</h3>
+        <section className="rounded-2xl bg-[#f4f4f5] p-4">
+          <h3 className="text-sm font-semibold text-[#18181b]">Проверка бизнеса</h3>
           <dl className="mt-3 space-y-2 text-sm">
             <div className="flex gap-2">
               <dt className="text-[#9ca3af]">Сайт:</dt>
@@ -161,7 +161,7 @@ export function ProspectDetailContent({ prospectId, onClose }: ProspectDetailCon
       </div>
 
       <section>
-        <h3 className="mb-3 text-sm font-semibold text-[#050505]">Заметки</h3>
+        <h3 className="mb-3 text-sm font-semibold text-[#18181b]">Заметки</h3>
         <ProspectNotes notes={prospect.notes} onChange={saveNotes} />
       </section>
 
@@ -177,11 +177,11 @@ export function ProspectDetailContent({ prospectId, onClose }: ProspectDetailCon
       />
 
       {activities.length > 0 && (
-        <section className="rounded-2xl bg-[#f6f6f6] p-4">
-          <h3 className="text-sm font-semibold text-[#050505]">История</h3>
+        <section className="rounded-2xl bg-[#f4f4f5] p-4">
+          <h3 className="text-sm font-semibold text-[#18181b]">История</h3>
           <ul className="mt-3 space-y-2">
             {activities.map((a) => (
-              <li key={a.id} className="text-sm text-[#6b7280]">
+              <li key={a.id} className="text-sm text-[#71717a]">
                 {new Date(a.createdAt).toLocaleString("ru-RU")} — {a.comment}
               </li>
             ))}

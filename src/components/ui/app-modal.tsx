@@ -28,19 +28,17 @@ export function AppModal({
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent
         className={cn(
-          "gap-0 overflow-hidden rounded-2xl border border-[#e5e5e5] p-0 sm:max-w-lg",
+          "gap-0 overflow-hidden rounded-[15px] border-0 p-0 shadow-[var(--shadow-subtle)] sm:max-w-lg",
           className
         )}
       >
-        <div className="border-b border-[#e5e5e5] px-6 py-5">
+        <div className="px-6 pt-6 pb-4">
           <DialogHeader className="gap-1.5 text-left">
-            <DialogTitle className="text-lg font-semibold text-[#050505]">{title}</DialogTitle>
-            {description && (
-              <DialogDescription className="text-sm text-[#6b7280]">{description}</DialogDescription>
-            )}
+            <DialogTitle>{title}</DialogTitle>
+            {description ? <DialogDescription>{description}</DialogDescription> : null}
           </DialogHeader>
         </div>
-        <div className="px-6 py-5">{children}</div>
+        <div className="px-6 pb-6">{children}</div>
       </DialogContent>
     </Dialog>
   );
@@ -66,7 +64,7 @@ export function ModalActions({
       <button
         type="button"
         onClick={onCancel}
-        className="flex-1 rounded-xl border border-[#e5e5e5] py-2.5 text-sm font-medium text-[#050505] transition-colors hover:bg-[#fafafa]"
+        className="h-11 flex-1 rounded-full border border-[var(--color-mist-gray)] bg-transparent text-[14px] font-bold tracking-[-0.009em] text-[var(--color-carbon-black)] transition-colors hover:bg-[var(--color-fog-gray)]"
       >
         Отмена
       </button>
@@ -75,8 +73,10 @@ export function ModalActions({
         onClick={onConfirm}
         disabled={disabled}
         className={cn(
-          "flex-1 rounded-xl py-2.5 text-sm font-medium transition-colors disabled:opacity-50",
-          primary ? "bg-[#050505] text-white hover:bg-[#050505]/90" : "bg-[#f6f6f6] text-[#050505] hover:bg-[#ebebeb]"
+          "h-11 flex-1 rounded-full text-[14px] font-bold tracking-[-0.009em] transition-opacity disabled:opacity-50",
+          primary
+            ? "bg-[var(--color-sunrise-coral)] text-white hover:opacity-90"
+            : "bg-[var(--color-fog-gray)] text-[var(--color-carbon-black)] hover:opacity-90"
         )}
       >
         {confirmLabel}
@@ -86,7 +86,7 @@ export function ModalActions({
 }
 
 const fieldClass =
-  "mt-1.5 h-11 w-full rounded-xl border border-[#e5e5e5] bg-[#fafafa] px-3.5 text-sm text-[#050505] outline-none focus:border-[#050505]/20 focus:bg-white";
+  "mt-1.5 h-11 w-full rounded-[15px] border border-[var(--color-mist-gray)] bg-[var(--color-paper-white)] px-[15px] text-[15px] tracking-[-0.005em] text-[var(--color-carbon-black)] outline-none transition-colors placeholder:text-[var(--color-ash-gray)] focus:border-[var(--color-carbon-black)] focus:ring-[3px] focus:ring-[var(--color-carbon-black)]/5";
 
 export function ModalField({
   label,
@@ -97,7 +97,9 @@ export function ModalField({
 }) {
   return (
     <div>
-      <label className="text-[13px] font-medium text-[#525252]">{label}</label>
+      <label className="text-[13px] tracking-[-0.005em] text-[var(--color-zinc-gray)]">
+        {label}
+      </label>
       {children}
     </div>
   );

@@ -8,12 +8,12 @@ interface StatusBadgeProps {
 }
 
 const variantStyles = {
-  default: "bg-[#050505] text-white",
-  success: "bg-[#dcfce7] text-[#166534]",
-  secondary: "bg-[#e5e5e5] text-[#050505]",
-  outline: "bg-transparent text-[#6b7280] border border-[#e5e5e5]",
-  muted: "bg-[#f6f6f6] text-[#6b7280]",
-  warning: "bg-[#fef3c7] text-[#92400e]",
+  default: "bg-[var(--color-carbon-black)] text-white",
+  success: "bg-[#ecfdf3] text-[#166534]",
+  secondary: "bg-[var(--color-mist-gray)] text-[var(--color-carbon-black)]",
+  outline: "bg-transparent text-[var(--color-zinc-gray)] border border-[var(--color-mist-gray)]",
+  muted: "bg-[var(--color-fog-gray)] text-[var(--color-zinc-gray)]",
+  warning: "bg-[#fff7ed] text-[#c2410c]",
 };
 
 export function StatusBadge({ status, label, className }: StatusBadgeProps) {
@@ -22,7 +22,7 @@ export function StatusBadge({ status, label, className }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium whitespace-nowrap",
+        "inline-flex items-center rounded-[9999px] px-2.5 py-1 text-[11px] font-bold tracking-[-0.005em] whitespace-nowrap",
         variantStyles[variant],
         className
       )}

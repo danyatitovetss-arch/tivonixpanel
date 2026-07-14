@@ -76,10 +76,10 @@ export function PlatformQueriesModal({
     >
       <DialogContent className="flex max-h-[min(90dvh,640px)] flex-col gap-0 overflow-hidden p-0 sm:max-w-md">
         <DialogHeader className="px-5 py-4 text-left">
-          <DialogTitle className="text-lg font-semibold text-[#050505]">
+          <DialogTitle className="text-lg font-semibold text-[#18181b]">
             Запросы для {platformName}
           </DialogTitle>
-          <DialogDescription className="text-base text-[#6b7280]">
+          <DialogDescription className="text-base text-[#71717a]">
             {hint ?? "Выбери запрос и нажми «Скопировать», или отметь несколько и скопируй разом."}
           </DialogDescription>
         </DialogHeader>
@@ -95,7 +95,7 @@ export function PlatformQueriesModal({
                   <div
                     className={cn(
                       "flex items-center gap-2 rounded-xl p-1 transition-colors",
-                      isSelected ? "bg-[#050505]/10" : "bg-[#f6f6f6]"
+                      isSelected ? "bg-[var(--color-sunrise-coral)]/10" : "bg-[#f4f4f5]"
                     )}
                   >
                     <button
@@ -106,12 +106,12 @@ export function PlatformQueriesModal({
                       <span
                         className={cn(
                           "flex size-5 shrink-0 items-center justify-center rounded-md bg-white",
-                          isSelected && "bg-[#050505]"
+                          isSelected && "bg-[var(--color-sunrise-coral)]"
                         )}
                       >
                         {isSelected && <Check className="size-3 text-white" strokeWidth={3} />}
                       </span>
-                      <span className="text-base leading-snug text-[#050505]">{query}</span>
+                      <span className="text-base leading-snug text-[#18181b]">{query}</span>
                     </button>
                     <button
                       type="button"
@@ -120,9 +120,9 @@ export function PlatformQueriesModal({
                       className="mr-1 flex size-11 shrink-0 items-center justify-center rounded-lg bg-white/80 hover:bg-white"
                     >
                       {isCopied ? (
-                        <Check className="size-4 text-[#050505]" />
+                        <Check className="size-4 text-[#18181b]" />
                       ) : (
-                        <Copy className="size-4 text-[#6b7280]" />
+                        <Copy className="size-4 text-[#71717a]" />
                       )}
                     </button>
                   </div>
@@ -136,7 +136,7 @@ export function PlatformQueriesModal({
           <button
             type="button"
             onClick={handleCopySelected}
-            className="flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#050505] px-4 text-base font-medium text-white hover:bg-[#262626]"
+            className="flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[var(--color-sunrise-coral)] px-4 text-base font-medium text-white hover:opacity-90"
           >
             <ListChecks className="size-4 shrink-0" />
             Скопировать выбранные{selected.length > 0 ? ` (${selected.length})` : ""}
@@ -144,7 +144,7 @@ export function PlatformQueriesModal({
           <button
             type="button"
             onClick={handleCopyAll}
-            className="flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#f6f6f6] px-4 text-base font-medium text-[#050505] hover:bg-[#ebebeb]"
+            className="flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#f4f4f5] px-4 text-base font-medium text-[#18181b] hover:bg-[#ebebeb]"
           >
             <Copy className="size-4 shrink-0" />
             Скопировать все ({queries.length})

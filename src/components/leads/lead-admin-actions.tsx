@@ -167,9 +167,9 @@ export function LeadAdminActions({
 
   return (
     <>
-      <div className="rounded-2xl bg-[#f6f6f6] p-5">
+      <div className="rounded-2xl bg-[#f4f4f5] p-5">
         <div className="mb-4 flex flex-wrap items-center gap-2">
-          <p className="text-sm font-semibold text-[#050505]">Действия админа</p>
+          <p className="text-sm font-semibold text-[#18181b]">Действия админа</p>
           <StatusBadge status={lead.status} label={getLeadStatusLabel(lead.status)} />
           {(isLeadPendingAdminReview(lead) ||
             lead.adminReviewStatus === "rejected" ||
@@ -182,7 +182,7 @@ export function LeadAdminActions({
             />
           )}
         </div>
-        <p className="mb-4 text-xs text-[#6b7280]">
+        <p className="mb-4 text-xs text-[#71717a]">
           {isLeadPendingAdminReview(lead)
             ? "Клиент на проверке — одобрите, отклоните или отметьте дубль"
             : visibility.editDeal
@@ -190,7 +190,7 @@ export function LeadAdminActions({
               : "Все подтверждения — только через модальные окна"}
         </p>
         {visibleActions.length === 0 ? (
-          <p className="text-sm text-[#6b7280]">Нет доступных действий для текущего статуса</p>
+          <p className="text-sm text-[#71717a]">Нет доступных действий для текущего статуса</p>
         ) : (
           <div className="flex flex-wrap gap-2">
             {visibleActions.map((a) => {
@@ -200,7 +200,7 @@ export function LeadAdminActions({
                   key={a.id}
                   type="button"
                   onClick={() => openModal(a.id)}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-[#050505] transition-colors hover:bg-[#ebebeb]"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-[#18181b] transition-colors hover:bg-[#ebebeb]"
                 >
                   <Icon className="size-4" />
                   {a.label}
@@ -213,7 +213,7 @@ export function LeadAdminActions({
 
       <AdminModal open={modal === "approve"} onClose={close} title="Одобрить клиента" description="Клиент станет доступен для работы. Партнёр получит уведомление в карточке.">
         <div className="space-y-4">
-          <p className="text-sm text-[#6b7280]">Бизнес: <strong>{lead.businessName}</strong></p>
+          <p className="text-sm text-[#71717a]">Бизнес: <strong>{lead.businessName}</strong></p>
           <div>
             <Label>Комментарий для партнёра (необязательно)</Label>
             <Textarea value={comment} onChange={(e) => setComment(e.target.value)} className="mt-1" placeholder="Например: можно писать клиенту" />
@@ -243,7 +243,7 @@ export function LeadAdminActions({
       </AdminModal>
 
       <AdminModal open={modal === "do_not_contact"} onClose={close} title="Не трогать" description="Клиент исключается из активной работы.">
-        <p className="text-sm text-[#6b7280]">Вы уверены? Партнёры не должны писать этому клиенту.</p>
+        <p className="text-sm text-[#71717a]">Вы уверены? Партнёры не должны писать этому клиенту.</p>
         <ModalActions onCancel={close} onConfirm={() => { onDoNotContact(); toast.success("Отмечено: не трогать"); close(); }} confirmLabel="Подтвердить" className="mt-4" />
       </AdminModal>
 
@@ -454,14 +454,14 @@ function ModalActions({
 }) {
   return (
     <div className={`flex gap-2 pt-2 ${className ?? ""}`}>
-      <button type="button" onClick={onCancel} disabled={disabled} className="flex-1 rounded-xl border border-[#e5e5e5] py-2.5 text-sm font-medium disabled:opacity-50">
+      <button type="button" onClick={onCancel} disabled={disabled} className="flex-1 rounded-xl border border-[#e4e4e7] py-2.5 text-sm font-medium disabled:opacity-50">
         Отмена
       </button>
       <button
         type="button"
         onClick={onConfirm}
         disabled={disabled}
-        className={`flex-1 rounded-xl py-2.5 text-sm font-medium disabled:opacity-50 ${primary ? "bg-[#050505] text-white" : "bg-[#f6f6f6] text-[#050505]"}`}
+        className={`flex-1 rounded-xl py-2.5 text-sm font-medium disabled:opacity-50 ${primary ? "bg-[var(--color-sunrise-coral)] text-white" : "bg-[#f4f4f5] text-[#18181b]"}`}
       >
         {confirmLabel}
       </button>

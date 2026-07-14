@@ -18,7 +18,7 @@ interface FilterSelectProps {
 }
 
 const triggerClass =
-  "h-11 w-full justify-between gap-2 rounded-xl border-0 bg-[#f6f6f6] px-3.5 shadow-none ring-0 transition-colors hover:bg-[#efefef] focus-visible:border-0 focus-visible:bg-[#efefef] focus-visible:ring-0 data-placeholder:text-[#9ca3af] [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:text-left [&_svg]:ml-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-[#9ca3af]";
+  "h-11 w-full justify-between gap-2 rounded-xl border-0 bg-[#f4f4f5] px-3.5 shadow-none ring-0 transition-colors hover:bg-[#f4f4f5] focus-visible:border-0 focus-visible:bg-[#f4f4f5] focus-visible:ring-0 data-placeholder:text-[#9ca3af] [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:text-left [&_svg]:ml-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-[#9ca3af]";
 
 export function FilterSelect({
   value,
@@ -47,7 +47,7 @@ export function FilterSelect({
       >
         <SelectItem
           value="all"
-          className="rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f6f6f6]"
+          className="rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f4f4f5]"
         >
           {placeholder}
         </SelectItem>
@@ -55,7 +55,7 @@ export function FilterSelect({
           <SelectItem
             key={opt.value}
             value={opt.value}
-            className="rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f6f6f6]"
+            className="rounded-lg py-2.5 pl-3 pr-9 text-sm data-highlighted:bg-[#f4f4f5]"
           >
             {opt.label}
           </SelectItem>

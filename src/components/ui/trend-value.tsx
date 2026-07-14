@@ -26,7 +26,7 @@ export function TrendValue({ change, className, showSign = true }: TrendValuePro
     <span
       className={cn(
         "inline-flex items-center gap-1 text-sm font-medium tabular-nums",
-        isFlat ? "text-[#6b7280]" : isUp ? "text-[#16a34a]" : "text-[#dc2626]",
+        isFlat ? "text-[#71717a]" : isUp ? "text-[#16a34a]" : "text-[#dc2626]",
         className
       )}
     >

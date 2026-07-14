@@ -7,8 +7,8 @@ export function CoreTemplatesSection({ templates }: { templates: CoreMessageTemp
     <div className="grid gap-4 lg:grid-cols-2">
       {templates.map((template) => (
         <AcademyCardBody key={template.id} className="flex flex-col">
-          <h3 className="font-semibold text-[#050505]">{template.title}</h3>
-          <p className="mt-3 flex-1 whitespace-pre-line text-sm leading-relaxed text-[#6b7280]">
+          <h3 className="font-semibold text-[#18181b]">{template.title}</h3>
+          <p className="mt-3 flex-1 whitespace-pre-line text-sm leading-relaxed text-[#71717a]">
             {template.text}
           </p>
           <div className="mt-4">

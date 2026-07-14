@@ -35,19 +35,19 @@ export function MetricCard({
   return (
     <div
       className={cn(
-        "rounded-2xl px-4 py-4 md:px-5 md:py-5",
-        variant === "inset" ? "bg-white" : "bg-[#f6f6f6]",
+        "rounded-[15px] px-4 py-4 md:px-5 md:py-5",
+        variant === "inset" ? "bg-white" : "bg-[var(--color-fog-gray)]",
         className
       )}
     >
-      <p className="text-2xl font-bold tracking-tight text-[#050505] md:text-3xl">
+      <p className="text-[26px] font-normal leading-[1.1] tracking-[-0.015em] text-[var(--color-carbon-black)] md:text-[30px] md:leading-[1.2]">
         {formatMetricValue(value, format, currency)}
       </p>
-      <p className="mt-1 text-sm leading-snug text-[#6b7280] md:text-base">{label}</p>
+      <p className="mt-1 text-[13px] leading-snug tracking-[-0.005em] text-[var(--color-zinc-gray)] md:text-[15px]">{label}</p>
       {change !== undefined && (
         <div className="mt-2.5 flex items-center gap-1.5">
           <TrendValue change={change} className="text-xs md:text-sm" />
-          <span className="text-xs text-[#6b7280] md:text-sm">{changeLabel}</span>
+          <span className="text-xs text-[#71717a] md:text-sm">{changeLabel}</span>
         </div>
       )}
     </div>

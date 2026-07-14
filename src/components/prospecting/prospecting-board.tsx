@@ -31,10 +31,10 @@ export function ProspectingBoard({ prospects, onOpen, onStatusChange }: Prospect
             return (
               <div
                 key={col.status}
-                className="flex w-64 shrink-0 snap-start flex-col rounded-2xl bg-[#f6f6f6] p-3"
+                className="flex w-64 shrink-0 snap-start flex-col rounded-2xl bg-[#f4f4f5] p-3"
               >
                 <div className="mb-3 flex items-center justify-between gap-2">
-                  <h3 className="truncate text-xs font-semibold text-[#050505]">{col.label}</h3>
+                  <h3 className="truncate text-xs font-semibold text-[#18181b]">{col.label}</h3>
                   <span className="shrink-0 text-xs text-[#9ca3af]">{items.length}</span>
                 </div>
                 <div className="min-h-[120px] space-y-2">

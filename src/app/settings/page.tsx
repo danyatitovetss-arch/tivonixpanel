@@ -96,28 +96,28 @@ export default function SettingsPage() {
           />
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <div className="rounded-2xl bg-[#f6f6f6] px-5 py-4">
-              <p className="text-2xl font-bold tracking-tight text-[#050505]">{getUserRoleLabel(user.role)}</p>
-              <p className="mt-1 text-sm text-[#6b7280]">Ваша роль</p>
+            <div className="rounded-2xl bg-[#f4f4f5] px-5 py-4">
+              <p className="text-2xl font-bold tracking-tight text-[#18181b]">{getUserRoleLabel(user.role)}</p>
+              <p className="mt-1 text-sm text-[#71717a]">Ваша роль</p>
             </div>
-            <div className="rounded-2xl bg-[#f6f6f6] px-5 py-4">
-              <p className="text-2xl font-bold tracking-tight text-[#050505]">{partnersCount}</p>
-              <p className="mt-1 text-sm text-[#6b7280]">Партнёров в системе</p>
+            <div className="rounded-2xl bg-[#f4f4f5] px-5 py-4">
+              <p className="text-2xl font-bold tracking-tight text-[#18181b]">{partnersCount}</p>
+              <p className="mt-1 text-sm text-[#71717a]">Партнёров в системе</p>
             </div>
-            <div className="rounded-2xl bg-[#f6f6f6] px-5 py-4">
-              <p className="text-2xl font-bold tracking-tight text-[#050505]">{s.basePercentUnder2000}%</p>
-              <p className="mt-1 text-sm text-[#6b7280]">Комиссия до $2000</p>
+            <div className="rounded-2xl bg-[#f4f4f5] px-5 py-4">
+              <p className="text-2xl font-bold tracking-tight text-[#18181b]">{s.basePercentUnder2000}%</p>
+              <p className="mt-1 text-sm text-[#71717a]">Комиссия до $2000</p>
             </div>
-            <div className="rounded-2xl bg-[#f6f6f6] px-5 py-4">
-              <p className="text-2xl font-bold tracking-tight text-[#050505]">{s.basePercentFrom2000}%</p>
-              <p className="mt-1 text-sm text-[#6b7280]">Комиссия от $2000</p>
+            <div className="rounded-2xl bg-[#f4f4f5] px-5 py-4">
+              <p className="text-2xl font-bold tracking-tight text-[#18181b]">{s.basePercentFrom2000}%</p>
+              <p className="mt-1 text-sm text-[#71717a]">Комиссия от $2000</p>
             </div>
           </div>
 
           <section className="space-y-4">
             <div>
-              <h2 className="text-lg font-semibold text-[#050505]">Разделы</h2>
-              <p className="text-sm text-[#6b7280]">Откройте нужный блок в модальном окне</p>
+              <h2 className="text-lg font-semibold text-[#18181b]">Разделы</h2>
+              <p className="text-sm text-[#71717a]">Откройте нужный блок в модальном окне</p>
             </div>
             <OkxTable>
               <OkxTableBody>
@@ -134,7 +134,7 @@ export default function SettingsPage() {
                             subtitle={row.subtitle}
                             initials={row.title.slice(0, 1)}
                           />
-                          <ChevronRight className="size-4 shrink-0 text-[#6b7280]" />
+                          <ChevronRight className="size-4 shrink-0 text-[#71717a]" />
                         </button>
                       </OkxTd>
                     </OkxTr>
@@ -222,9 +222,9 @@ export default function SettingsPage() {
               { role: "manager" as const, desc: "Обрабатывает клиентов и меняет статусы" },
               { role: "partner" as const, desc: "Ищет клиентов, добавляет в CRM и видит свои результаты" },
             ].map((r) => (
-              <div key={r.role} className="rounded-xl bg-[#f6f6f6] px-4 py-3 text-sm">
-                <span className="font-semibold text-[#050505]">{getUserRoleLabel(r.role)}</span>
-                <span className="text-[#6b7280]"> — {r.desc}</span>
+              <div key={r.role} className="rounded-xl bg-[#f4f4f5] px-4 py-3 text-sm">
+                <span className="font-semibold text-[#18181b]">{getUserRoleLabel(r.role)}</span>
+                <span className="text-[#71717a]"> — {r.desc}</span>
               </div>
             ))}
             <ModalActions onCancel={() => setModal(null)} onConfirm={() => setModal(null)} confirmLabel="Понятно" primary />
@@ -241,7 +241,7 @@ export default function SettingsPage() {
             {Object.entries(LEAD_STATUS_LABELS).map(([k, v]) => (
               <span
                 key={k}
-                className="rounded-full bg-[#f6f6f6] px-3 py-1.5 text-xs font-medium text-[#050505]"
+                className="rounded-full bg-[#f4f4f5] px-3 py-1.5 text-xs font-medium text-[#18181b]"
                 title={k}
               >
                 {v}
@@ -263,7 +263,7 @@ export default function SettingsPage() {
           title="Сброс demo-данных"
           description="Вернуть mock-клиентов и сделки к начальному состоянию"
         >
-          <p className="text-sm text-[#6b7280]">
+          <p className="text-sm text-[#71717a]">
             Действие затронет только локальные demo-данные в браузере. Продакшен-данные Supabase не изменятся.
           </p>
           <ModalActions

@@ -10,9 +10,11 @@ import { LegalDocumentModal } from "@/components/legal/legal-document-modal";
 function ProfileRow({ label, value }: { label: string; value: string }) {
   if (!value) return null;
   return (
-    <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
-      <dt className="shrink-0 text-sm text-[#9ca3af] sm:w-36">{label}</dt>
-      <dd className="text-sm text-[#050505]">{value}</dd>
+    <div className="flex justify-between gap-4 border-b border-[var(--color-mist-gray)] py-3.5 last:border-b-0">
+      <dt className="shrink-0 text-[14px] text-[var(--color-zinc-gray)]">{label}</dt>
+      <dd className="min-w-0 text-right text-[14px] font-medium text-[var(--color-carbon-black)]">
+        {value}
+      </dd>
     </div>
   );
 }
@@ -43,13 +45,15 @@ export function AccountSheetContent() {
   ] as const;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <section>
-        <h3 className="text-sm font-semibold text-[#050505]">Ваши данные</h3>
-        <p className="mt-1 text-sm text-[#6b7280]">
+        <h3 className="text-[19px] font-normal tracking-[-0.012em] text-[var(--color-carbon-black)]">
+          Ваши данные
+        </h3>
+        <p className="mt-1 text-[14px] text-[var(--color-zinc-gray)]">
           Информация, которую вы указали при входе в панель
         </p>
-        <dl className="mt-4 space-y-3 rounded-2xl bg-[#f6f6f6] p-4">
+        <dl className="mt-4 border-y border-[var(--color-mist-gray)]">
           {profileRows.map(([label, value]) => (
             <ProfileRow key={label} label={label} value={value} />
           ))}
@@ -57,9 +61,13 @@ export function AccountSheetContent() {
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold text-[#050505]">Документы</h3>
-        <p className="mt-1 text-sm text-[#6b7280]">Можно открыть и просмотреть в любой момент</p>
-        <ul className="mt-4 space-y-2">
+        <h3 className="text-[19px] font-normal tracking-[-0.012em] text-[var(--color-carbon-black)]">
+          Документы
+        </h3>
+        <p className="mt-1 text-[14px] text-[var(--color-zinc-gray)]">
+          Можно открыть и просмотреть в любой момент
+        </p>
+        <ul className="mt-4 divide-y divide-[var(--color-mist-gray)] border-y border-[var(--color-mist-gray)]">
           {PARTNER_DOCUMENTS.map((item) => (
             <li key={item.slug}>
               <button
@@ -68,16 +76,18 @@ export function AccountSheetContent() {
                   setOpenSlug(item.slug);
                   setOpenTitle(item.title);
                 }}
-                className="flex w-full items-center gap-3 rounded-2xl bg-[#f6f6f6] px-4 py-3 text-left transition-colors hover:bg-[#efefef]"
+                className="flex w-full items-center gap-3 py-3.5 text-left transition-opacity hover:opacity-80"
               >
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white">
-                  <FileText className="size-4 text-[#6b7280]" />
-                </span>
+                <FileText className="size-4 shrink-0 text-[var(--color-zinc-gray)]" />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-medium text-[#050505]">{item.title}</span>
-                  <span className="mt-0.5 block text-xs text-[#6b7280]">{item.description}</span>
+                  <span className="block text-[14px] font-medium text-[var(--color-carbon-black)]">
+                    {item.title}
+                  </span>
+                  <span className="mt-0.5 block text-[12px] text-[var(--color-zinc-gray)]">
+                    {item.description}
+                  </span>
                 </span>
-                <ChevronRight className="size-4 shrink-0 text-[#9ca3af]" />
+                <ChevronRight className="size-4 shrink-0 text-[var(--color-ash-gray)]" />
               </button>
             </li>
           ))}

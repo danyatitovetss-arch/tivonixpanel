@@ -35,13 +35,13 @@ export default function PartnerDetailPage({ params }: { params: Promise<{ id: st
     <RoleGuard resource="partners">
       <AppLayout title={partner.name} showAddLead={false}>
         <div className="space-y-8">
-          <Link href="/partners" className="inline-flex items-center gap-1 text-sm text-[#6b7280]">
+          <Link href="/partners" className="inline-flex items-center gap-1 text-sm text-[#71717a]">
             <ArrowLeft className="size-4" /> Назад
           </Link>
 
           <div>
             <h1 className="text-2xl font-bold sm:text-3xl">{partner.name}</h1>
-            <p className="break-words text-sm text-[#6b7280] sm:text-base">{partner.telegram} · {partner.email}</p>
+            <p className="break-words text-sm text-[#71717a] sm:text-base">{partner.telegram} · {partner.email}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">

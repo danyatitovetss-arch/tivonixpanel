@@ -14,21 +14,21 @@ export function ProspectMessageTemplates({ prospect, onCopyAndMark }: ProspectMe
 
   return (
     <div className="space-y-3">
-      <h3 className="text-sm font-semibold text-[#050505]">Что написать</h3>
-      <p className="text-xs text-[#6b7280]">
+      <h3 className="text-sm font-semibold text-[#18181b]">Что написать</h3>
+      <p className="text-xs text-[#71717a]">
         После сообщения обнови статус, чтобы не написать одному бизнесу два раза.
       </p>
       <div className="space-y-2">
         {templates.slice(0, 6).map((t) => (
-          <div key={t.id} className="rounded-xl bg-[#f6f6f6] p-4">
-            <p className="text-xs font-medium text-[#050505]">{t.title}</p>
-            <p className="mt-1 text-sm text-[#6b7280] line-clamp-3">{t.text}</p>
+          <div key={t.id} className="rounded-xl bg-[#f4f4f5] p-4">
+            <p className="text-xs font-medium text-[#18181b]">{t.title}</p>
+            <p className="mt-1 text-sm text-[#71717a] line-clamp-3">{t.text}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <CopyButton text={t.text} label="Скопировать" className="text-xs" />
               <button
                 type="button"
                 onClick={() => onCopyAndMark(t.text)}
-                className="inline-flex h-10 items-center rounded-full bg-[#050505] px-4 text-xs font-medium text-white"
+                className="inline-flex h-10 items-center rounded-full bg-[var(--color-sunrise-coral)] px-4 text-xs font-medium text-white"
               >
                 Скопировать и «Написали»
               </button>

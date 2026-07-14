@@ -51,7 +51,7 @@ export function AppPageSkeleton({ variant = "default" }: AppPageSkeletonProps) {
                     </div>
                   </div>
                   <Skeleton className="h-11 w-full rounded-full" />
-                  <div className="flex gap-4 border-b border-[#e5e5e5] pb-3">
+                  <div className="flex gap-4 border-b border-[#e4e4e7] pb-3">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Skeleton key={i} className="h-4 w-20" />
                     ))}

@@ -29,11 +29,11 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Поиск ниши: салон, ремонт, стоматология…"
-        className="h-11 w-full rounded-xl border-0 bg-[#f6f6f6] px-4 text-sm text-[#050505] placeholder:text-[#9ca3af] outline-none focus:ring-2 focus:ring-[#050505]/10"
+        className="h-11 w-full rounded-xl border-0 bg-[#f4f4f5] px-4 text-sm text-[#18181b] placeholder:text-[#9ca3af] outline-none focus:ring-2 focus:ring-[#18181b]/10"
       />
 
       {filtered.length === 0 ? (
-        <p className="rounded-2xl bg-[#f6f6f6] px-6 py-10 text-center text-sm text-[#6b7280]">
+        <p className="rounded-2xl bg-[#f4f4f5] px-6 py-10 text-center text-sm text-[#71717a]">
           Ниши не найдены. Попробуйте другой запрос.
         </p>
       ) : (
@@ -44,7 +44,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
         </div>
       )}
 
-      <p className="text-sm text-[#6b7280]">
+      <p className="text-sm text-[#71717a]">
         Всего категорий: {categories.length}. Начни с одной ниши — не распыляйся.
       </p>
     </div>

@@ -114,8 +114,6 @@ export async function POST(request: Request) {
   await supabase.from("profiles").update({
     full_name: data.fullName,
     email: data.email,
-    telegram: null,
-    phone: null,
   }).eq("user_id", current.authId);
 
   await supabase.from("consent_events").insert({

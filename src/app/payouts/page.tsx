@@ -68,7 +68,7 @@ export default function PayoutsPage() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <OkxPageTitle title="Выплаты" description="Выплаты комиссий партнёрам" />
             {canCreate && (
-              <button type="button" onClick={() => setOpen(true)} className="h-10 w-full shrink-0 rounded-full bg-[#050505] px-5 text-sm text-white sm:w-auto">
+              <button type="button" onClick={() => setOpen(true)} className="h-10 w-full shrink-0 rounded-full bg-[var(--color-sunrise-coral)] px-5 text-sm text-white sm:w-auto">
                 Создать выплату
               </button>
             )}
@@ -91,9 +91,9 @@ export default function PayoutsPage() {
                   <OkxTd className="font-medium">{formatCurrency(p.amount, p.currency)}</OkxTd>
                   <OkxTd>{p.currency}</OkxTd>
                   <OkxTd><StatusBadge status={p.status} label={PAYOUT_STATUS_LABELS[p.status]} /></OkxTd>
-                  <OkxTd className="text-[#6b7280]">{p.paymentMethod}</OkxTd>
-                  <OkxTd className="text-[#6b7280]">{p.paidAt ? formatDate(p.paidAt) : "—"}</OkxTd>
-                  <OkxTd className="text-[#6b7280]">{p.adminComment}</OkxTd>
+                  <OkxTd className="text-[#71717a]">{p.paymentMethod}</OkxTd>
+                  <OkxTd className="text-[#71717a]">{p.paidAt ? formatDate(p.paidAt) : "—"}</OkxTd>
+                  <OkxTd className="text-[#71717a]">{p.adminComment}</OkxTd>
                   <OkxTd>
                     {canCreate && p.status === "pending" && (
                       <button type="button" className="text-xs underline" onClick={() => {
@@ -121,12 +121,12 @@ export default function PayoutsPage() {
                     ))}
                   </select>
                 </div>
-                {form.partnerId && <p className="text-sm text-[#6b7280]">Доступно: {formatCurrency(available)}</p>}
+                {form.partnerId && <p className="text-sm text-[#71717a]">Доступно: {formatCurrency(available)}</p>}
                 <div><Label>Сумма</Label><Input type="number" value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} /></div>
                 <div><Label>Метод</Label><Input value={form.paymentMethod} onChange={(e) => setForm({ ...form, paymentMethod: e.target.value })} /></div>
                 <div><Label>Реквизиты</Label><Input value={form.paymentDetails} onChange={(e) => setForm({ ...form, paymentDetails: e.target.value })} /></div>
                 <div><Label>Комментарий</Label><Input value={form.adminComment} onChange={(e) => setForm({ ...form, adminComment: e.target.value })} /></div>
-                <button type="button" className="w-full rounded-xl bg-[#050505] py-2 text-sm text-white" onClick={handleCreate}>Создать</button>
+                <button type="button" className="w-full rounded-full bg-[var(--color-sunrise-coral)] py-2 text-sm text-white" onClick={handleCreate}>Создать</button>
               </div>
             </DialogContent>
           </Dialog>

@@ -214,13 +214,13 @@ export function LeadForm({
     <form id={formId} onSubmit={handleSubmit} className="space-y-10">
       {mode === "sheet" && (
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-[#6b7280]">
+          <div className="flex items-center justify-between text-xs text-[#71717a]">
             <span>Заполнено</span>
-            <span className="font-medium text-[#050505]">{progress}%</span>
+            <span className="font-medium text-[#18181b]">{progress}%</span>
           </div>
-          <div className="h-1 overflow-hidden rounded-full bg-[#f6f6f6]">
+          <div className="h-1 overflow-hidden rounded-full bg-[#f4f4f5]">
             <div
-              className="h-full rounded-full bg-[#050505] transition-all duration-300"
+              className="h-full rounded-full bg-[var(--color-sunrise-coral)] transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -438,7 +438,7 @@ export function FormFooter({
           type="button"
           onClick={onCancel}
           disabled={submitting}
-          className="h-11 w-full rounded-xl bg-[#f6f6f6] px-6 text-sm font-medium text-[#050505] transition-colors hover:bg-[#efefef] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+          className="h-11 w-full rounded-xl bg-[#f4f4f5] px-6 text-sm font-medium text-[#18181b] transition-colors hover:bg-[#f4f4f5] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
         >
           Отмена
         </button>
@@ -446,7 +446,7 @@ export function FormFooter({
           type="submit"
           form={formId}
           disabled={submitting}
-          className="h-11 w-full rounded-xl bg-[#050505] px-8 text-sm font-medium text-white transition-colors hover:bg-[#050505]/90 disabled:pointer-events-none disabled:opacity-50 sm:w-auto sm:min-w-[180px]"
+          className="h-11 w-full rounded-full bg-[var(--color-sunrise-coral)] px-8 text-sm font-medium text-white transition-colors hover:opacity-90 disabled:pointer-events-none disabled:opacity-50 sm:w-auto sm:min-w-[180px]"
         >
           {submitting ? "Сохранение…" : submitLabel}
         </button>
@@ -458,10 +458,10 @@ export function FormFooter({
 function SectionTitle({ step, title }: { step: number; title: string }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#050505] text-[11px] font-semibold text-white">
+      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sunrise-coral)] text-[11px] font-semibold text-white">
         {step}
       </span>
-      <p className="text-sm font-semibold text-[#050505]">{title}</p>
+      <p className="text-sm font-semibold text-[#18181b]">{title}</p>
     </div>
   );
 }

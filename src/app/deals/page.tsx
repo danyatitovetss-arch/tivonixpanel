@@ -141,7 +141,7 @@ export default function DealsPage() {
           <OkxPageTitle title="Сделки" description="Закрытые заказы и расчёт комиссии партнёров" />
           <div className="flex gap-2">
             {canCreate && (
-              <button type="button" onClick={() => setOpen(true)} className="h-10 rounded-full bg-[#050505] px-5 text-sm text-white">
+              <button type="button" onClick={() => setOpen(true)} className="h-10 rounded-full bg-[var(--color-sunrise-coral)] px-5 text-sm text-white">
                 Создать сделку
               </button>
             )}
@@ -155,13 +155,13 @@ export default function DealsPage() {
         </div>
 
         {showPayoutDetailsHint && (
-          <p className="rounded-2xl border border-[#ebebeb] bg-[#f6f6f6] px-4 py-3 text-sm leading-relaxed text-[#6b7280] md:px-5">
+          <p className="rounded-2xl border border-[#ebebeb] bg-[#f4f4f5] px-4 py-3 text-sm leading-relaxed text-[#71717a] md:px-5">
             После первой комиссии от клиента{" "}
             <a
               href={supportTelegramMessageUrl(PAYOUT_DETAILS_TELEGRAM_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-[#050505] underline underline-offset-2 hover:text-[#050505]/80"
+              className="font-medium text-[#18181b] underline underline-offset-2 hover:text-[#18181b]/80"
             >
               напишите нам в Telegram
             </a>
@@ -199,14 +199,14 @@ export default function DealsPage() {
             deals.map((d) => (
               <OkxTr key={d.id}>
                 <OkxTd className="font-medium">{d.clientName}</OkxTd>
-                <OkxTd className="text-[#6b7280]">{getServiceTypeLabel(d.serviceType)}</OkxTd>
+                <OkxTd className="text-[#71717a]">{getServiceTypeLabel(d.serviceType)}</OkxTd>
                 <OkxTd>{formatCurrency(d.amount, d.currency)}</OkxTd>
-                <OkxTd className="text-[#6b7280]">{getUserName(data, d.partnerId)}</OkxTd>
+                <OkxTd className="text-[#71717a]">{getUserName(data, d.partnerId)}</OkxTd>
                 <OkxTd>{d.commissionPercent}% {d.bonusApplied && "★"}</OkxTd>
                 <OkxTd>{formatCurrency(d.commissionAmount, d.currency)}</OkxTd>
                 <OkxTd><StatusBadge status={d.paymentStatus} label={DEAL_PAYMENT_LABELS[d.paymentStatus]} /></OkxTd>
                 <OkxTd><StatusBadge status={d.commissionStatus} label={COMMISSION_STATUS_LABELS[d.commissionStatus]} /></OkxTd>
-                <OkxTd className="text-[#6b7280]">{formatDate(d.closedAt)}</OkxTd>
+                <OkxTd className="text-[#71717a]">{formatDate(d.closedAt)}</OkxTd>
                 <OkxTd>
                   {canConfirm && d.paymentStatus === "waiting_payment" && (
                     <button type="button" className="text-xs font-medium underline" onClick={() => void handleConfirmPayment(d.id)}>
@@ -255,7 +255,7 @@ export default function DealsPage() {
                   <option value="draft">Черновик</option>
                 </select>
               </div>
-              <button type="button" disabled={submitting} className="w-full rounded-xl bg-[#050505] py-2 text-sm text-white disabled:opacity-50" onClick={() => void handleCreate()}>
+              <button type="button" disabled={submitting} className="w-full rounded-full bg-[var(--color-sunrise-coral)] py-2 text-sm text-white disabled:opacity-50" onClick={() => void handleCreate()}>
                 {submitting ? "Создание…" : "Создать"}
               </button>
             </div>

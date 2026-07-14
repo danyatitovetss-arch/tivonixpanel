@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { toUserMessage } from "@/lib/errors";
 
 const inputClass =
-  "h-12 w-full rounded-lg border border-[#e5e5e5] bg-[#f6f6f6] px-3.5 text-[15px] text-[#050505] outline-none focus:border-[#050505]/25 focus:ring-4 focus:ring-[#050505]/[0.04]";
+  "h-12 w-full rounded-lg border border-[#e4e4e7] bg-[#f4f4f5] px-3.5 text-[15px] text-[#18181b] outline-none focus:border-[#18181b]/25 focus:ring-4 focus:ring-[#18181b]/[0.04]";
 
 export default function SetPasswordPage() {
   const router = useRouter();
@@ -25,7 +25,7 @@ export default function SetPasswordPage() {
           return;
         }
         if (!json.user.mustChangePassword) {
-          router.replace(json.user.role === "partner" ? "/my" : "/dashboard");
+          router.replace("/dashboard");
           return;
         }
         setChecking(false);
@@ -53,12 +53,12 @@ export default function SetPasswordPage() {
 
     const me = await fetch("/api/auth/me");
     const meJson = me.ok ? await me.json() : null;
-    router.push(meJson?.user?.role === "partner" ? "/my" : "/dashboard");
+    router.push("/dashboard");
   }
 
   if (checking) {
     return (
-      <div className="flex min-h-dvh items-center justify-center text-sm text-[#737373]">
+      <div className="flex min-h-dvh items-center justify-center text-sm text-[#71717a]">
         Загрузка…
       </div>
     );
@@ -67,15 +67,15 @@ export default function SetPasswordPage() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col justify-center px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold tracking-tight text-[#050505]">Создайте свой пароль</h1>
-        <p className="mt-2 text-sm text-[#737373]">
+        <h1 className="text-2xl font-semibold tracking-tight text-[#18181b]">Создайте свой пароль</h1>
+        <p className="mt-2 text-sm text-[#71717a]">
           Оформление завершено. Придумайте личный пароль для входа в панель — временный пароль от админа больше не понадобится.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-1.5">
-          <label htmlFor="new-password" className="text-[13px] font-medium text-[#525252]">
+          <label htmlFor="new-password" className="text-[13px] font-medium text-[#71717a]">
             Новый пароль
           </label>
           <input
@@ -92,7 +92,7 @@ export default function SetPasswordPage() {
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="confirm-password" className="text-[13px] font-medium text-[#525252]">
+          <label htmlFor="confirm-password" className="text-[13px] font-medium text-[#71717a]">
             Повторите пароль
           </label>
           <input
@@ -117,7 +117,7 @@ export default function SetPasswordPage() {
         <button
           type="submit"
           disabled={loading}
-          className="h-12 w-full rounded-lg bg-[#050505] text-[15px] font-medium text-white hover:bg-[#171717] disabled:opacity-50"
+          className="h-12 w-full rounded-full bg-[var(--color-sunrise-coral)] text-[15px] font-medium text-white hover:opacity-90 disabled:opacity-50"
         >
           {loading ? "Сохранение…" : "Сохранить и войти"}
         </button>

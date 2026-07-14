@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export const academyCardClass = "rounded-2xl bg-[#f6f6f6]";
+export const academyCardClass = "rounded-2xl bg-[#f4f4f5]";
 
 export function AcademyCard({
   className,

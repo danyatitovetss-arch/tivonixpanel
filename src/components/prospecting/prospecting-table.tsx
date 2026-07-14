@@ -35,7 +35,7 @@ function ContactLines({ p }: { p: ProspectContact }) {
   if (lines.length === 0) return <span className="text-[#9ca3af]">—</span>;
 
   return (
-    <div className="space-y-0.5 text-xs text-[#6b7280]">
+    <div className="space-y-0.5 text-xs text-[#71717a]">
       {lines.slice(0, 3).map((l) => (
         <div key={l} className="truncate">{l}</div>
       ))}
@@ -75,9 +75,9 @@ export function ProspectingTable({
                     subtitle={p.painPoints || p.notes || undefined}
                   />
                 </OkxTd>
-                <OkxTd className="text-[#6b7280]">{p.niche || "—"}</OkxTd>
-                <OkxTd className="text-[#6b7280]">{p.city || "—"}</OkxTd>
-                <OkxTd className="text-[#6b7280]">{p.source}</OkxTd>
+                <OkxTd className="text-[#71717a]">{p.niche || "—"}</OkxTd>
+                <OkxTd className="text-[#71717a]">{p.city || "—"}</OkxTd>
+                <OkxTd className="text-[#71717a]">{p.source}</OkxTd>
                 <OkxTd><ContactLines p={p} /></OkxTd>
                 <OkxTd>
                   <ProspectStatusBadge status={p.status} />
@@ -85,7 +85,7 @@ export function ProspectingTable({
                     {PROSPECT_PRIORITY_LABELS[p.priority]}
                   </span>
                 </OkxTd>
-                <OkxTd className="text-sm text-[#6b7280]">{getNextAction(p)}</OkxTd>
+                <OkxTd className="text-sm text-[#71717a]">{getNextAction(p)}</OkxTd>
                 <OkxTd className="text-right" onClick={(e) => e.stopPropagation()}>
                   <ProspectRowActions
                     prospect={p}
@@ -109,12 +109,12 @@ export function ProspectingTable({
             tabIndex={0}
             onClick={() => onOpen(p.id)}
             onKeyDown={(e) => e.key === "Enter" && onOpen(p.id)}
-            className="cursor-pointer rounded-2xl bg-[#f6f6f6] p-4 transition-colors hover:bg-[#efefef]"
+            className="cursor-pointer rounded-2xl bg-[#f4f4f5] p-4 transition-colors hover:bg-[#f4f4f5]"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
-                <p className="font-semibold text-[#050505]">{p.businessName}</p>
-                <p className="mt-0.5 text-xs text-[#6b7280]">
+                <p className="font-semibold text-[#18181b]">{p.businessName}</p>
+                <p className="mt-0.5 text-xs text-[#71717a]">
                   {[p.niche, p.city, p.source].filter(Boolean).join(" · ")}
                 </p>
               </div>
@@ -131,9 +131,9 @@ export function ProspectingTable({
             </div>
             <div className="mt-3"><ContactLines p={p} /></div>
             {p.painPoints && (
-              <p className="mt-2 text-xs text-[#6b7280]">{p.painPoints}</p>
+              <p className="mt-2 text-xs text-[#71717a]">{p.painPoints}</p>
             )}
-            <p className="mt-2 text-xs font-medium text-[#050505]">{getNextAction(p)}</p>
+            <p className="mt-2 text-xs font-medium text-[#18181b]">{getNextAction(p)}</p>
           </div>
         ))}
       </div>

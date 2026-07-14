@@ -19,12 +19,12 @@ export function SearchInput({
 }: SearchInputProps) {
   return (
     <div className={cn("relative", className)}>
-      <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#6b7280]" />
+      <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#71717a]" />
       <Input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-10 rounded-xl border-[#e5e5e5] bg-white pl-9 text-sm placeholder:text-[#6b7280] focus-visible:ring-[#050505]/10"
+        className="h-10 rounded-xl border-[#e4e4e7] bg-white pl-9 text-sm placeholder:text-[#71717a] focus-visible:ring-[#18181b]/10"
       />
     </div>
   );

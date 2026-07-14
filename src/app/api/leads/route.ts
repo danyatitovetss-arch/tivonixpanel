@@ -43,6 +43,16 @@ export async function POST(request: Request) {
 
   if (dup.length > 0 && user.role === "partner") {
     return NextResponse.json(
+      {
+        error:
+          "Похожий клиент уже есть в системе. Если это ваш лид — напишите в поддержку. Мы не раскрываем детали других заявок.",
+      },
+      { status: 409 }
+    );
+  }
+
+  if (dup.length > 0 && (user.role === "admin" || user.role === "manager")) {
+    return NextResponse.json(
       { error: "Duplicate lead", duplicate: dup[0] },
       { status: 409 }
     );

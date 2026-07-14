@@ -41,7 +41,7 @@ function SectionTitle({ id, children }: { id: string; children: React.ReactNode 
   return (
     <h2
       id={id}
-      className="scroll-mt-[var(--academy-scroll-offset)] text-lg font-bold tracking-tight text-[#050505] sm:text-xl md:text-2xl"
+      className="scroll-mt-[var(--academy-scroll-offset)] text-lg font-bold tracking-tight text-[#18181b] sm:text-xl md:text-2xl"
     >
       {children}
     </h2>
@@ -149,13 +149,13 @@ export default function AcademyPage() {
               <section id="platforms" className={`${SECTION_SCROLL_CLASS} space-y-6`}>
                 <div>
                   <SectionTitle id="platforms-title">Где искать клиентов</SectionTitle>
-                  <p className="mt-2 text-base text-[#6b7280] md:text-[17px]">
+                  <p className="mt-2 text-base text-[#71717a] md:text-[17px]">
                     Открой площадку, нажми «Выбрать запрос» и скопируй нужную нишу в поиск.
                   </p>
                 </div>
                 <PlatformSearchGrid platforms={PRACTICAL_PLATFORMS} />
                 <div className="space-y-4">
-                  <h3 className="text-base font-semibold text-[#050505]">
+                  <h3 className="text-base font-semibold text-[#18181b]">
                     Источники по уровню сложности
                   </h3>
                   <PlatformDifficultyBlock tiers={PLATFORM_DIFFICULTY} />
@@ -165,14 +165,14 @@ export default function AcademyPage() {
               <section id="niches" className={`${SECTION_SCROLL_CLASS} space-y-6`}>
                 <div>
                   <SectionTitle id="niches-title">Кого искать в первую очередь</SectionTitle>
-                  <p className="mt-2 text-base leading-relaxed text-[#6b7280]">
+                  <p className="mt-2 text-base leading-relaxed text-[#71717a]">
                     10 ниш для старта: где искать, запросы, признаки подходящего клиента, что предложить,
                     боли, реалистичный результат и готовое первое сообщение.
                   </p>
                 </div>
                 <PriorityNicheCards niches={PRIORITY_NICHES} />
                 <div className="space-y-4">
-                  <h3 className="text-base font-semibold text-[#050505]">
+                  <h3 className="text-base font-semibold text-[#18181b]">
                     Как понять, что клиенту можно писать
                   </h3>
                   <ClientFitBlock yesItems={CLIENT_FIT_YES} noItems={CLIENT_FIT_NO} />
@@ -182,7 +182,7 @@ export default function AcademyPage() {
               <section id="templates" className={`${SECTION_SCROLL_CLASS} space-y-5`}>
                 <div>
                   <SectionTitle id="templates-title">Что писать клиенту</SectionTitle>
-                  <p className="mt-2 text-base leading-relaxed text-[#6b7280] md:text-[17px]">
+                  <p className="mt-2 text-base leading-relaxed text-[#71717a] md:text-[17px]">
                     {MESSAGE_SUBTITLE}
                   </p>
                 </div>
@@ -200,13 +200,13 @@ export default function AcademyPage() {
               <section id="crm" className={`${SECTION_SCROLL_CLASS} space-y-4`}>
                 <SectionTitle id="crm-title">Как добавить лида в CRM</SectionTitle>
                 <AcademyCardBody>
-                  <p className="text-sm leading-relaxed text-[#6b7280]">
+                  <p className="text-sm leading-relaxed text-[#71717a]">
                     Перед добавлением проверь дубль: CRM сама проверит совпадение по Instagram,
                     Telegram, сайту или телефону.
                   </p>
                   <ol className="mt-4 space-y-2">
                     {AFTER_REPLY_CRM_STEPS.map((step, i) => (
-                      <li key={step} className="flex gap-3 text-sm text-[#050505]">
+                      <li key={step} className="flex gap-3 text-sm text-[#18181b]">
                         <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white text-xs font-semibold">
                           {i + 1}
                         </span>
@@ -217,7 +217,7 @@ export default function AcademyPage() {
                   <button
                     type="button"
                     onClick={openAddLead}
-                    className="mt-5 inline-flex h-11 w-full items-center justify-center rounded-full bg-[#050505] px-5 text-sm font-medium text-white sm:w-auto"
+                    className="mt-5 inline-flex h-11 w-full items-center justify-center rounded-full bg-[var(--color-sunrise-coral)] px-5 text-sm font-medium text-white sm:w-auto"
                   >
                     Добавить лида
                   </button>
@@ -239,7 +239,7 @@ export default function AcademyPage() {
                   title="Чего избегать"
                 />
                 <div>
-                  <h3 className="mb-4 text-base font-semibold text-[#050505]">
+                  <h3 className="mb-4 text-base font-semibold text-[#18181b]">
                     Примеры хорошего и плохого лида
                   </h3>
                   <LeadExamplesPractical

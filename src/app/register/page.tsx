@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import { RegisterForm, RegisterPageShell } from "@/components/auth/register-form";
 
 export default function RegisterPage() {
-  redirect("/login?mode=register");
+  return (
+    <RegisterPageShell>
+      <RegisterForm />
+    </RegisterPageShell>
+  );
 }
