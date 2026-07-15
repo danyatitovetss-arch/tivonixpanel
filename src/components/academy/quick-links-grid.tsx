@@ -1,19 +1,11 @@
 import { ExternalLink } from "lucide-react";
-
-function faviconUrl(url: string) {
-  try {
-    const domain = new URL(url).hostname.replace(/^www\./, "");
-    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
-  } catch {
-    return null;
-  }
-}
+import { faviconUrlFromHref } from "@/lib/favicon";
 
 export function QuickLinksGrid({ links }: { links: { label: string; url: string }[] }) {
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
       {links.map((link) => {
-        const icon = faviconUrl(link.url);
+        const icon = faviconUrlFromHref(link.url, 64);
         return (
           <a
             key={link.url}

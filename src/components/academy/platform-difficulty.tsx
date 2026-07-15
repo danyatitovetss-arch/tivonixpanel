@@ -1,5 +1,6 @@
 import type { PlatformDifficultyId, PlatformDifficultyItem } from "@/lib/academy-practical-data";
 import { AcademyCardBody } from "@/components/academy/academy-card";
+import { faviconUrl } from "@/lib/favicon";
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 
@@ -9,12 +10,8 @@ const lineColor: Record<PlatformDifficultyId, string> = {
   advanced: "bg-red-500",
 };
 
-function faviconUrl(domain: string) {
-  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
-}
-
 function PlatformDifficultyLink({ item }: { item: PlatformDifficultyItem }) {
-  const icon = item.logoDomain ? faviconUrl(item.logoDomain) : null;
+  const icon = item.logoDomain ? faviconUrl(item.logoDomain, 64) : null;
 
   const content = (
     <>

@@ -23,7 +23,8 @@ const ContentSecurityPolicy = [
   "frame-ancestors 'none'",
   "form-action 'self'",
   "object-src 'none'",
-  `img-src 'self' data: blob: ${supabase}`,
+  // Academy platform logos: Google Favicons → *.gstatic.com redirect
+  `img-src 'self' data: blob: ${supabase} https://www.google.com https://*.gstatic.com`,
   "font-src 'self' data:",
   // Next.js / React require inline scripts in App Router; keep style/script tight where possible
   "style-src 'self' 'unsafe-inline'",

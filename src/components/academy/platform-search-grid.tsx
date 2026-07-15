@@ -6,6 +6,7 @@ import type { PracticalPlatform } from "@/lib/academy-practical-data";
 import { CopyButton } from "@/components/academy/copy-button";
 import { PlatformQueriesModal } from "@/components/academy/platform-queries-modal";
 import { AcademyCardBody } from "@/components/academy/academy-card";
+import { faviconUrl } from "@/lib/favicon";
 import { cn } from "@/lib/utils";
 
 const actionButtonClass =
@@ -13,10 +14,6 @@ const actionButtonClass =
 
 function queriesText(platform: PracticalPlatform) {
   return platform.searchQueries.join("\n");
-}
-
-function faviconUrl(domain: string) {
-  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`;
 }
 
 function SectionBlock({
@@ -60,7 +57,7 @@ function PlatformLogo({ domains, fallback }: { domains: string[]; fallback: stri
       <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white p-2.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={faviconUrl(domain)}
+          src={faviconUrl(domain, 128)}
           alt={fallback}
           width={36}
           height={36}
@@ -85,7 +82,7 @@ function PlatformLogo({ domains, fallback }: { domains: string[]; fallback: stri
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={faviconUrl(domain)}
+              src={faviconUrl(domain, 128)}
               alt={fallback}
               width={36}
               height={36}
@@ -222,7 +219,7 @@ function PlatformCard({ platform }: { platform: PracticalPlatform }) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={faviconUrl(platform.logoDomains[0])}
+                src={faviconUrl(platform.logoDomains[0], 128)}
                 alt=""
                 width={20}
                 height={20}
