@@ -1,0 +1,11 @@
+HTTP/1.1 204 No Content
+allow: GET, HEAD, OPTIONS, POST
+Date: Wed, 15 Jul 2026 19:36:47 GMT
+Server: railway-hikari
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-hikari-trace: waw1.j60f,lax1.v9kt
+x-railway-edge: waw1
+x-railway-request-id: yCdHK9S7SBOjc3VjxtoGcA
+x-railway-request-id: 0jCazugcQIGGc6QOYqVb7A
+Connection: keep-alive
+

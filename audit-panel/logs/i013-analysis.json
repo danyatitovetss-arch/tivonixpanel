@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-07-15T20:28:38.356Z",
+  "count": 0,
+  "requiredNotNullColumns": [
+    "id",
+    "user_id",
+    "full_name",
+    "email",
+    "country",
+    "tax_residence_country",
+    "date_of_birth",
+    "age",
+    "partner_legal_status",
+    "onboarding_status",
+    "crm_access",
+    "payout_status",
+    "created_at",
+    "updated_at"
+  ],
+  "authTriggers": [
+    "on_auth_user_created"
+  ],
+  "rootCauseHypothesis": "profiles auto-created by handle_new_user; user_legal_profiles only after legal onboarding. Users who never completed onboarding (or admin/manager seeded) lack ulp.",
+  "rows": []
+}

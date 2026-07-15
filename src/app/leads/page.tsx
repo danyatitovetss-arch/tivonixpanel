@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { useAddLeadSheet } from "@/components/leads/add-lead-context";
 import { useLeadDetail } from "@/components/leads/lead-detail-context";
@@ -102,14 +102,6 @@ export default function LeadsPage() {
   const totalPages = Math.max(1, Math.ceil(filteredLeads.length / PAGE_SIZE));
   const safePage = Math.min(page, totalPages);
 
-  useEffect(() => {
-    setPage(1);
-  }, [activeTab, search, statusFilter, partnerFilter, cityFilter, serviceFilter, sourceFilter, dateFrom, dateTo]);
-
-  useEffect(() => {
-    if (page > totalPages) setPage(totalPages);
-  }, [page, totalPages]);
-
   const paginatedLeads = filteredLeads.slice(
     (safePage - 1) * PAGE_SIZE,
     safePage * PAGE_SIZE
@@ -149,11 +141,21 @@ export default function LeadsPage() {
           </div>
         </div>
 
-        <OkxSearch value={search} onChange={setSearch} placeholder="Поиск по бизнесу, контакту…" />
+        <OkxSearch
+          value={search}
+          onChange={(v) => {
+            setSearch(v);
+            setPage(1);
+          }}
+          placeholder="Поиск по бизнесу, контакту…"
+        />
 
         <OkxTabs
           active={activeTab}
-          onChange={(id) => setActiveTab(id as TabFilter)}
+          onChange={(id) => {
+            setActiveTab(id as TabFilter);
+            setPage(1);
+          }}
           tabs={[
             { id: "all", label: "Все", count: baseLeads.length },
             { id: "pending", label: "На проверке", count: baseLeads.filter((l) => l.status === "pending_review").length },
@@ -182,6 +184,7 @@ export default function LeadsPage() {
             if (patch.source !== undefined) setSourceFilter(patch.source);
             if (patch.dateFrom !== undefined) setDateFrom(patch.dateFrom);
             if (patch.dateTo !== undefined) setDateTo(patch.dateTo);
+            setPage(1);
           }}
           cities={cities}
           partners={partners}

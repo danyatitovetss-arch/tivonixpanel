@@ -1,0 +1,1 @@
+﻿FCP=1.1s LCP=5.3s TBT=160ms CLS=0 SI=1.3s TTI=5.3s bytes=903KiB

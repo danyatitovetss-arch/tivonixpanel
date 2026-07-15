@@ -5,7 +5,24 @@ export type ExportColumn<T extends Record<string, unknown>> = {
   label: string;
 };
 
-function escapeCell(value: string): string {
+/** Prevent CSV/Excel formula injection from user-controlled cells. */
+export function sanitizeSpreadsheetCell(value: unknown): string {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) return "";
+    return String(value);
+  }
+  if (typeof value === "boolean") return value ? "Да" : "Нет";
+
+  let text = String(value);
+  // Neutralize formula prefixes used by Excel/LibreOffice
+  if (/^[=+\-@\t\r]/.test(text)) {
+    text = `'${text}`;
+  }
+  return text;
+}
+
+function escapeCsvCell(value: string): string {
   if (
     value.includes(DELIMITER) ||
     value.includes('"') ||
@@ -18,17 +35,14 @@ function escapeCell(value: string): string {
 }
 
 function formatCellValue(value: unknown): string {
-  if (value === null || value === undefined) return "";
-  if (typeof value === "number") return String(value);
-  if (typeof value === "boolean") return value ? "Да" : "Нет";
-  return escapeCell(String(value));
+  return escapeCsvCell(sanitizeSpreadsheetCell(value));
 }
 
 export function buildPlainTextExport<T extends Record<string, unknown>>(
   data: T[],
   columns: ExportColumn<T>[]
 ): string {
-  const header = columns.map((c) => escapeCell(c.label)).join(DELIMITER);
+  const header = columns.map((c) => escapeCsvCell(sanitizeSpreadsheetCell(c.label))).join(DELIMITER);
   const rows = data.map((row) =>
     columns.map((c) => formatCellValue(row[c.key])).join(DELIMITER)
   );
@@ -44,63 +58,52 @@ export function exportToPlainText<T extends Record<string, unknown>>(
 
   const text = buildPlainTextExport(data, columns);
   const blob = new Blob(["\uFEFF" + text], { type: "text/plain;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `${filename}.txt`;
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
-function columnWidth<T extends Record<string, unknown>>(
-  columns: ExportColumn<T>[],
-  data: T[],
-  colIndex: number
-): number {
-  const col = columns[colIndex];
-  const lengths = [
-    col.label.length,
-    ...data.map((row) => String(row[col.key] ?? "").length),
-  ];
-  return Math.min(Math.max(Math.max(...lengths) + 2, 10), 45);
+  triggerDownload(blob, `${filename}.txt`);
 }
 
 export type ExcelExportOptions = {
   sheetName?: string;
 };
 
+/**
+ * Spreadsheet export without the vulnerable `xlsx` package.
+ * Produces a UTF-8 CSV that Excel / Google Sheets open natively.
+ * Cell values are sanitized against formula injection.
+ */
 export async function exportToExcel<T extends Record<string, unknown>>(
   data: T[],
   filename: string,
   columns: ExportColumn<T>[],
   options?: ExcelExportOptions
 ): Promise<void> {
-  if (data.length === 0) return;
-
-  const XLSX = await import("xlsx");
-  const header = columns.map((c) => c.label);
-  const body = data.map((row) =>
-    columns.map((c) => {
-      const value = row[c.key];
-      if (value === null || value === undefined) return "";
-      return value;
-    })
-  );
-
-  const worksheet = XLSX.utils.aoa_to_sheet([header, ...body]);
-  worksheet["!cols"] = columns.map((_, index) => ({
-    wch: columnWidth(columns, data, index),
-  }));
-
-  if (data.length > 0) {
-    const endCol = XLSX.utils.encode_col(columns.length - 1);
-    worksheet["!autofilter"] = { ref: `A1:${endCol}${data.length + 1}` };
+  void options;
+  if (data.length === 0) {
+    throw new Error("Нет данных для экспорта");
   }
 
-  const workbook = XLSX.utils.book_new();
-  const sheetName = (options?.sheetName ?? "Данные").slice(0, 31);
-  XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
-  XLSX.writeFile(workbook, `${filename}.xlsx`, { bookType: "xlsx" });
+  // Yield to keep UI responsive on large sets
+  await new Promise<void>((resolve) => {
+    if (typeof requestAnimationFrame === "function") {
+      requestAnimationFrame(() => resolve());
+    } else {
+      setTimeout(resolve, 0);
+    }
+  });
+
+  const text = buildPlainTextExport(data, columns);
+  const blob = new Blob(["\uFEFF" + text], {
+    type: "text/csv;charset=utf-8",
+  });
+  triggerDownload(blob, `${filename}.csv`);
+}
+
+function triggerDownload(blob: Blob, downloadName: string) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = downloadName;
+  link.click();
+  URL.revokeObjectURL(url);
 }
 
 /** @deprecated use exportToPlainText */

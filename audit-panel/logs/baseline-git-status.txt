@@ -1,0 +1,53 @@
+﻿ M .env.local.example
+ M next.config.ts
+ M package-lock.json
+ M package.json
+ M railway.api.toml
+ M src/app/api/auth/register/route.ts
+ M src/app/api/deals/[id]/route.ts
+ M src/app/api/health/route.ts
+ M src/app/auth/callback/route.ts
+ M src/app/deals/page.tsx
+ M src/app/layout.tsx
+ M src/app/leads/page.tsx
+ M src/app/login/login-form.tsx
+ M src/app/onboarding/legal/page.tsx
+ M src/app/onboarding/set-password/page.tsx
+ M src/components/academy/daily-plan-practical.tsx
+ M src/components/auth/auth-shell.tsx
+ M src/components/common/export-button.tsx
+ M src/components/layout/global-announcement-modal.tsx
+ M src/components/layout/role-switcher.tsx
+ M src/components/leads/activity-timeline.tsx
+ M src/components/leads/add-lead-sheet.tsx
+ M src/components/leads/lead-admin-actions.tsx
+ M src/components/leads/lead-form.tsx
+ M src/components/legal/legal-document-modal.tsx
+ M src/components/prospecting/follow-up-panel.tsx
+ M src/components/prospecting/prospect-form.tsx
+ M src/components/ui/date-picker-modal.tsx
+ M src/components/users/users-management.tsx
+ M src/lib/access.ts
+ M src/lib/analytics.ts
+ M src/lib/auth/access.ts
+ M src/lib/auth/rate-limit.ts
+ M src/lib/demo-mode.ts
+ M src/lib/export.ts
+ M src/lib/seed-data.ts
+ M src/lib/store.tsx
+ M src/middleware.ts
+?? audit-panel/
+?? e2e/security-smoke.spec.ts
+?? favikon.png
+?? playwright.config.ts
+?? public/images/fon-hero.webp
+?? scripts/create-audit-users.cjs
+?? scripts/start-prod.cjs
+?? src/app/api/auth/login-precheck/
+?? src/app/error.tsx
+?? src/app/not-found.tsx
+?? src/components/layout/conditional-crm-chrome.tsx
+?? src/lib/__tests__/security-remediation.test.ts
+?? src/lib/api/validation-response.ts
+?? src/lib/env/
+?? test-results/

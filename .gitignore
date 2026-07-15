@@ -44,3 +44,11 @@ src/server/.env
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local DB snapshots (may contain PII)
+backups/
+
+
+test-results/
+playwright-report/
+

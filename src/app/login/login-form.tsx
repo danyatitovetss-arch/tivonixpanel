@@ -77,8 +77,25 @@ export default function LoginForm() {
       return;
     }
 
-    const supabase = createClient();
     try {
+      const precheck = await fetch("/api/auth/login-precheck", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (precheck.status === 429) {
+        const body = (await precheck.json().catch(() => null)) as { message?: string } | null;
+        throw new Error(body?.message ?? "Слишком много попыток входа. Подождите 15 минут");
+      }
+      if (!precheck.ok && precheck.status !== 503) {
+        // 503 = rate-limit infra unavailable; still allow login attempt via Supabase
+        const body = (await precheck.json().catch(() => null)) as { message?: string } | null;
+        if (precheck.status === 400) {
+          throw new Error(body?.message ?? "Проверьте email");
+        }
+      }
+
+      const supabase = createClient();
       const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
       if (signInError) throw signInError;
       await refreshFromServer();
@@ -139,7 +156,11 @@ export default function LoginForm() {
             </div>
           </div>
 
-          {error && <div className={authErrorClass}>{error}</div>}
+          {error && (
+            <div className={authErrorClass} role="alert" aria-live="assertive">
+              {error}
+            </div>
+          )}
 
           <button type="submit" disabled={loading} className={cn(authPrimaryBtnClass, "mt-2")}>
             {loading ? "Загрузка…" : "Войти"}

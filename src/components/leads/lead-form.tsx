@@ -29,7 +29,6 @@ import {
   stripWebsite,
 } from "@/lib/lead-input-utils";
 import { cn } from "@/lib/utils";
-import type { Lead } from "@/lib/types";
 
 const EMPTY_FORM = {
   businessName: "",
@@ -72,7 +71,6 @@ export function LeadForm({
   const { addLead, checkDuplicate, data } = useApp();
   const user = useCurrentUser();
   const businessRef = useRef<HTMLInputElement>(null);
-  const [duplicate, setDuplicate] = useState<{ lead: Lead; matchedField: string } | null>(null);
   const [form, setForm] = useState(EMPTY_FORM);
   const [submitting, setSubmitting] = useState(false);
 
@@ -95,24 +93,25 @@ export function LeadForm({
 
   const normalized = useMemo(() => normalizeLeadContacts(contacts), [contacts]);
 
+  const duplicate = useMemo(
+    () =>
+      checkDuplicate({
+        instagramUrl: normalized.instagramUrl || undefined,
+        telegramUsername: normalized.telegramUsername || undefined,
+        phone: normalized.phone || undefined,
+        website: normalized.website || undefined,
+        email: normalized.email || undefined,
+        businessName: form.businessName || undefined,
+      }),
+    [form.businessName, normalized, checkDuplicate]
+  );
+
   useEffect(() => {
     if (autoFocus) {
       const t = setTimeout(() => businessRef.current?.focus(), 100);
       return () => clearTimeout(t);
     }
   }, [autoFocus]);
-
-  useEffect(() => {
-    const found = checkDuplicate({
-      instagramUrl: normalized.instagramUrl || undefined,
-      telegramUsername: normalized.telegramUsername || undefined,
-      phone: normalized.phone || undefined,
-      website: normalized.website || undefined,
-      email: normalized.email || undefined,
-      businessName: form.businessName || undefined,
-    });
-    setDuplicate(found);
-  }, [form.businessName, normalized, checkDuplicate]);
 
   const progress = calcFormProgress(
     form.businessName,

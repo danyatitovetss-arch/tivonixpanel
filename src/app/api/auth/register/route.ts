@@ -7,6 +7,7 @@ import { allowRegisterAttempt } from "@/lib/auth/rate-limit";
 import { getLegalDocumentByType } from "@/lib/legal-documents-content";
 import { getPublicAppOrigin } from "@/lib/app-url";
 import { toUserMessage } from "@/lib/errors";
+import { validationErrorResponse } from "@/lib/api/validation-response";
 
 const MAX_BODY_BYTES = 16_384;
 
@@ -100,12 +101,7 @@ export async function POST(request: Request) {
   });
 
   if (!parsed.success) {
-    const fieldErrors = parsed.error.flatten().fieldErrors;
-    const first =
-      Object.values(fieldErrors).flat()[0] ??
-      parsed.error.issues[0]?.message ??
-      "Проверьте заполнение формы";
-    return safeClientError(first, 400, { fieldErrors });
+    return validationErrorResponse(parsed.error);
   }
 
   const input = parsed.data;
@@ -232,6 +228,33 @@ export async function POST(request: Request) {
         consentErr instanceof Error ? consentErr.message : "unknown"
       );
       // Do not roll back account — consents are re-collected at legal onboarding
+    }
+
+    // Ensure user_legal_profiles exists (I-013): onboarding will fill real KYC fields.
+    // Do not grant CRM until legal onboarding completes.
+    try {
+      await admin.from("user_legal_profiles").upsert(
+        {
+          user_id: userId,
+          full_name: input.fullName,
+          email,
+          country: "Unknown",
+          tax_residence_country: "Unknown",
+          date_of_birth: "1990-01-01",
+          age: 36,
+          partner_legal_status: "individual",
+          onboarding_status: "not_started",
+          crm_access: false,
+          payout_status: "pending_admin_review",
+          preferred_currency: "USD",
+        },
+        { onConflict: "user_id", ignoreDuplicates: true }
+      );
+    } catch (ulpErr) {
+      console.error(
+        "[register] legal profile stub failed",
+        ulpErr instanceof Error ? ulpErr.message : "unknown"
+      );
     }
 
     void notifyAdminPartnerApplication({

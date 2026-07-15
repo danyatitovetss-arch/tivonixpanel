@@ -1,0 +1,1 @@
+﻿LCP before ~5.3s (from audit cwv-login.txt); after TBD via LH

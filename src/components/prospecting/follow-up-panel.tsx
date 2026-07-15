@@ -10,7 +10,7 @@ interface FollowUpPanelProps {
 }
 
 export function FollowUpPanel({ followUpAt, followUpSent, onSchedule }: FollowUpPanelProps) {
-  const defaultDate = followUpAt ?? new Date(Date.now() + 2 * 86400000).toISOString().slice(0, 10);
+  const defaultDate = followUpAt ?? "";
 
   return (
     <div className="rounded-2xl bg-[#f4f4f5] p-5">
@@ -35,7 +35,8 @@ export function FollowUpPanel({ followUpAt, followUpSent, onSchedule }: FollowUp
           type="button"
           onClick={() => {
             const el = document.getElementById("follow-up-date") as HTMLInputElement;
-            onSchedule(el?.value ?? defaultDate);
+            const fallback = new Date(Date.now() + 2 * 86400000).toISOString().slice(0, 10);
+            onSchedule(el?.value || followUpAt || fallback);
           }}
           className="h-10 rounded-full bg-[var(--color-sunrise-coral)] px-4 text-sm font-medium text-white"
         >

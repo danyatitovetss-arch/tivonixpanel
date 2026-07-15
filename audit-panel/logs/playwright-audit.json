@@ -1,0 +1,2447 @@
+{
+  "base": "https://tivonixpanel-production.up.railway.app",
+  "startedAt": "2026-07-15T19:39:41.951Z",
+  "routes": [
+    {
+      "route": "/",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 1200,
+      "screenshot": "public_root.png"
+    },
+    {
+      "route": "/login",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=s1QDJwWViWG4tw88",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=4CX9Kx2ops_BzLX1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=b-jK6k_UYW0aCKQz",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 254,
+      "screenshot": "public_login.png"
+    },
+    {
+      "route": "/register",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/register",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?_rsc=1F8-AEclBcB9jFE6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?_rsc=lARumRnmvX5rLrG1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=b-jK6k_UYW0aCKQz",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/_next/static/chunks/3cj6vqiof6p3a.js",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 196,
+      "screenshot": "public_register.png"
+    },
+    {
+      "route": "/register?type=referral",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/register?type=referral",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [],
+      "durationMs": 215,
+      "screenshot": "public_register_type_referral.png"
+    },
+    {
+      "route": "/register?type=white_label",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/register?type=white_label",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=nqYP1k-cQeRiHB3h",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=nqYP1k-cQeRiHB3h",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=YHJgCYC7z7ItAmEk",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=YHJgCYC7z7ItAmEk",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 196,
+      "screenshot": "public_register_type_white_label.png"
+    },
+    {
+      "route": "/forgot-password",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/forgot-password",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=nqYP1k-cQeRiHB3h",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 201,
+      "screenshot": "public_forgot-password.png"
+    },
+    {
+      "route": "/auth/reset-password",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/auth/reset-password",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=0LK_M50nXo8UZ5NJ",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=RmY2yst_G0LLTLTL",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=ZP629OaueAfTrosU",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 219,
+      "screenshot": "public_auth_reset-password.png"
+    },
+    {
+      "route": "/legal/privacy",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/legal/privacy",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=bCYIOQeOoa6eprqe",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=mu9dhTMNQjCv5oeg",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=sNVgMStWMaaZGhqC",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 211,
+      "screenshot": "public_legal_privacy.png"
+    },
+    {
+      "route": "/legal/terms",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/legal/terms",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/api/legal/privacy",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 224,
+      "screenshot": "public_legal_terms.png"
+    },
+    {
+      "route": "/legal/cookies",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/legal/cookies",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/api/legal/terms",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 226,
+      "screenshot": "public_legal_cookies.png"
+    },
+    {
+      "route": "/legal/partner-agreement",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/legal/partner-agreement",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [],
+      "durationMs": 211,
+      "screenshot": "public_legal_partner-agreement.png"
+    },
+    {
+      "route": "/legal/commission-rules",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/legal/commission-rules",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/api/legal/partner-agreement",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 207,
+      "screenshot": "public_legal_commission-rules.png"
+    },
+    {
+      "route": "/legal/personal-data-consent",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/legal/personal-data-consent",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/onboarding/legal?_rsc=iTZh7GGnBF8vGhbO",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 207,
+      "screenshot": "public_legal_personal-data-consent.png"
+    },
+    {
+      "route": "/this-page-does-not-exist-404",
+      "kind": "public",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/this-page-does-not-exist-404",
+      "status": 404,
+      "title": "404: This page could not be found.",
+      "redirectToLogin": false,
+      "httpError": true,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/onboarding/legal?_rsc=Ui0RVex0aQ2ALEPK",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 204,
+      "screenshot": "public_this-page-does-not-exist-404.png"
+    },
+    {
+      "route": "/dashboard",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fdashboard",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 407,
+      "screenshot": "protected_dashboard.png"
+    },
+    {
+      "route": "/my",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fmy",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 501,
+      "screenshot": "protected_my.png"
+    },
+    {
+      "route": "/academy",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Facademy",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 377,
+      "screenshot": "protected_academy.png"
+    },
+    {
+      "route": "/prospecting",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fprospecting",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 373,
+      "screenshot": "protected_prospecting.png"
+    },
+    {
+      "route": "/leads",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fleads",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 370,
+      "screenshot": "protected_leads.png"
+    },
+    {
+      "route": "/leads/new",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fleads%2Fnew",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 382,
+      "screenshot": "protected_leads_new.png"
+    },
+    {
+      "route": "/deals",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fdeals",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fleads%2Fnew&_rsc=1F8-AEclBcB9jFE6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 379,
+      "screenshot": "protected_deals.png"
+    },
+    {
+      "route": "/partners",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fpartners",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 390,
+      "screenshot": "protected_partners.png"
+    },
+    {
+      "route": "/payouts",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fpayouts",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 384,
+      "screenshot": "protected_payouts.png"
+    },
+    {
+      "route": "/reports",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Freports",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 371,
+      "screenshot": "protected_reports.png"
+    },
+    {
+      "route": "/settings",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fsettings",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Freports&_rsc=FQGI9X2lYEX9XrlB",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 381,
+      "screenshot": "protected_settings.png"
+    },
+    {
+      "route": "/admin/legal-profiles",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Flegal-profiles",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 383,
+      "screenshot": "protected_admin_legal-profiles.png"
+    },
+    {
+      "route": "/admin/partner-applications",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Fpartner-applications",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 377,
+      "screenshot": "protected_admin_partner-applications.png"
+    },
+    {
+      "route": "/admin/audit-logs",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Fpartner-applications&_rsc=FQGI9X2lYEX9XrlB",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 373,
+      "screenshot": "protected_admin_audit-logs.png"
+    },
+    {
+      "route": "/pending",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/pending",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs&_rsc=lARumRnmvX5rLrG1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs&_rsc=1F8-AEclBcB9jFE6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs&_rsc=FQGI9X2lYEX9XrlB",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 197,
+      "screenshot": "protected_pending.png"
+    },
+    {
+      "route": "/blocked",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/blocked",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": false,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=d7PjSf1frBIEn0CL",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=u5LpULPbb58OjtN_",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 196,
+      "screenshot": "protected_blocked.png"
+    },
+    {
+      "route": "/onboarding/legal",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fonboarding%2Flegal",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 380,
+      "screenshot": "protected_onboarding_legal.png"
+    },
+    {
+      "route": "/onboarding/set-password",
+      "kind": "protected",
+      "ok": true,
+      "finalUrl": "https://tivonixpanel-production.up.railway.app/login?next=%2Fonboarding%2Fset-password",
+      "status": 200,
+      "title": "TIVONIX Partners — CRM для партнёров",
+      "redirectToLogin": true,
+      "httpError": false,
+      "overflow": false,
+      "console": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "networkFails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "durationMs": 375,
+      "screenshot": "protected_onboarding_set-password.png"
+    }
+  ],
+  "viewports": [
+    {
+      "name": "360x800",
+      "routes": [
+        {
+          "route": "/login",
+          "overflow": false,
+          "screenshot": "vp_360x800_login.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Забыли пароль?",
+              "w": 94.703125,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Зарегистрироваться",
+              "w": 129.015625,
+              "h": 16
+            },
+            {
+              "tag": "A",
+              "text": "Условия",
+              "w": 40,
+              "h": 14
+            },
+            {
+              "tag": "A",
+              "text": "Конфиденциальность",
+              "w": 105.515625,
+              "h": 14
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "overflow": false,
+          "screenshot": "vp_360x800_register.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "overflow": false,
+          "screenshot": "vp_360x800_forgot-password.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Вернуться ко входу",
+              "w": 121.234375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/legal/privacy",
+          "overflow": false,
+          "screenshot": "vp_360x800_legal_privacy.png",
+          "smallTargets": [
+            {
+              "tag": "BUTTON",
+              "text": "← Назад",
+              "w": 54.75,
+              "h": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "390x844",
+      "routes": [
+        {
+          "route": "/login",
+          "overflow": false,
+          "screenshot": "vp_390x844_login.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Забыли пароль?",
+              "w": 94.703125,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Зарегистрироваться",
+              "w": 129.015625,
+              "h": 16
+            },
+            {
+              "tag": "A",
+              "text": "Условия",
+              "w": 40,
+              "h": 14
+            },
+            {
+              "tag": "A",
+              "text": "Конфиденциальность",
+              "w": 105.515625,
+              "h": 14
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "overflow": false,
+          "screenshot": "vp_390x844_register.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "overflow": false,
+          "screenshot": "vp_390x844_forgot-password.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Вернуться ко входу",
+              "w": 121.234375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/legal/privacy",
+          "overflow": false,
+          "screenshot": "vp_390x844_legal_privacy.png",
+          "smallTargets": [
+            {
+              "tag": "BUTTON",
+              "text": "← Назад",
+              "w": 54.75,
+              "h": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "768x1024",
+      "routes": [
+        {
+          "route": "/login",
+          "overflow": false,
+          "screenshot": "vp_768x1024_login.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Забыли пароль?",
+              "w": 94.703125,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Зарегистрироваться",
+              "w": 129.015625,
+              "h": 16
+            },
+            {
+              "tag": "A",
+              "text": "Условия",
+              "w": 40,
+              "h": 14
+            },
+            {
+              "tag": "A",
+              "text": "Конфиденциальность",
+              "w": 105.515625,
+              "h": 14
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "overflow": false,
+          "screenshot": "vp_768x1024_register.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "overflow": false,
+          "screenshot": "vp_768x1024_forgot-password.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Вернуться ко входу",
+              "w": 121.234375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/legal/privacy",
+          "overflow": false,
+          "screenshot": "vp_768x1024_legal_privacy.png",
+          "smallTargets": [
+            {
+              "tag": "BUTTON",
+              "text": "← Назад",
+              "w": 54.75,
+              "h": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1366x768",
+      "routes": [
+        {
+          "route": "/login",
+          "overflow": false,
+          "screenshot": "vp_1366x768_login.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Забыли пароль?",
+              "w": 94.703125,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Зарегистрироваться",
+              "w": 129.015625,
+              "h": 16
+            },
+            {
+              "tag": "A",
+              "text": "Условия",
+              "w": 40,
+              "h": 14
+            },
+            {
+              "tag": "A",
+              "text": "Конфиденциальность",
+              "w": 105.515625,
+              "h": 14
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "overflow": false,
+          "screenshot": "vp_1366x768_register.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "overflow": false,
+          "screenshot": "vp_1366x768_forgot-password.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Вернуться ко входу",
+              "w": 121.234375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/legal/privacy",
+          "overflow": false,
+          "screenshot": "vp_1366x768_legal_privacy.png",
+          "smallTargets": [
+            {
+              "tag": "BUTTON",
+              "text": "← Назад",
+              "w": 54.75,
+              "h": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1440x900",
+      "routes": [
+        {
+          "route": "/login",
+          "overflow": false,
+          "screenshot": "vp_1440x900_login.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Забыли пароль?",
+              "w": 94.703125,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Зарегистрироваться",
+              "w": 129.015625,
+              "h": 16
+            },
+            {
+              "tag": "A",
+              "text": "Условия",
+              "w": 40,
+              "h": 14
+            },
+            {
+              "tag": "A",
+              "text": "Конфиденциальность",
+              "w": 105.515625,
+              "h": 14
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "overflow": false,
+          "screenshot": "vp_1440x900_register.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "overflow": false,
+          "screenshot": "vp_1440x900_forgot-password.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Вернуться ко входу",
+              "w": 121.234375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/legal/privacy",
+          "overflow": false,
+          "screenshot": "vp_1440x900_legal_privacy.png",
+          "smallTargets": [
+            {
+              "tag": "BUTTON",
+              "text": "← Назад",
+              "w": 54.75,
+              "h": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1920x1080",
+      "routes": [
+        {
+          "route": "/login",
+          "overflow": false,
+          "screenshot": "vp_1920x1080_login.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Забыли пароль?",
+              "w": 94.703125,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Зарегистрироваться",
+              "w": 129.015625,
+              "h": 16
+            },
+            {
+              "tag": "A",
+              "text": "Условия",
+              "w": 40,
+              "h": 14
+            },
+            {
+              "tag": "A",
+              "text": "Конфиденциальность",
+              "w": 105.515625,
+              "h": 14
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "overflow": false,
+          "screenshot": "vp_1920x1080_register.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 36.9375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "overflow": false,
+          "screenshot": "vp_1920x1080_forgot-password.png",
+          "smallTargets": [
+            {
+              "tag": "A",
+              "text": "Войти",
+              "w": 34.75,
+              "h": 19.5
+            },
+            {
+              "tag": "A",
+              "text": "Стать партнёром",
+              "w": 137.96875,
+              "h": 36
+            },
+            {
+              "tag": "A",
+              "text": "Вернуться ко входу",
+              "w": 121.234375,
+              "h": 16
+            }
+          ]
+        },
+        {
+          "route": "/legal/privacy",
+          "overflow": false,
+          "screenshot": "vp_1920x1080_legal_privacy.png",
+          "smallTargets": [
+            {
+              "tag": "BUTTON",
+              "text": "← Назад",
+              "w": 54.75,
+              "h": 20
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [
+    {
+      "route": "/",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/login",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/register",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/register?type=referral",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/register?type=white_label",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/forgot-password",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/auth/reset-password",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/legal/privacy",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/legal/terms",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/legal/cookies",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/legal/partner-agreement",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/legal/commission-rules",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/legal/personal-data-consent",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/this-page-does-not-exist-404",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 500 ()",
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/dashboard",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/my",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/academy",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/prospecting",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/leads",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/leads/new",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/deals",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/partners",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/payouts",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/reports",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/settings",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/admin/legal-profiles",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/admin/partner-applications",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/admin/audit-logs",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/pending",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/blocked",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/onboarding/legal",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    },
+    {
+      "route": "/onboarding/set-password",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 401 ()",
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "failedRequests": [
+    {
+      "route": "/",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/login",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=s1QDJwWViWG4tw88",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=4CX9Kx2ops_BzLX1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=b-jK6k_UYW0aCKQz",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/register",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?_rsc=1F8-AEclBcB9jFE6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?_rsc=lARumRnmvX5rLrG1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=b-jK6k_UYW0aCKQz",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/_next/static/chunks/3cj6vqiof6p3a.js",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/register?type=white_label",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=nqYP1k-cQeRiHB3h",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=nqYP1k-cQeRiHB3h",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=YHJgCYC7z7ItAmEk",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=YHJgCYC7z7ItAmEk",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/forgot-password",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=nqYP1k-cQeRiHB3h",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/auth/reset-password",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=0LK_M50nXo8UZ5NJ",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=RmY2yst_G0LLTLTL",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=ZP629OaueAfTrosU",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/legal/privacy",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=bCYIOQeOoa6eprqe",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=mu9dhTMNQjCv5oeg",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=sNVgMStWMaaZGhqC",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/legal/terms",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/api/legal/privacy",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/legal/cookies",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/api/legal/terms",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/legal/commission-rules",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/api/legal/partner-agreement",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/legal/personal-data-consent",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/onboarding/legal?_rsc=iTZh7GGnBF8vGhbO",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/this-page-does-not-exist-404",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/onboarding/legal?_rsc=Ui0RVex0aQ2ALEPK",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/dashboard",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/my",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/academy",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/prospecting",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/leads",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/leads/new",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/deals",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fleads%2Fnew&_rsc=1F8-AEclBcB9jFE6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/partners",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/payouts",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/reports",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/settings",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Freports&_rsc=FQGI9X2lYEX9XrlB",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/admin/legal-profiles",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/admin/partner-applications",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/admin/audit-logs",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Fpartner-applications&_rsc=FQGI9X2lYEX9XrlB",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/pending",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/forgot-password?_rsc=Y0uYOPKA-WLtloBc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs&_rsc=lARumRnmvX5rLrG1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs&_rsc=1F8-AEclBcB9jFE6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/login?next=%2Fadmin%2Faudit-logs&_rsc=FQGI9X2lYEX9XrlB",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/blocked",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=d7PjSf1frBIEn0CL",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/register?_rsc=u5LpULPbb58OjtN_",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/onboarding/legal",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "route": "/onboarding/set-password",
+      "fails": [
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=_H_fFy2_Q06N8BA7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/terms?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tivonixpanel-production.up.railway.app/legal/privacy?_rsc=sW2A7HEmFQnSVIMx",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    }
+  ],
+  "overflows": [],
+  "summary": {
+    "routesChecked": 32,
+    "publicOk": 13,
+    "protectedRedirectLogin": 16,
+    "protectedNotRedirected": [
+      "/pending",
+      "/blocked"
+    ],
+    "consoleErrorRoutes": 32,
+    "overflowRoutes": 0,
+    "pageErrors": 0
+  },
+  "interactive": [
+    {
+      "name": "invalid_login_shows_error",
+      "pass": true,
+      "snippet": "Войти\nСтать партнёром\n\nTIVONIX PARTNERS\n\nВход в панель\n\nEmail и пароль для доступа к партнёрской панели.\n\nEmail\nПароль\nЗабыли пароль?\nНеверный email или пароль\nВойти\n\nНет аккаунта? Зарегистрироваться\n\nУсловия · Конфиденциальность"
+    },
+    {
+      "name": "api_unauth",
+      "apiChecks": [
+        {
+          "ep": "/api/health",
+          "status": 200,
+          "body": "{\"ok\":true,\"service\":\"api\"}"
+        },
+        {
+          "ep": "/api/auth/me",
+          "status": 401,
+          "body": "{\"error\":\"Войдите в аккаунт\"}"
+        },
+        {
+          "ep": "/api/bootstrap",
+          "status": 401,
+          "body": "{\"error\":\"Войдите в аккаунт\"}"
+        },
+        {
+          "ep": "/api/leads",
+          "status": 401,
+          "body": "{\"error\":\"Войдите в аккаунт\"}"
+        },
+        {
+          "ep": "/api/admin/users",
+          "status": 401,
+          "body": "{\"error\":\"Войдите в аккаунт\"}"
+        }
+      ]
+    }
+  ],
+  "mixedContent": [],
+  "finishedAt": "2026-07-15T19:40:40.666Z"
+}

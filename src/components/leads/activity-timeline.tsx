@@ -17,7 +17,7 @@ export function ActivityTimeline({ activities, users }: ActivityTimelineProps) {
   );
 
   if (sorted.length === 0) {
-    return <p className="font-mono text-sm text-[#71717a]">// история пуста</p>;
+    return <p className="font-mono text-sm text-[#71717a]">{"// история пуста"}</p>;
   }
 
   return (

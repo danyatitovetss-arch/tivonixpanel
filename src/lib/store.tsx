@@ -16,7 +16,6 @@ import type {
   Deal,
   Payout,
   CommissionSettings,
-  LeadStatus,
   DealPaymentStatus,
   PartnerProfile,
 } from "./types";
@@ -31,7 +30,7 @@ import {
   getPartnerBalance,
 } from "./analytics";
 import { DEMO_USERS } from "./seed-data";
-import type { ProspectContact, ProspectActivity } from "./prospecting-types";
+import type { ProspectContact } from "./prospecting-types";
 import {
   checkProspectDuplicate,
   emptyProspect,
@@ -64,14 +63,30 @@ import {
   updateLeadApi,
   addLeadActivityApi,
   updateCommissionSettingsApi,
-  checkProspectDuplicateApi,
   mapLeadToApiPatch,
   mapLeadToApiCreate,
   mapDealToApiCreate,
 } from "./store-api-bridge";
+import { usePathname } from "next/navigation";
 
 const STORAGE_KEY = "tivonix_crm_data";
 const USER_KEY = "tivonix_current_user";
+
+/** Paths where CRM bootstrap /api/auth/me must NOT run (avoids console 401). */
+function isPublicAuthSurface(pathname: string | null): boolean {
+  if (!pathname) return true;
+  if (
+    pathname === "/login" ||
+    pathname === "/register" ||
+    pathname === "/forgot-password" ||
+    pathname.startsWith("/legal/") ||
+    pathname.startsWith("/auth/reset-password") ||
+    pathname.startsWith("/auth/callback")
+  ) {
+    return true;
+  }
+  return false;
+}
 
 function loadData(): AppData {
   if (typeof window === "undefined") return getSeedData();
@@ -217,42 +232,58 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const demo = isDemoMode();
-  const [data, setData] = useState<AppData>(() => (demo ? getSeedData() : emptyAppData()));
+  const pathname = usePathname();
+  const [data, setData] = useState<AppData>(() => (demo ? loadData() : emptyAppData()));
   const [currentUserId, setCurrentUserIdState] = useState<string>(() =>
-    demo ? DEMO_USERS.admin : ""
+    demo ? loadUserId() : ""
   );
   const [authSession, setAuthSession] = useState<AuthSessionUser | null>(null);
   const [hydrated, setHydrated] = useState(false);
   const [isBootstrapping, setIsBootstrapping] = useState(() => !demo);
 
   const refreshFromServer = useCallback(async () => {
-    const [me, payload] = await Promise.all([
-      loadAuthMe(),
-      loadBootstrap(),
-    ]);
+    const [me, payload] = await Promise.all([loadAuthMe(), loadBootstrap()]);
     setAuthSession(me);
     setData(payload.data);
     setCurrentUserIdState(me.profileId);
   }, []);
 
   useEffect(() => {
-    if (demo) {
-      setData(loadData());
-      setCurrentUserIdState(loadUserId());
-      setIsBootstrapping(false);
-    }
-    setHydrated(true);
-  }, [demo]);
+    queueMicrotask(() => setHydrated(true));
+  }, []);
 
   useEffect(() => {
-    if (hydrated && !demo) {
-      void refreshFromServer()
-        .catch(() => {
-          /* bootstrap errors surface via empty state / toasts elsewhere */
-        })
-        .finally(() => setIsBootstrapping(false));
+    if (!hydrated || demo) {
+      if (demo) {
+        queueMicrotask(() => setIsBootstrapping(false));
+      }
+      return;
     }
-  }, [hydrated, demo, refreshFromServer]);
+
+    if (isPublicAuthSurface(pathname)) {
+      queueMicrotask(() => setIsBootstrapping(false));
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const [me, payload] = await Promise.all([loadAuthMe(), loadBootstrap()]);
+        if (cancelled) return;
+        setAuthSession(me);
+        setData(payload.data);
+        setCurrentUserIdState(me.profileId);
+      } catch {
+        /* bootstrap errors surface via empty state / toasts elsewhere */
+      } finally {
+        if (!cancelled) setIsBootstrapping(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [hydrated, demo, pathname]);
 
   useEffect(() => {
     if (hydrated && demo) saveData(data);
@@ -460,7 +491,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         "Не трогать"
       );
     },
-    [updateLead]
+    [demo, updateLead, refreshFromServer]
   );
 
   const assignManager = useCallback(

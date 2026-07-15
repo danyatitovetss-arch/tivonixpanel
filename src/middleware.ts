@@ -2,6 +2,12 @@ import { NextResponse, type NextRequest } from "next/server";
 import { proxyApiToBackend } from "@/lib/api/proxy-to-backend";
 import { updateSession } from "@/lib/supabase/middleware";
 import { createServerClient } from "@supabase/ssr";
+import {
+  getSupabasePublicUrl,
+  getSupabasePublishableKey,
+  isDemoModeEnabled,
+  safeInternalPath,
+} from "@/lib/env/public";
 
 const PUBLIC_PATHS = [
   "/login",
@@ -36,7 +42,7 @@ const PROTECTED_PREFIXES = [
   "/onboarding",
 ];
 
-const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+const DEMO_MODE = isDemoModeEnabled();
 const API_ONLY = process.env.APP_SERVICE === "api";
 const FRONTEND_API_PROXY =
   process.env.APP_SERVICE === "frontend" && Boolean(process.env.INTERNAL_API_URL?.trim());
@@ -66,8 +72,43 @@ function homeForRole() {
   return "/dashboard";
 }
 
+function misconfiguredResponse(pathname: string) {
+  if (pathname === "/api/health") {
+    return NextResponse.json(
+      { ok: false, error: "missing_supabase_env", service: process.env.APP_SERVICE ?? "full" },
+      { status: 503 }
+    );
+  }
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.json(
+      { code: "MISCONFIGURED", error: "Сервис временно недоступен", message: "Сервис временно недоступен" },
+      { status: 503 }
+    );
+  }
+  return new NextResponse(
+    `<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"/><title>Сервис недоступен</title></head><body style="font-family:system-ui;padding:2rem"><h1>Сервис временно недоступен</h1><p>Не заданы обязательные переменные окружения Supabase.</p></body></html>`,
+    { status: 503, headers: { "Content-Type": "text/html; charset=utf-8" } }
+  );
+}
+
+/** Reject DEMO_MODE=true when it would be ignored in production builds. */
+function demoModeBlockedInProduction(pathname: string) {
+  if (process.env.NODE_ENV !== "production") return null;
+  if (process.env.NEXT_PUBLIC_DEMO_MODE !== "true") return null;
+  if (pathname === "/api/health") {
+    return NextResponse.json(
+      { ok: false, error: "demo_mode_forbidden_in_production" },
+      { status: 503 }
+    );
+  }
+  return new NextResponse("DEMO_MODE is forbidden in production", { status: 503 });
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  const demoBlocked = demoModeBlockedInProduction(pathname);
+  if (demoBlocked) return demoBlocked;
 
   if (isApiOnlyBlocked(pathname)) {
     return NextResponse.json({ error: "API service" }, { status: 404 });
@@ -77,8 +118,29 @@ export async function middleware(request: NextRequest) {
     return proxyApiToBackend(request);
   }
 
+  // Demo: only allowed outside production with ALLOW_DEMO_MODE=true.
+  // Still require public paths to work; CRM uses local seed (no Supabase session).
   if (DEMO_MODE) {
+    if (isProtected(pathname) || pathname.startsWith("/admin")) {
+      // In demo, allow CRM UI without Supabase — intentional local-only.
+      return NextResponse.next();
+    }
     return NextResponse.next();
+  }
+
+  const url = getSupabasePublicUrl();
+  const key = getSupabasePublishableKey();
+
+  if (!url || !key) {
+    // Fail-closed: never treat missing env as "public".
+    if (
+      pathname.startsWith("/_next") ||
+      pathname === "/favicon.ico" ||
+      /\.(svg|png|jpg|jpeg|gif|webp|ico)$/.test(pathname)
+    ) {
+      return NextResponse.next();
+    }
+    return misconfiguredResponse(pathname);
   }
 
   if (pathname.startsWith("/api/") || pathname.startsWith("/_next")) {
@@ -107,14 +169,6 @@ export async function middleware(request: NextRequest) {
 
   if (!needsProfileGate && !isProtected(pathname)) {
     return updateSession(request);
-  }
-
-  const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key =
-    process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-
-  if (!url || !key) {
-    return NextResponse.next();
   }
 
   let response = await updateSession(request);
@@ -149,7 +203,7 @@ export async function middleware(request: NextRequest) {
     }
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
-    loginUrl.searchParams.set("next", pathname);
+    loginUrl.searchParams.set("next", safeInternalPath(pathname, "/dashboard"));
     return NextResponse.redirect(loginUrl);
   }
 
