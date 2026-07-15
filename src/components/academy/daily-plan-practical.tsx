@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { DailyPlanLevel } from "@/lib/academy-practical-data";
 import { DAILY_CHECKLIST_STORAGE_KEY } from "@/lib/academy-practical-data";
 import { AcademyCardBody } from "@/components/academy/academy-card";
@@ -12,16 +12,15 @@ interface DailyPlanPracticalProps {
 }
 
 export function DailyPlanPractical({ levels, checklistItems }: DailyPlanPracticalProps) {
-  const [checked, setChecked] = useState<Record<number, boolean>>({});
-
-  useEffect(() => {
+  const [checked, setChecked] = useState<Record<number, boolean>>(() => {
+    if (typeof window === "undefined") return {};
     try {
       const raw = localStorage.getItem(DAILY_CHECKLIST_STORAGE_KEY);
-      if (raw) setChecked(JSON.parse(raw) as Record<number, boolean>);
+      return raw ? (JSON.parse(raw) as Record<number, boolean>) : {};
     } catch {
-      /* ignore */
+      return {};
     }
-  }, []);
+  });
 
   function toggle(index: number) {
     setChecked((prev) => {

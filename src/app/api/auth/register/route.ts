@@ -7,6 +7,7 @@ import { allowRegisterAttempt } from "@/lib/auth/rate-limit";
 import { getLegalDocumentByType } from "@/lib/legal-documents-content";
 import { getPublicAppOrigin } from "@/lib/app-url";
 import { toUserMessage } from "@/lib/errors";
+import { validationErrorResponse } from "@/lib/api/validation-response";
 
 const MAX_BODY_BYTES = 16_384;
 
@@ -100,12 +101,7 @@ export async function POST(request: Request) {
   });
 
   if (!parsed.success) {
-    const fieldErrors = parsed.error.flatten().fieldErrors;
-    const first =
-      Object.values(fieldErrors).flat()[0] ??
-      parsed.error.issues[0]?.message ??
-      "Проверьте заполнение формы";
-    return safeClientError(first, 400, { fieldErrors });
+    return validationErrorResponse(parsed.error);
   }
 
   const input = parsed.data;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
@@ -81,11 +81,13 @@ export function DatePickerModal({
   const initial = value ? parseIso(value) : variant === "birth" ? new Date(defaultBirthYear, 0, 1) : today;
   const [viewYear, setViewYear] = useState(initial.getFullYear());
   const [viewMonth, setViewMonth] = useState(initial.getMonth());
+  const [wasOpen, setWasOpen] = useState(open);
 
   const minBirthYear = today.getFullYear() - 100;
   const maxBirthYear = today.getFullYear();
 
-  useEffect(() => {
+  if (open !== wasOpen) {
+    setWasOpen(open);
     if (open) {
       const now = new Date();
       const d = value
@@ -96,25 +98,21 @@ export function DatePickerModal({
       setViewYear(d.getFullYear());
       setViewMonth(d.getMonth());
     }
-  }, [open, value, variant]);
+  }
 
-  const monthLabel = useMemo(
-    () =>
-      new Date(viewYear, viewMonth, 1).toLocaleDateString("ru-RU", {
-        month: "long",
-        year: "numeric",
-      }),
-    [viewYear, viewMonth]
-  );
+  const monthLabel = new Date(viewYear, viewMonth, 1).toLocaleDateString("ru-RU", {
+    month: "long",
+    year: "numeric",
+  });
 
-  const days = useMemo(() => {
+  const days = (() => {
     const lastDay = new Date(viewYear, viewMonth + 1, 0).getDate();
     const startOffset = (new Date(viewYear, viewMonth, 1).getDay() + 6) % 7;
     const cells: (number | null)[] = [];
     for (let i = 0; i < startOffset; i++) cells.push(null);
     for (let d = 1; d <= lastDay; d++) cells.push(d);
     return cells;
-  }, [viewYear, viewMonth]);
+  })();
 
   function prevMonth() {
     if (viewMonth === 0) {
@@ -147,21 +145,11 @@ export function DatePickerModal({
   }
 
   const todayIso = toIso(today.getFullYear(), today.getMonth(), today.getDate());
-  const birthYears = useMemo(() => {
-    const years: number[] = [];
-    for (let y = maxBirthYear; y >= minBirthYear; y--) years.push(y);
-    return years;
-  }, [maxBirthYear, minBirthYear]);
+  const birthYears: number[] = [];
+  for (let y = maxBirthYear; y >= minBirthYear; y--) birthYears.push(y);
 
-  const monthOptions = useMemo(
-    () => MONTHS.map((label, i) => ({ value: String(i), label })),
-    []
-  );
-
-  const yearOptions = useMemo(
-    () => birthYears.map((y) => ({ value: String(y), label: String(y) })),
-    [birthYears]
-  );
+  const monthOptions = MONTHS.map((label, i) => ({ value: String(i), label }));
+  const yearOptions = birthYears.map((y) => ({ value: String(y), label: String(y) }));
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

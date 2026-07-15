@@ -4,6 +4,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 const REGISTER_LIMIT = 5;
 const REGISTER_WINDOW_SECONDS = 15 * 60;
+const LOGIN_LIMIT = 10;
+const LOGIN_WINDOW_SECONDS = 15 * 60;
 
 function clientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -44,6 +46,39 @@ export async function allowRegisterAttempt(
 
     if (data !== true) {
       return { allowed: false, retryAfterSeconds: REGISTER_WINDOW_SECONDS };
+    }
+  }
+
+  return { allowed: true, retryAfterSeconds: 0 };
+}
+
+/**
+ * Login rate limit (IP + email). Fail closed on RPC errors.
+ */
+export async function allowLoginAttempt(
+  request: Request,
+  email: string
+): Promise<{ allowed: boolean; retryAfterSeconds: number }> {
+  const admin = createAdminClient();
+  const ip = clientIp(request);
+  const emailKey = email.trim().toLowerCase() || "empty";
+
+  const buckets = [`login:ip:${ip}`, `login:email:${emailKey}`];
+
+  for (const bucket of buckets) {
+    const { data, error } = await admin.rpc("check_rate_limit", {
+      p_bucket_key: bucket,
+      p_max_requests: LOGIN_LIMIT,
+      p_window_seconds: LOGIN_WINDOW_SECONDS,
+    });
+
+    if (error) {
+      console.error("[rate-limit] login check failed", error.code, error.message);
+      return { allowed: false, retryAfterSeconds: LOGIN_WINDOW_SECONDS };
+    }
+
+    if (data !== true) {
+      return { allowed: false, retryAfterSeconds: LOGIN_WINDOW_SECONDS };
     }
   }
 

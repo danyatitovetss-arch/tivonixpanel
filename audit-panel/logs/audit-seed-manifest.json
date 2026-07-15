@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-07-15T20:17:13.704Z",
+  "dryRun": false,
+  "domain": "tivonix.audit",
+  "ids": {
+    "adminProfileId": "cd213032-b012-42f4-8a63-6535aa072004",
+    "partnerAProfileId": "de750c8d-2116-4175-b3b4-ce5fa4742119",
+    "partnerBProfileId": "2d05748a-1174-4f8a-9c61-6c16a05758c2",
+    "leadA1Id": "57b59829-4488-432c-b33e-f432b59d75b9",
+    "leadA2Id": "89717d4e-c386-4d80-a032-6bdc42a4bc8b",
+    "leadB1Id": "857dceb6-c6d3-4993-b28e-b733129a2c78",
+    "leadB2Id": "44011166-a437-43a1-b8d6-d396f36696ca"
+  },
+  "note": "Passwords not stored. Notify/Telegram/email hooks disabled via notes marker only — no messages sent by this script."
+}

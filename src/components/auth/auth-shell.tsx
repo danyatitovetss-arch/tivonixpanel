@@ -54,11 +54,12 @@ export function AuthShell({
           style={{ transform: `scale(${scale})` }}
         >
           <Image
-            src="/images/fon-hero.png"
+            src="/images/fon-hero.webp"
             alt=""
             fill
             priority
-            sizes="100vw"
+            quality={70}
+            sizes="(max-width: 768px) 100vw, 1200px"
             className="object-cover object-[center_20%]"
           />
         </div>

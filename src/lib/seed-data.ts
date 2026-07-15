@@ -1,7 +1,6 @@
 import type { AppData, Lead, Deal, Payout, LeadActivity, BalanceTransaction } from "./types";
 import { DEFAULT_COMMISSION_SETTINGS } from "./commission";
 import { calculateCommission } from "./commission";
-import { getPartnerClosedDealsCount } from "./analytics";
 import { createSeedProspects } from "./seed-prospects";
 import { createSeedPartnerProfiles } from "./partner-profiles-seed";
 
@@ -23,9 +22,9 @@ function createSeedData(): AppData {
   const users = [
     {
       id: "u-admin",
-      name: "Данила",
-      email: "danila@tivonix.io",
-      telegram: "@danya_sxxw",
+      name: "Admin Demo",
+      email: "admin.demo@example.com",
+      telegram: "@demo_admin",
       role: "admin" as const,
       status: "active" as const,
       partnerType: null,
@@ -37,9 +36,9 @@ function createSeedData(): AppData {
     },
     {
       id: "u-andrey",
-      name: "Андрей",
-      email: "andrey@tivonix.io",
-      telegram: "@andrey_dev",
+      name: "Partner Alpha",
+      email: "partner.alpha@example.com",
+      telegram: "@demo_partner_a",
       role: "partner" as const,
       status: "active" as const,
       partnerType: "referral" as const,
@@ -51,9 +50,9 @@ function createSeedData(): AppData {
     },
     {
       id: "u-maxim",
-      name: "Максим",
-      email: "maxim@tivonix.io",
-      telegram: "@max_partner",
+      name: "Manager Demo",
+      email: "manager.demo@example.com",
+      telegram: "@demo_manager",
       role: "manager" as const,
       status: "active" as const,
       partnerType: null,
@@ -65,13 +64,13 @@ function createSeedData(): AppData {
     },
     {
       id: "u-artem",
-      name: "Артём",
-      email: "artem@tivonix.io",
-      telegram: "@artem_crm",
+      name: "Partner Beta",
+      email: "partner.beta@example.com",
+      telegram: "@demo_partner_b",
       role: "partner" as const,
       status: "active" as const,
       partnerType: "white_label" as const,
-      agencyName: "Artem Studio",
+      agencyName: "Demo Agency",
       websiteUrl: "https://example.com",
       commissionPercentOverride: null,
       assignedManagerId: null,
@@ -79,9 +78,9 @@ function createSeedData(): AppData {
     },
     {
       id: "u-ilya",
-      name: "Илья",
-      email: "ilya@tivonix.io",
-      telegram: "@ilya_leads",
+      name: "Partner Gamma",
+      email: "partner.gamma@example.com",
+      telegram: "@demo_partner_c",
       role: "partner" as const,
       status: "inactive" as const,
       partnerType: "referral" as const,
@@ -93,9 +92,9 @@ function createSeedData(): AppData {
     },
     {
       id: "u-nikita",
-      name: "Никита",
-      email: "nikita@tivonix.io",
-      telegram: "@nikita_web",
+      name: "Partner Delta",
+      email: "partner.delta@example.com",
+      telegram: "@demo_partner_d",
       role: "partner" as const,
       status: "inactive" as const,
       partnerType: "referral" as const,

@@ -1,4 +1,4 @@
-import type { AppData, Lead, Deal, LeadStatus } from "./types";
+import type { AppData, Lead, Deal } from "./types";
 import { getLeadStatusLabel } from "./statuses";
 import { formatCurrency } from "./commission";
 

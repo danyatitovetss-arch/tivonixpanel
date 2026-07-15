@@ -51,8 +51,7 @@ export default function SetPasswordPage() {
       return;
     }
 
-    const me = await fetch("/api/auth/me");
-    const meJson = me.ok ? await me.json() : null;
+    await fetch("/api/auth/me");
     router.push("/dashboard");
   }
 

@@ -62,6 +62,24 @@ export function UsersManagement() {
     role: "partner" as UserRole,
   });
 
+  useEffect(() => {
+    if (demo) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const json = await fetchJson<{ data: AdminUserRow[] }>("/api/admin/users");
+        if (!cancelled) setUsers(json.data);
+      } catch (err) {
+        if (!cancelled) toast.error(toUserMessage(err, "Не удалось загрузить пользователей"));
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [demo]);
+
   const loadUsers = useCallback(async () => {
     if (demo) return;
     setLoading(true);
@@ -74,10 +92,6 @@ export function UsersManagement() {
       setLoading(false);
     }
   }, [demo]);
-
-  useEffect(() => {
-    void loadUsers();
-  }, [loadUsers]);
 
   async function downloadCredentialsPdf(credentials: CreatedCredentials) {
     setPdfLoading(true);

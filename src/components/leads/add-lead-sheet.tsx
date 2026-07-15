@@ -1,7 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { LeadForm, FormFooter } from "@/components/leads/lead-form";
 import { CLIENT_COPY } from "@/lib/ui-copy";
@@ -17,13 +17,14 @@ interface AddLeadSheetProps {
 export function AddLeadSheet({ open, onOpenChange }: AddLeadSheetProps) {
   const [formKey, setFormKey] = useState(0);
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
+  const [prevOpen, setPrevOpen] = useState(open);
+  if (open !== prevOpen) {
+    setPrevOpen(open);
     if (open) {
       setFormKey((k) => k + 1);
       setSubmitting(false);
     }
-  }, [open]);
+  }
 
   return (
     <Sheet open={open} onOpenChange={(next) => !submitting && onOpenChange(next)}>

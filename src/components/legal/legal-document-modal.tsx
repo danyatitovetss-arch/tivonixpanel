@@ -41,15 +41,26 @@ export function LegalDocumentModal({
 
   useEffect(() => {
     if (!open || !slug) return;
-    setLoading(true);
-    setDoc(null);
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (!cancelled) {
+        setLoading(true);
+        setDoc(null);
+      }
+    });
     void fetch(`/api/legal/${slug}`)
       .then((r) => r.json())
       .then((json) => {
+        if (cancelled) return;
         setDoc(json.data ?? null);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [open, slug]);
 
   return (

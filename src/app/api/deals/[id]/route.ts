@@ -20,7 +20,6 @@ export async function PATCH(request: Request, context: RouteContext) {
   if (auth.response) return auth.response;
   const { id } = await context.params;
   const body = await request.json();
-  const allowed = ["client_name", "service_type", "notes"];
   const patch: Record<string, unknown> = {};
   if (body.clientName) patch.client_name = body.clientName;
   if (body.serviceType) patch.service_type = body.serviceType;

@@ -1,0 +1,295 @@
+{
+  "generatedAt": "2026-07-15T20:15:43.675Z",
+  "mode": "read-only",
+  "summary": {
+    "authUsers": 17,
+    "profiles": 17,
+    "partners": 15,
+    "failCount": 1,
+    "passCount": 14,
+    "business": {
+      "leads": 1,
+      "deals": 1,
+      "payouts": 0,
+      "balance_tx": 1,
+      "prospects": 0
+    }
+  },
+  "checks": [
+    {
+      "id": "I-001",
+      "status": "PASS",
+      "count": 17,
+      "description": "auth.users count=17; profiles count=17",
+      "sql": "SELECT count(*) FROM auth.users; SELECT count(*) FROM public.profiles;",
+      "remediation": null
+    },
+    {
+      "id": "I-002",
+      "status": "PASS",
+      "count": 17,
+      "description": "roles: admin=1, manager=1, partner=15",
+      "sql": "SELECT role, count(*) FROM profiles GROUP BY role",
+      "remediation": null
+    },
+    {
+      "id": "I-003",
+      "status": "PASS",
+      "count": 15,
+      "description": "partner profiles=15",
+      "sql": "SELECT count(*) FROM profiles WHERE role='partner'",
+      "remediation": null
+    },
+    {
+      "id": "I-004",
+      "status": "PASS",
+      "count": 0,
+      "description": "auth users without profile",
+      "sql": "auth.users LEFT JOIN profiles WHERE profiles IS NULL",
+      "remediation": "Create missing profiles or remove orphan auth users after review"
+    },
+    {
+      "id": "I-005",
+      "status": "PASS",
+      "count": 0,
+      "description": "profiles without auth.users",
+      "sql": "profiles LEFT JOIN auth.users WHERE auth missing",
+      "remediation": "Repair or archive orphan profiles"
+    },
+    {
+      "id": "I-006",
+      "status": "PASS",
+      "count": 0,
+      "description": "null partner_id: leads=0 deals=0 balance_tx=0",
+      "sql": "COUNT rows with partner_id IS NULL",
+      "remediation": "Backfill partner_id or delete orphan business rows after review"
+    },
+    {
+      "id": "I-007",
+      "status": "PASS",
+      "count": 0,
+      "description": "duplicate profile emails (masked groups)=0",
+      "sql": "GROUP BY lower(email) HAVING count(*)>1",
+      "remediation": "Merge or deactivate duplicates"
+    },
+    {
+      "id": "I-008",
+      "status": "PASS",
+      "count": 0,
+      "description": "duplicate profiles per user_id",
+      "sql": "GROUP BY user_id HAVING count(*)>1",
+      "remediation": "Keep one profile per user_id"
+    },
+    {
+      "id": "I-009",
+      "status": "PASS",
+      "count": 0,
+      "description": "profiles missing email",
+      "sql": "email IS NULL OR empty",
+      "remediation": "Fill email from auth.users"
+    },
+    {
+      "id": "I-010",
+      "status": "PASS",
+      "count": 17,
+      "description": "status distribution: active=17",
+      "sql": "GROUP BY status",
+      "remediation": null
+    },
+    {
+      "id": "I-011",
+      "status": "PASS",
+      "count": 0,
+      "description": "orphans: leads=0 deals=0 bt=0 activities=0",
+      "sql": "LEFT JOIN owner missing",
+      "remediation": "Repair FK ownership"
+    },
+    {
+      "id": "I-012",
+      "status": "PASS",
+      "count": 0,
+      "description": "partners owning leads under >1 partner_id (should be 0 by construction)",
+      "sql": "count distinct partner_id per owning profile",
+      "remediation": "Investigate if data model broken"
+    },
+    {
+      "id": "I-013",
+      "status": "FAIL",
+      "count": 3,
+      "description": "profiles without user_legal_profiles",
+      "sql": "profiles LEFT JOIN user_legal_profiles",
+      "remediation": "Create legal profiles via onboarding repair (dry-run first)"
+    },
+    {
+      "id": "I-014",
+      "status": "PASS",
+      "count": 0,
+      "description": "RLS enabled on 9 critical tables",
+      "sql": "pg_class.relrowsecurity",
+      "remediation": "ALTER TABLE ... ENABLE ROW LEVEL SECURITY"
+    },
+    {
+      "id": "I-015",
+      "status": "PASS",
+      "count": 15,
+      "description": "active partners with null partner_type (legacy OK)=15",
+      "sql": "partner_type IS NULL",
+      "remediation": "Optional backfill; not blocking"
+    }
+  ],
+  "maskedRoster": [
+    {
+      "role": "admin",
+      "status": "active",
+      "partner_type": null,
+      "email": "d***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-03T20:15:04.974Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "a***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-03T20:33:25.421Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "k***@mail.ru",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-03T21:58:59.500Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "K***@gmail.com",
+      "phone": null,
+      "has_telegram": true,
+      "created_at": "2026-07-03T22:06:37.894Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "i***@mail.ru",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-03T22:16:04.115Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "l***@mail.ru",
+      "phone": null,
+      "has_telegram": true,
+      "created_at": "2026-07-04T08:54:13.546Z"
+    },
+    {
+      "role": "manager",
+      "status": "active",
+      "partner_type": null,
+      "email": "d***@gmail.com",
+      "phone": null,
+      "has_telegram": true,
+      "created_at": "2026-07-04T09:01:44.650Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "b***@yandex.ru",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-04T10:40:55.696Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "e***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-04T13:58:48.218Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "i***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-04T15:20:06.353Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "m***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-04T17:56:03.999Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "s***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-04T17:58:51.220Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "d***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-04T20:38:49.964Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "k***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-05T09:26:51.355Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "a***@gmail.com",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-05T14:16:57.728Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "s***@mail.ru",
+      "phone": null,
+      "has_telegram": true,
+      "created_at": "2026-07-08T13:02:26.141Z"
+    },
+    {
+      "role": "partner",
+      "status": "active",
+      "partner_type": null,
+      "email": "a***@inbox.ru",
+      "phone": null,
+      "has_telegram": false,
+      "created_at": "2026-07-13T18:45:07.811Z"
+    }
+  ]
+}

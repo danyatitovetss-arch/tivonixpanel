@@ -41,11 +41,7 @@ const RESOURCE_ACCESS: Record<UserRole, AccessResource[]> = {
   partner: ["leads", "deals", "prospecting"],
 };
 
-export function canUserAccess(
-  user: User | null,
-  action: AccessAction,
-  _resource?: AccessResource
-): boolean {
+export function canUserAccess(user: User | null, action: AccessAction): boolean {
   if (!user || user.status !== "active") return false;
   return ROLE_PERMISSIONS[user.role].includes(action);
 }

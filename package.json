@@ -8,15 +8,22 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
-    "lint": "eslint",
+    "start": "node scripts/start-prod.cjs",
+    "lint": "eslint src e2e --max-warnings=0",
     "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/lib/__tests__/**/*.test.ts",
+    "test:e2e": "playwright test",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset",
     "db:status": "supabase migration list",
     "admin:promote": "npx tsx --env-file=.env.local scripts/promote-admin.ts",
     "admin:create": "node scripts/create-admin.cjs",
-    "db:apply": "node --env-file=.env.local scripts/apply-migrations-pg.cjs"
+    "db:apply": "node --env-file=.env.local scripts/apply-migrations-pg.cjs",
+    "audit:users": "node --env-file=.env.local scripts/create-audit-users.cjs",
+    "audit:integrity": "node --env-file=.env.local scripts/audit-integrity-readonly.cjs",
+    "audit:seed": "node --env-file=.env.local scripts/audit-seed.cjs",
+    "audit:cleanup": "node --env-file=.env.local scripts/audit-cleanup.cjs",
+    "audit:security": "node --env-file=.env.local scripts/audit-security-probe.cjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -35,18 +42,21 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0",
     "tw-animate-css": "^1.4.0",
-    "xlsx": "^0.18.5",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "pg": "^8.22.0",
     "supabase": "^2.109.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.1",
     "typescript": "^5"
   }
 }

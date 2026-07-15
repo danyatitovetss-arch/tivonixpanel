@@ -26,8 +26,10 @@ export async function GET(_req: Request, context: RouteContext) {
   if (auth.response) return auth.response;
   const { id } = await context.params;
   const supabase = await createClient();
-  const { data, error } = await supabase.from("leads").select("*").eq("id", id).single();
-  if (error) return apiErrorResponse(error.message, 404);
+  const { data, error } = await supabase.from("leads").select("*").eq("id", id).maybeSingle();
+  if (error || !data) {
+    return NextResponse.json({ error: "Клиент не найден" }, { status: 404 });
+  }
   return NextResponse.json({ data });
 }
 
@@ -77,22 +79,38 @@ export async function PATCH(request: Request, context: RouteContext) {
 
   const supabase = await createClient();
 
-  if (input.status) {
-    const { data: current } = await supabase
-      .from("leads")
-      .select("admin_review_status")
-      .eq("id", id)
-      .single();
+  const { data: existing, error: existingError } = await supabase
+    .from("leads")
+    .select("id, admin_review_status")
+    .eq("id", id)
+    .maybeSingle();
+  if (existingError || !existing) {
+    return NextResponse.json({ error: "Клиент не найден" }, { status: 404 });
+  }
 
+  if (input.status) {
     const reviewSync = syncAdminReviewForStatus(
       input.status as LeadStatus,
-      (current?.admin_review_status ?? "pending") as AdminReviewStatus
+      (existing.admin_review_status ?? "pending") as AdminReviewStatus
     );
     if (reviewSync) patch.admin_review_status = reviewSync;
   }
 
-  const { data, error } = await supabase.from("leads").update(patch).eq("id", id).select().single();
-  if (error) return apiErrorResponse(error.message, 500);
+  if (Object.keys(patch).length === 0) {
+    return NextResponse.json({ error: "Нет данных для обновления" }, { status: 400 });
+  }
+
+  const { data, error } = await supabase.from("leads").update(patch).eq("id", id).select().maybeSingle();
+  if (error) {
+    const code = (error as { code?: string }).code;
+    if (code === "PGRST116" || code === "42501") {
+      return NextResponse.json({ error: "Клиент не найден" }, { status: 404 });
+    }
+    return apiErrorResponse(error.message, 500);
+  }
+  if (!data) {
+    return NextResponse.json({ error: "Клиент не найден" }, { status: 404 });
+  }
 
   await supabase.from("lead_activities").insert({
     lead_id: id,

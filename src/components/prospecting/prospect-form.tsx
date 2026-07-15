@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import {
   FormField,
@@ -63,10 +63,13 @@ interface ProspectFormProps {
 
 export function ProspectForm({ open, onClose, onSave, initial }: ProspectFormProps) {
   const [form, setForm] = useState<ProspectFormValues>({ ...emptyForm, ...initial });
-
-  useEffect(() => {
-    if (open) setForm({ ...emptyForm, ...initial });
-  }, [open, initial]);
+  const [wasOpen, setWasOpen] = useState(open);
+  if (open !== wasOpen) {
+    setWasOpen(open);
+    if (open) {
+      setForm({ ...emptyForm, ...initial });
+    }
+  }
 
   function set<K extends keyof ProspectFormValues>(key: K, value: ProspectFormValues[K]) {
     setForm((f) => ({ ...f, [key]: value }));

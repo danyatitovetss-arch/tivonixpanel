@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-07-15T20:20:06.332Z",
+  "base": "http://127.0.0.1:3000",
+  "pass": 6,
+  "fail": 9,
+  "results": [
+    {
+      "caseId": "S-GUEST-01",
+      "role": "guest",
+      "endpoint": "/api/leads/857dceb6-c6d3-4993-b28e-b733129a2c78",
+      "action": "GET",
+      "expected": "401/403",
+      "actual": "401",
+      "pass": true,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-A-RLS-01",
+      "role": "partner_a",
+      "endpoint": "supabase/leads",
+      "action": "SELECT own",
+      "expected": "visible",
+      "actual": "visible",
+      "pass": true,
+      "snippet": "ok"
+    },
+    {
+      "caseId": "S-A-RLS-02",
+      "role": "partner_a",
+      "endpoint": "supabase/leads",
+      "action": "SELECT foreign",
+      "expected": "hidden",
+      "actual": "hidden",
+      "pass": true,
+      "snippet": "null"
+    },
+    {
+      "caseId": "S-A-API-01",
+      "role": "partner_a",
+      "endpoint": "/api/leads/857dceb6-c6d3-4993-b28e-b733129a2c78",
+      "action": "GET",
+      "expected": "404/403",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-A-API-02",
+      "role": "partner_a",
+      "endpoint": "/api/leads",
+      "action": "GET list",
+      "expected": "no B leads",
+      "actual": "ok",
+      "pass": true,
+      "snippet": "count=0"
+    },
+    {
+      "caseId": "S-A-API-03",
+      "role": "partner_a",
+      "endpoint": "/api/leads/857dceb6-c6d3-4993-b28e-b733129a2c78",
+      "action": "PATCH",
+      "expected": "404/403",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-A-API-04",
+      "role": "partner_a",
+      "endpoint": "/api/leads",
+      "action": "POST forged partner_id",
+      "expected": "forced to A or 4xx",
+      "actual": "401",
+      "pass": true,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-A-API-05",
+      "role": "partner_a",
+      "endpoint": "/api/deals (probe)",
+      "action": "GET foreign deal by wrong id",
+      "expected": "404/403",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-A-FIN-01",
+      "role": "partner_a",
+      "endpoint": "/api/deals/*/mark-paid",
+      "action": "POST",
+      "expected": "403",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-B-RLS-01",
+      "role": "partner_b",
+      "endpoint": "supabase/leads",
+      "action": "SELECT A lead",
+      "expected": "hidden",
+      "actual": "hidden",
+      "pass": true,
+      "snippet": "null"
+    },
+    {
+      "caseId": "S-B-API-01",
+      "role": "partner_b",
+      "endpoint": "/api/leads/57b59829-4488-432c-b33e-f432b59d75b9",
+      "action": "GET",
+      "expected": "404/403",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-ADM-01",
+      "role": "admin",
+      "endpoint": "/api/leads/857dceb6-c6d3-4993-b28e-b733129a2c78",
+      "action": "GET",
+      "expected": "200",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-ADM-FIN-01",
+      "role": "admin",
+      "endpoint": "/api/deals/c3f80c07-7acd-4fe3-b6ab-4b6c27f3adbc/mark-paid",
+      "action": "POST",
+      "expected": "200/409 idempotent",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-ADM-FIN-02",
+      "role": "admin",
+      "endpoint": "mark-paid x2",
+      "action": "POST",
+      "expected": "409/200 no double accrual",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    },
+    {
+      "caseId": "S-A-ADM-01",
+      "role": "partner_a",
+      "endpoint": "/api/admin/users",
+      "action": "GET",
+      "expected": "403",
+      "actual": "401",
+      "pass": false,
+      "snippet": "{\"error\":\"Войдите в аккаунт\"}"
+    }
+  ]
+}

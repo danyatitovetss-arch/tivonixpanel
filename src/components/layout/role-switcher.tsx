@@ -12,8 +12,9 @@ import { getUserRoleLabel } from "@/lib/statuses";
 import { isDemoMode } from "@/lib/demo-mode";
 
 export function RoleSwitcher() {
-  if (!isDemoMode()) return null;
   const { data, currentUser, setCurrentUserId } = useApp();
+  if (!isDemoMode()) return null;
+
   const userOptions = data.users
     .filter((u) => u.status === "active")
     .map((u) => ({

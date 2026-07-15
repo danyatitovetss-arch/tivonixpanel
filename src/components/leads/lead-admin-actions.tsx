@@ -111,13 +111,15 @@ export function LeadAdminActions({
   const managers = users.filter((u) => u.role === "manager" || u.role === "admin");
 
   useEffect(() => {
-    setNewStatus(lead.status);
-    setManagerId(lead.assignedManagerId ?? "");
+    queueMicrotask(() => {
+      setNewStatus(lead.status);
+      setManagerId(lead.assignedManagerId ?? "");
+    });
   }, [lead.id, lead.status, lead.assignedManagerId]);
 
   useEffect(() => {
     if (modal) return;
-    setComment("");
+    queueMicrotask(() => setComment(""));
   }, [lead.status, lead.adminReviewStatus, modal]);
 
   function close() {

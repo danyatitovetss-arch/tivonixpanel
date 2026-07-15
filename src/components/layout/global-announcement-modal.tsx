@@ -32,7 +32,7 @@ export function GlobalAnnouncementModal({ ready }: { ready: boolean }) {
     } catch {
       /* private mode — still show */
     }
-    setOpen(true);
+    queueMicrotask(() => setOpen(true));
   }, [ready]);
 
   function dismiss() {

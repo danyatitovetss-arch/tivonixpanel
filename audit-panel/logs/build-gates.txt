@@ -1,0 +1,8 @@
+﻿typecheck PASS
+lint FAIL 48 errors 11 warnings
+unit PASS 7/7 via tsx
+e2e Playwright project not configured in package.json
+build PASS
+npm start Windows FAIL bash PORT syntax
+npm audit: xlsx HIGH, postcss moderate via next
+

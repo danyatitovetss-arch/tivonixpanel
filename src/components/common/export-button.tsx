@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { Download } from "lucide-react";
+import { toast } from "sonner";
 import { exportToExcel, type ExportColumn, type ExcelExportOptions } from "@/lib/export";
+import { toUserMessage } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 
 interface ExportButtonProps<T extends Record<string, unknown>> {
@@ -19,7 +21,7 @@ export function ExportButton<T extends Record<string, unknown>>({
   data,
   filename,
   columns,
-  label = "Скачать Excel",
+  label = "Скачать CSV",
   className,
   disabled,
   sheetName,
@@ -31,6 +33,8 @@ export function ExportButton<T extends Record<string, unknown>>({
     setLoading(true);
     try {
       await exportToExcel(data, filename, columns, { sheetName });
+    } catch (err) {
+      toast.error(toUserMessage(err, "Не удалось экспортировать данные"));
     } finally {
       setLoading(false);
     }

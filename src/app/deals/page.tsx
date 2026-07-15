@@ -135,6 +135,7 @@ export default function DealsPage() {
     isPartner(user) && hasFirstCommission && needsPaymentDetails;
 
   return (
+    <RoleGuard resource="deals" redirectTo="/dashboard">
     <AppLayout title="Сделки" showAddLead={false}>
       <div className="space-y-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -263,5 +264,6 @@ export default function DealsPage() {
         </Dialog>
       </div>
     </AppLayout>
+    </RoleGuard>
   );
 }
