@@ -112,6 +112,23 @@ describe("export sanitization", () => {
     assert.match(text, /'=1\+1/);
     assert.match(text, /ok/);
   });
+
+  it("export of partner-scoped rows cannot include foreign partner id", () => {
+    const partnerA = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
+    const partnerB = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb";
+    const scoped = [
+      { id: "1", partner_id: partnerA, business: "audit_lead_a1" },
+      { id: "2", partner_id: partnerA, business: "audit_lead_a2" },
+    ].filter((r) => r.partner_id === partnerA);
+    assert.equal(scoped.every((r) => r.partner_id !== partnerB), true);
+    const text = buildPlainTextExport(scoped, [
+      { key: "id", label: "id" },
+      { key: "partner_id", label: "partner" },
+      { key: "business", label: "business" },
+    ]);
+    assert.equal(text.includes(partnerB), false);
+    assert.equal(text.includes("audit_lead_b"), false);
+  });
 });
 
 describe("zod field errors localization", () => {

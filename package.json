@@ -20,10 +20,12 @@
     "admin:create": "node scripts/create-admin.cjs",
     "db:apply": "node --env-file=.env.local scripts/apply-migrations-pg.cjs",
     "audit:users": "node --env-file=.env.local scripts/create-audit-users.cjs",
-    "audit:integrity": "node --env-file=.env.local scripts/audit-integrity-readonly.cjs",
     "audit:seed": "node --env-file=.env.local scripts/audit-seed.cjs",
     "audit:cleanup": "node --env-file=.env.local scripts/audit-cleanup.cjs",
-    "audit:security": "node --env-file=.env.local scripts/audit-security-probe.cjs"
+    "audit:security": "node --env-file=.env.local scripts/audit-security-probe.cjs",
+    "audit:integrity": "node --env-file=.env.local scripts/audit-integrity-readonly.cjs",
+    "audit:export-fuzz": "node --env-file=.env.local scripts/audit-export-fuzz.cjs",
+    "audit:repair-legal": "node --env-file=.env.local scripts/repair-missing-legal-profiles.cjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

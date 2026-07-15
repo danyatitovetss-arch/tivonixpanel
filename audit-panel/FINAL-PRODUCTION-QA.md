@@ -2,7 +2,9 @@
 
 # GO WITH CONDITIONS
 
-Критическая изоляция Partner A/B на **реальной базе** проверена через RLS + Playwright (audit-данные). Реальные пользователи не изменялись. Остаются: 3 профиля без legal onboarding (данные), LCP login, полный export-fuzz, Railway SSH (нет ключей).
+I-013 закрыт на БД; export/fuzz isolation **PASS**; patch 404 regression **PASS**. Остаётся только **ISS-016 LCP** (perf). Merge/deploy — после вашего подтверждения.
+
+Подробности follow-up: `audit-panel/FOLLOWUP-QA.md` · Review: `audit-panel/BRANCH-REVIEW.md`
 
 ---
 

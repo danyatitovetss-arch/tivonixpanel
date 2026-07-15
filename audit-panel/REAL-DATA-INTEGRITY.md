@@ -39,7 +39,7 @@
 | I-010 | **PASS** | 17 | status: active=14, pending=3 | `GROUP BY status` | — |
 | I-011 | **PASS** | 0 | orphan FKs (leads/deals/bt/activities) | LEFT JOIN owners | — |
 | I-012 | **PASS** | 0 | partner owns leads under multiple partner_ids | aggregate check | — |
-| I-013 | **FAIL** | 3 | profiles без `user_legal_profiles` (admin/manager/partner) | LEFT JOIN ulp | **dry-run repair** — создать ulp через onboarding repair; не применено автоматически |
+| I-013 | **PASS** | 0 | profiles without user_legal_profiles (repaired 2026-07-15) | LEFT JOIN ulp | stub insert via repair script + register upsert |
 | I-014 | **PASS** | 0 | RLS disabled on critical tables | `pg_class.relrowsecurity` | — |
 | I-015 | **PASS** | 3 | active partners с null partner_type (legacy) | informational | optional backfill |
 

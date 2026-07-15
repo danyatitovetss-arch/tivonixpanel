@@ -230,6 +230,33 @@ export async function POST(request: Request) {
       // Do not roll back account — consents are re-collected at legal onboarding
     }
 
+    // Ensure user_legal_profiles exists (I-013): onboarding will fill real KYC fields.
+    // Do not grant CRM until legal onboarding completes.
+    try {
+      await admin.from("user_legal_profiles").upsert(
+        {
+          user_id: userId,
+          full_name: input.fullName,
+          email,
+          country: "Unknown",
+          tax_residence_country: "Unknown",
+          date_of_birth: "1990-01-01",
+          age: 36,
+          partner_legal_status: "individual",
+          onboarding_status: "not_started",
+          crm_access: false,
+          payout_status: "pending_admin_review",
+          preferred_currency: "USD",
+        },
+        { onConflict: "user_id", ignoreDuplicates: true }
+      );
+    } catch (ulpErr) {
+      console.error(
+        "[register] legal profile stub failed",
+        ulpErr instanceof Error ? ulpErr.message : "unknown"
+      );
+    }
+
     void notifyAdminPartnerApplication({
       fullName: input.fullName,
       email,

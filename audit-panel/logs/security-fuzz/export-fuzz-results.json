@@ -1,0 +1,245 @@
+{
+  "generatedAt": "2026-07-15T20:35:52.951Z",
+  "base": "http://127.0.0.1:3000",
+  "pass": 26,
+  "fail": 0,
+  "results": [
+    {
+      "id": "EX-A-01",
+      "pass": true,
+      "expected": "A list excludes B leads",
+      "actual": "status=200 count=2",
+      "detail": {
+        "leadIdsA": [
+          "6cf7b395-c4f8-4e4f-a15d-2a0a7ba42ea0",
+          "ee616c06-d73c-4aec-aae5-10eec2f2e511"
+        ],
+        "partnerIdsA": [
+          "40cc2e6a-3867-4b6d-b4ce-9ac92600b982",
+          "40cc2e6a-3867-4b6d-b4ce-9ac92600b982"
+        ]
+      }
+    },
+    {
+      "id": "EX-A-02",
+      "pass": true,
+      "expected": "A list only own partner_id",
+      "actual": "containsA1=true partners=40cc2e6a-3867-4b6d-b4ce-9ac92600b982",
+      "detail": null
+    },
+    {
+      "id": "EX-B-01",
+      "pass": true,
+      "expected": "B list excludes A leads",
+      "actual": "status=200 count=2",
+      "detail": null
+    },
+    {
+      "id": "EX-A-CSV-01",
+      "pass": true,
+      "expected": "CSV from A data has no B ids/names",
+      "actual": "ok",
+      "detail": {
+        "bytes": 195
+      }
+    },
+    {
+      "id": "EX-FORMULA-01",
+      "pass": true,
+      "expected": "formula sanitization",
+      "actual": "ok",
+      "detail": null
+    },
+    {
+      "id": "EX-A-DEALS",
+      "pass": true,
+      "expected": "A deals only own partner",
+      "actual": "status=200 partners=40cc2e6a-3867-4b6d-b4ce-9ac92600b982",
+      "detail": null
+    },
+    {
+      "id": "FUZZ-Q-1",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partner_id=c302e458-8a60-4e2d-b18f-6b14fc6ca869"
+      }
+    },
+    {
+      "id": "FUZZ-Q-2",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partnerId=c302e458-8a60-4e2d-b18f-6b14fc6ca869"
+      }
+    },
+    {
+      "id": "FUZZ-Q-3",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?user_id=c302e458-8a60-4e2d-b18f-6b14fc6ca869"
+      }
+    },
+    {
+      "id": "FUZZ-Q-4",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?owner_id=c302e458-8a60-4e2d-b18f-6b14fc6ca869"
+      }
+    },
+    {
+      "id": "FUZZ-Q-5",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?role=admin"
+      }
+    },
+    {
+      "id": "FUZZ-Q-6",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partner_id=c302e458-8a60-4e2d-b18f-6b14fc6ca869&partner_id=40cc2e6a-3867-4b6d-b4ce-9ac92600b982"
+      }
+    },
+    {
+      "id": "FUZZ-Q-7",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partner_id="
+      }
+    },
+    {
+      "id": "FUZZ-Q-8",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partner_id=null"
+      }
+    },
+    {
+      "id": "FUZZ-Q-9",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partner_id=not-a-uuid"
+      }
+    },
+    {
+      "id": "FUZZ-Q-10",
+      "pass": true,
+      "expected": "no 500 / no B leak",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "query": "?partner_id=c302e458-8a60-4e2d-b18f-6b14fc6ca869"
+      }
+    },
+    {
+      "id": "FUZZ-H-1",
+      "pass": true,
+      "expected": "headers ignored / no leak / no 500",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "headers": [
+          "x-partner-id"
+        ]
+      }
+    },
+    {
+      "id": "FUZZ-H-2",
+      "pass": true,
+      "expected": "headers ignored / no leak / no 500",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "headers": [
+          "x-user-id"
+        ]
+      }
+    },
+    {
+      "id": "FUZZ-H-3",
+      "pass": true,
+      "expected": "headers ignored / no leak / no 500",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "headers": [
+          "x-role"
+        ]
+      }
+    },
+    {
+      "id": "FUZZ-H-4",
+      "pass": true,
+      "expected": "headers ignored / no leak / no 500",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "headers": [
+          "X-Partner-Id"
+        ]
+      }
+    },
+    {
+      "id": "FUZZ-H-5",
+      "pass": true,
+      "expected": "headers ignored / no leak / no 500",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "headers": [
+          "role"
+        ]
+      }
+    },
+    {
+      "id": "FUZZ-H-6",
+      "pass": true,
+      "expected": "headers ignored / no leak / no 500",
+      "actual": "status=200 leak=false",
+      "detail": {
+        "headers": [
+          "Authorization"
+        ]
+      }
+    },
+    {
+      "id": "FUZZ-BODY-01",
+      "pass": true,
+      "expected": "forced to A or 4xx",
+      "actual": "status=201 partner=40cc2e6a-3867-4b6d-b4ce-9ac92600b982",
+      "detail": null
+    },
+    {
+      "id": "FUZZ-UUID-01",
+      "pass": true,
+      "expected": "404/403",
+      "actual": "404",
+      "detail": "{\"error\":\"Клиент не найден\"}"
+    },
+    {
+      "id": "FUZZ-UUID-02",
+      "pass": true,
+      "expected": "no 500 on malformed uuid",
+      "actual": "404",
+      "detail": null
+    },
+    {
+      "id": "FUZZ-REPORT-01",
+      "pass": true,
+      "expected": "no crash; no B lead id in body",
+      "actual": "status=200 leak=false",
+      "detail": "{\"data\":[{\"partner_id\":\"40cc2e6a-3867-4b6d-b4ce-9ac92600b982\",\"full_name\":\"audit_partner_a\",\"email\":"
+    }
+  ]
+}

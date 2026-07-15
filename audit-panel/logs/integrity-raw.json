@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-15T20:15:43.675Z",
+  "generatedAt": "2026-07-15T20:28:39.685Z",
   "mode": "read-only",
   "summary": {
     "authUsers": 17,
     "profiles": 17,
     "partners": 15,
-    "failCount": 1,
-    "passCount": 14,
+    "failCount": 0,
+    "passCount": 15,
     "business": {
       "leads": 1,
       "deals": 1,
@@ -114,8 +114,8 @@
     },
     {
       "id": "I-013",
-      "status": "FAIL",
-      "count": 3,
+      "status": "PASS",
+      "count": 0,
       "description": "profiles without user_legal_profiles",
       "sql": "profiles LEFT JOIN user_legal_profiles",
       "remediation": "Create legal profiles via onboarding repair (dry-run first)"

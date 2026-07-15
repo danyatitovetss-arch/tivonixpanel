@@ -28,10 +28,10 @@ function loadIds(): ManifestIds | null {
 
 async function login(page: import("@playwright/test").Page, email: string, password: string) {
   await page.goto("/login");
-  await page.getByLabel(/email|почта/i).fill(email);
-  await page.getByLabel(/пароль/i).fill(password);
+  await page.locator("#login-email").fill(email);
+  await page.locator("#login-password").fill(password);
   await page.getByRole("button", { name: /войти|вход/i }).click();
-  await page.waitForURL(/dashboard|leads|onboarding/, { timeout: 30000 });
+  await page.waitForURL(/dashboard|leads|onboarding|my/, { timeout: 30000 });
 }
 
 test.describe("partner isolation (audit data)", () => {
