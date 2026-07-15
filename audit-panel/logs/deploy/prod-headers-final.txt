@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Cache-Control: s-maxage=31536000
+content-security-policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; object-src 'none'; img-src 'self' data: blob: https://codwkylxpjlinutohflx.supabase.co; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://codwkylxpjlinutohflx.supabase.co wss://*.supabase.co https://*.supabase.co; worker-src 'self' blob:; manifest-src 'self'
+Content-Type: text/html; charset=utf-8
+Date: Wed, 15 Jul 2026 20:42:24 GMT
+etag: "ioy6vluvrafm9"
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+referrer-policy: strict-origin-when-cross-origin
+Server: railway-hikari
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+x-railway-request-id: 5r1DiU23QECeWW-F0_TJvA
+Transfer-Encoding: chunked
+x-hikari-trace: waw1.j60f
+x-railway-edge: waw1
+Connection: keep-alive
+

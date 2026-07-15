@@ -1,0 +1,136 @@
+{
+  "generatedAt": "2026-07-15T20:43:23.416Z",
+  "base": "https://tivonixpanel-production.up.railway.app",
+  "pass": 22,
+  "fail": 0,
+  "results": [
+    {
+      "id": "web_health",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "api_health",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "login_page",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "register_page",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "security_headers",
+      "pass": true,
+      "detail": {
+        "csp": true,
+        "xfo": true,
+        "nosniff": true,
+        "poweredBy": null
+      }
+    },
+    {
+      "id": "audit_seed",
+      "pass": true,
+      "detail": "ok"
+    },
+    {
+      "id": "login_partner_a",
+      "pass": true,
+      "detail": "https://tivonixpanel-production.up.railway.app/dashboard"
+    },
+    {
+      "id": "a_cannot_get_b",
+      "pass": true,
+      "detail": "status=404"
+    },
+    {
+      "id": "a_list_excludes_b",
+      "pass": true,
+      "detail": "count=2"
+    },
+    {
+      "id": "export_no_b",
+      "pass": true,
+      "detail": "ok"
+    },
+    {
+      "id": "a_patch_b_404",
+      "pass": true,
+      "detail": "status=404"
+    },
+    {
+      "id": "a_admin_403",
+      "pass": true,
+      "detail": "status=403"
+    },
+    {
+      "id": "refresh_protected",
+      "pass": true,
+      "detail": "https://tivonixpanel-production.up.railway.app/dashboard"
+    },
+    {
+      "id": "no_401_spam_login",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "id": "logout",
+      "pass": true,
+      "detail": "status=401"
+    },
+    {
+      "id": "b_cannot_get_a",
+      "pass": true,
+      "detail": "status=404"
+    },
+    {
+      "id": "b_patch_a_404",
+      "pass": true,
+      "detail": "status=404"
+    },
+    {
+      "id": "admin_mark_paid",
+      "pass": true,
+      "detail": "mp1=200 mp2=200"
+    },
+    {
+      "id": "mobile_login_no_hscroll",
+      "pass": true,
+      "detail": "overflow=false"
+    },
+    {
+      "id": "integrity_17_users",
+      "pass": true,
+      "detail": {
+        "authUsers": 20,
+        "profiles": 20,
+        "partners": 17,
+        "failCount": 0,
+        "passCount": 15,
+        "business": {
+          "leads": 5,
+          "deals": 3,
+          "payouts": 0,
+          "balance_tx": 3,
+          "prospects": 4
+        }
+      }
+    },
+    {
+      "id": "legal_profiles_complete",
+      "pass": true,
+      "detail": "missing=0"
+    },
+    {
+      "id": "audit_cleanup",
+      "pass": true,
+      "detail": "ok"
+    }
+  ]
+}
